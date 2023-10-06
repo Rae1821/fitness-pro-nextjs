@@ -21,8 +21,8 @@ const Navbar = () => {
     }, [])
 
   return (
-    <nav className="flex justify-between w-full mb-16 mt-4">
-        <Link href="/" className="flex gap-2 flex-center font-bold">
+    <nav className="flex justify-between w-full my-4">
+        <Link href="/" className="flex gap-2 flex-center font-bold pl-4 text-lg">
             Fitness Pro
         </Link>
 
