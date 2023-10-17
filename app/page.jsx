@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Dashboard from '@components/Dashboard';
 
 const Home = () => {
   return (
@@ -8,15 +8,7 @@ const Home = () => {
           <span className="block text-xs pt-2 text-gray-600">-Ronnie Coleman</span>
           </h1>
       </div>
-      <div className="flex justify-between items-center mt-4">
-        <div className="">
-          <Link className="bg-emerald-600 py-2.5 px-3.5 rounded-full text-xl border-2 border-emerald-600" href="/">Sign Up</Link>
-        </div>
-        <div>
-          <Link className="border-2 border-emerald-600 py-2.5 px-3.5 rounded-full text-xl" href="/">Login</Link>
-        </div>
-      </div>
-
+      <Dashboard />
     </section>
   )
 }
