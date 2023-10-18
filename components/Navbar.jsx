@@ -79,7 +79,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className="sm:hidden flex relative">
+        <div className="sm:hidden flex relative z-20">
             {session?.user ? (
                 <div className="flex">
                     <Image

@@ -10,7 +10,7 @@ const DashboardCardList = ({ data, handleTagClick }) => {
   {data.map((post) => (
     <DashboardCard
       key={post._id}
-      post={post}
+      post={post.exerciseRow}
       handleTagClick={handleTagClick}
     />
   ))}
@@ -50,6 +50,10 @@ const Dashboard = () => {
           className="block w-full rounded-md border border-gray-200 bg-white py-2.5 pl-5 pr-12 text-sm shadow-lg font-medium focus:outline-none focus:ring-0"
         />
       </form>
+
+      <div className="mt-16 head_text">
+        <h2 className="green_gradient">Completed Workouts</h2>
+      </div>
 
       <DashboardCardList
         data={posts}

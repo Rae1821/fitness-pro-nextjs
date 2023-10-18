@@ -5,28 +5,55 @@ const WorkoutSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    focus: {
-        type: String,
-        required: [true, 'Workout Focus is required'],
-    },
-    exercise: {
-        type: String,
-        required: [true, 'Exercise is required.'],
-    },
-    sets: {
-        type: Number,
-        required: [true, 'Sets is required.'],
-    },
-    reps: {
-        type: Number,
-        required: [true, 'Reps is required.'],
-    },
-    weight: {
-        type: Number,
-        required: [true, 'Weight is required.'],
-    }
+    exerciseRow: [
+        {
+            tag: {
+                type: String,
+                required: [true, "Tag is required"],
+            },
+            exercise: {
+                type: String,
+                required: [true, 'Exercise is required.'],
+            },
+            sets: {
+                type: Number,
+                required: [true, 'Sets is required.'],
+            },
+            reps: {
+                type: Number,
+                required: [true, 'Reps is required.'],
+            },
+            weight1: {
+                type: Number,
+                required: [true, 'Weight is required.'],
+            },
+            weight2: {
+                type: Number,
+                required: [true, 'Weight is required.'],
+            },
+            weight3: {
+                type: Number,
+                required: [true, 'Weight is required.'],
+            },
+        }
+    ]
+
 });
 
 const Workout = models.Workout || model('Workout', WorkoutSchema);
 
 export default Workout;
+
+
+// focus: {
+//     type: String,
+//     required: [true, 'Workout Focus is required'],
+// },
+// date: {
+//     type: String,
+//     required: [true, "Date is required"],
+// },
+// duration: {
+//     type: Number,
+//     required: [true, "Duration is required"],
+// },

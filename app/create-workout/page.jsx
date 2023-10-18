@@ -10,17 +10,44 @@ const createNewWorkout = () => {
     const router = useRouter();
     const { data: session } = useSession();
 
+
     const [submitting, setSubmitting] = useState(false);
-    const [post, setPost] = useState({
-        focus: '',
-        date: '',
-        exercise: '',
-        sets: 0,
-        reps: 0,
-        weight: 0,
-    })
+    // const [post, setPost] = useState({
+    //     focus: '',
+    //     date: '',
+    //     duration: 0,
+    // })
 
+    const [exerciseRow, setExerciseRow] = useState([{
+            tag: '',
+            exercise: '',
+            sets: 0,
+            reps: 0,
+            weight1: 0,
+            weight2: 0,
+            weight3: 0
+    }])
 
+    const handleFormChange = (index, event) => {
+        let data = [...exerciseRow];
+        data[index][event.target.name] = event.target.value;
+        setExerciseRow(data)
+    }
+
+    const handleAddExercise = () => {
+        let newExerciseObj = {
+            tag: '',
+            exercise: '',
+            sets: 0,
+            reps: 0,
+            weight1: 0,
+            weight2: 0,
+            weight3: 0
+        }
+        let newRow = setExerciseRow([...exerciseRow, newExerciseObj])
+    }
+
+    console.log()
 
     const createWorkout = async (e) => {
         e.preventDefault();
@@ -32,28 +59,17 @@ const createNewWorkout = () => {
                 method: 'POST',
                 body: JSON.stringify({
                     userId: session?.user.id,
-                    focus: post.focus,
-                    exercise: post.exercise,
-                    sets: post.sets,
-                    reps: post.reps,
-                    weight: post.weight
-                    // date: post.date,
-                    // userId: session?.user.id,
-                    // workoutType: post.workoutType,
-                    // workoutFocus: post.workoutFocus,
-                    // duration: post.duration,
-                    // notes: post.notes,
-                    // exerciseRow: post.exerciseRow,
-                    // exerciseRow: post.exerciseRow.map((item) => ({
-                    //     exercise: item.exercise,
-                    //     sets: item.sets,
-                    //     reps: item.reps,
-                    //     weight1: item.weight1,
-                    //     weight2: item.weight2,
-                    //     weight3: item.weight3,
-                    //     weight4: item.weight4,
-
-                    // }))
+                    exerciseRow: exerciseRow.map((ex) => {
+                        return {
+                            tag: ex.tag,
+                            exercise: ex.exercise,
+                            sets: ex.sets,
+                            reps: ex.reps,
+                            weight1: ex.weight1,
+                            weight2: ex.weight2,
+                            weight3: ex.weight3,
+                        }
+                    })
                 }),
             });
             if(response.ok){
@@ -71,10 +87,12 @@ const createNewWorkout = () => {
   return (
     <WorkoutForm
         type="Create"
-        post={post}
-        setPost={setPost}
         submitting={submitting}
         handleSubmit={createWorkout}
+        handleFormChange={handleFormChange}
+        handleAddExercise={handleAddExercise}
+        exerciseRow={exerciseRow}
+        setExerciseRow={setExerciseRow}
         />
   )
 }
