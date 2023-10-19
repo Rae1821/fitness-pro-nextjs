@@ -12,12 +12,7 @@ const createNewWorkout = () => {
 
 
     const [submitting, setSubmitting] = useState(false);
-    // const [post, setPost] = useState({
-    //     focus: '',
-    //     date: '',
-    //     duration: 0,
-    // })
-
+    const [exercisesCount, setExercisesCount] = useState(0);
     const [exerciseRow, setExerciseRow] = useState([{
             tag: '',
             exercise: '',
@@ -27,6 +22,8 @@ const createNewWorkout = () => {
             weight2: 0,
             weight3: 0
     }])
+
+
 
     const handleFormChange = (index, event) => {
         let data = [...exerciseRow];
@@ -46,6 +43,13 @@ const createNewWorkout = () => {
         }
         let newRow = setExerciseRow([...exerciseRow, newExerciseObj])
     }
+
+
+    const totalExercisesCompleted = () => {
+        setExercisesCount(prevExercisesCount => prevExercisesCount + 1)
+    }
+
+console.log(exercisesCount)
 
     console.log()
 
@@ -93,7 +97,8 @@ const createNewWorkout = () => {
         handleAddExercise={handleAddExercise}
         exerciseRow={exerciseRow}
         setExerciseRow={setExerciseRow}
-        />
+        totalExercisesCompleted={totalExercisesCompleted}
+    />
   )
 }
 

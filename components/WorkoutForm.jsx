@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const WorkoutForm = ({ type, exerciseRow, submitting, handleSubmit, handleFormChange, handleAddExercise }) => {
+const WorkoutForm = ({ type, exerciseRow, submitting, handleSubmit, handleFormChange, handleAddExercise, totalExercisesCompleted }) => {
 
 
   return (
@@ -14,49 +14,12 @@ const WorkoutForm = ({ type, exerciseRow, submitting, handleSubmit, handleFormCh
             <form
                 onSubmit={handleSubmit}
                 className="bg-gray-50 mt-10 mx-auto w-full glassmorphism">
-                {/* Top Row */}
-                {/* <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                    {/* Date */}
-                    {/* <label>
-                        <span className="font-semibold text-base text-gray-700">Date</span>
-                            <input
-                                value={post.date}
-                                onChange={(e) => setPost({...post, date: e.target.value })}
-                                placeholder="Strength"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                    </label> */}
-                    {/* Focus Area */}
-                    {/* <label>
-                        <span className="font-semibold text-base text-gray-700">Focus Area</span>
-                            <input
-                                value={post.focus}
-                                onChange={(e) => setPost({...post, focus: e.target.value })}
-                                placeholder="Strength"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                    </label> */}
-                    {/* Duration in minutes */}
-                    {/* <label>
-                        <span className="font-semibold text-base text-gray-700">Duration</span>
-                            <input
-                                value={post.duration}
-                                onChange={(e) => setPost({...post, duration: e.target.value })}
-                                placeholder="Strength"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                    </label> */}
-                {/* </div>  */}
 
-                    {/* Exercise Row Section */}
+                    {/* Exercise Row */}
                     {exerciseRow.map((obj, index) => (
-                    <div key={index} className="grid grid-cols-6 gap-4">
+                    <div key={index} className="grid grid-cols-7 gap-4 items-center my-8">
                     <label>
-                        <span>Workout Focus Tag
-                            <span>(strength, cardio, class, etc)</span>
+                        <span className="font-semibold text-base text-gray-700">Focus Tag
                         </span>
                             <input
                                 name='tag'
@@ -140,28 +103,19 @@ const WorkoutForm = ({ type, exerciseRow, submitting, handleSubmit, handleFormCh
                         </label>
                     </div>
                     ))}
-                    <button onClick={handleAddExercise}>
+                    <button
+                    className="bg-amber-500 py-1 px-3 rounded-full"
+                    onClick={handleAddExercise}
+                    totalexercisescompleted={totalExercisesCompleted}>
                         Add Exercise
                     </button>
-
-
-
-
-
-                {/* <button
-                    type="button"
-                    className="bg-orange-500 py-1 px-2 rounded-full text-xs"
-                    onClick={handleAddExercise}
-                    >
-                        <span>Add Exercise</span>
-                </button> */}
 
 
                 <div className="w-full flex justify-end items-center my-8 gap-4">
                     <button
                         type="submit"
                         disabled={submitting}
-                        className="px-5 py-1.5 text-sm rounded-full bg-emerald-600 text-white"
+                        className="px-5 py-1.5 text-bold rounded-full bg-emerald-600 text-white"
                     >
                         {submitting ? `${type}...` : type}
                     </button>
