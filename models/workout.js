@@ -5,38 +5,46 @@ const WorkoutSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    exerciseRow: [
-        {
-            tag: {
-                type: String,
-                required: [true, "Tag is required"],
-            },
-            exercise: {
-                type: String,
-                required: [true, 'Exercise is required.'],
-            },
-            sets: {
-                type: Number,
-                required: [true, 'Sets is required.'],
-            },
-            reps: {
-                type: Number,
-                required: [true, 'Reps is required.'],
-            },
-            weight1: {
-                type: Number,
-                required: [true, 'Weight is required.'],
-            },
-            weight2: {
-                type: Number,
-                required: [true, 'Weight is required.'],
-            },
-            weight3: {
-                type: Number,
-                required: [true, 'Weight is required.'],
-            },
-        }
-    ]
+    tag: {
+        type: String,
+        required: [false, "Tag is optional"],
+    },
+    exercise: {
+        type: String,
+        required: [false, "Exercise is optional"],
+    }
+    // exerciseRow: [
+    //     {
+    //         tag: {
+    //             type: String,
+    //             required: [true, "Tag is required"],
+    //         },
+    //         exercise: {
+    //             type: String,
+    //             required: [true, 'Exercise is required.'],
+    //         },
+    //         sets: {
+    //             type: Number,
+    //             required: [true, 'Sets is required.'],
+    //         },
+    //         reps: {
+    //             type: Number,
+    //             required: [true, 'Reps is required.'],
+    //         },
+    //         weight1: {
+    //             type: Number,
+    //             required: [true, 'Weight is required.'],
+    //         },
+    //         weight2: {
+    //             type: Number,
+    //             required: [true, 'Weight is required.'],
+    //         },
+    //         weight3: {
+    //             type: Number,
+    //             required: [true, 'Weight is required.'],
+    //         },
+    //     }
+    // ]
 
 });
 

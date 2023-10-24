@@ -13,7 +13,7 @@ const RootLayout = ({ children }) => {
       <body suppressHydrationWarning={true}>
         <Provider>
             <div className="main">
-              <main className="app">
+              <main className="bg-[#f3f6f6]">
                 <Navbar />
                 {children}
               </main>

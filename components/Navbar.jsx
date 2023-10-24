@@ -22,7 +22,7 @@ const Navbar = () => {
     }, [])
 
   return (
-    <nav className="flex justify-between w-full my-4">
+    <nav className="flex justify-between w-full my-4 p-2 bg-white">
         <Link href="/" className="flex gap-2 flex-center font-bold pl-4 text-lg">
             Fitness Pro
         </Link>

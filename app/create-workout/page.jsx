@@ -12,46 +12,43 @@ const createNewWorkout = () => {
 
 
     const [submitting, setSubmitting] = useState(false);
-    const [exercisesCount, setExercisesCount] = useState(0);
-    const [exerciseRow, setExerciseRow] = useState([{
-            tag: '',
-            exercise: '',
-            sets: 0,
-            reps: 0,
-            weight1: 0,
-            weight2: 0,
-            weight3: 0
-    }])
+    // const [exercisesCount, setExercisesCount] = useState(0);
+//     const [exerciseRow, setExerciseRow] = useState([{
+//             tag: '',
+//             exercise: '',
+//             sets: 0,
+//             reps: 0,
+//             weight1: 0,
+//             weight2: 0,
+//             weight3: 0
+//         },
+// ])
+
+    const [post, setPost] = useState({
+        tag: '',
+        exercise: ''
+    });
 
 
+    // const handleFormChange = (index, event) => {
+    //     let data = [...exerciseRow];
+    //     data[index][event.target.name] = event.target.value;
+    //     setExerciseRow(data)
+    // }
 
-    const handleFormChange = (index, event) => {
-        let data = [...exerciseRow];
-        data[index][event.target.name] = event.target.value;
-        setExerciseRow(data)
-    }
+    // const handleAddExercise = () => {
+    //     let newExerciseObj = {
+    //         tag: '',
+    //         exercise: '',
+    //         sets: 0,
+    //         reps: 0,
+    //         weight1: 0,
+    //         weight2: 0,
+    //         weight3: 0
+    //     }
+    //     let newRow = setExerciseRow([...exerciseRow, newExerciseObj])
+    // }
 
-    const handleAddExercise = () => {
-        let newExerciseObj = {
-            tag: '',
-            exercise: '',
-            sets: 0,
-            reps: 0,
-            weight1: 0,
-            weight2: 0,
-            weight3: 0
-        }
-        let newRow = setExerciseRow([...exerciseRow, newExerciseObj])
-    }
-
-
-    const totalExercisesCompleted = () => {
-        setExercisesCount(prevExercisesCount => prevExercisesCount + 1)
-    }
-
-console.log(exercisesCount)
-
-    console.log()
 
     const createWorkout = async (e) => {
         e.preventDefault();
@@ -63,17 +60,19 @@ console.log(exercisesCount)
                 method: 'POST',
                 body: JSON.stringify({
                     userId: session?.user.id,
-                    exerciseRow: exerciseRow.map((ex) => {
-                        return {
-                            tag: ex.tag,
-                            exercise: ex.exercise,
-                            sets: ex.sets,
-                            reps: ex.reps,
-                            weight1: ex.weight1,
-                            weight2: ex.weight2,
-                            weight3: ex.weight3,
-                        }
-                    })
+                    tag: post.tag,
+                    exercise: post.exercise,
+                    // exerciseRow: exerciseRow.map((ex) => {
+                    //     return {
+                    //         tag: ex.tag,
+                    //         exercise: ex.exercise,
+                    //         sets: ex.sets,
+                    //         reps: ex.reps,
+                    //         weight1: ex.weight1,
+                    //         weight2: ex.weight2,
+                    //         weight3: ex.weight3,
+                    //     }
+                    // })
                 }),
             });
             if(response.ok){
@@ -93,11 +92,13 @@ console.log(exercisesCount)
         type="Create"
         submitting={submitting}
         handleSubmit={createWorkout}
-        handleFormChange={handleFormChange}
-        handleAddExercise={handleAddExercise}
-        exerciseRow={exerciseRow}
-        setExerciseRow={setExerciseRow}
-        totalExercisesCompleted={totalExercisesCompleted}
+        //handleFormChange={handleFormChange}
+        post={post}
+        setPost={setPost}
+        //handleAddExercise={handleAddExercise}
+        //exerciseRow={exerciseRow}
+        //setExerciseRow={setExerciseRow}
+        // totalExercisesCompleted={totalExercisesCompleted}
     />
   )
 }

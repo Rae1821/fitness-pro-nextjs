@@ -10,7 +10,8 @@ const DashboardCardList = ({ data, handleTagClick }) => {
       {data.map((post) => (
         <DashboardCard
           key={post._id}
-          post={post.exerciseRow}
+          post={post}
+          //exerciseRow={post.exerciseRow}
           handleTagClick={handleTagClick}
         />
       ))}
@@ -44,7 +45,7 @@ const Dashboard = () => {
     <section>
 
       <div className="text-left ml-8 py-8 text-4xl font-bold flex items-center justify-between">
-        <h2 className="green_gradient">My Dashboard</h2>
+        <h2 className="green_gradient">Welcome Back</h2>
 
         <form className="relative w-1/4 mr-8">
           <input
@@ -60,7 +61,7 @@ const Dashboard = () => {
 
 
 
-      <div className="bg-white w-full mx-4 p-2 border rounded-lg flex flex-col justify-center items-center">
+      <div className="w-full mx-4 p-2 rounded-lg flex flex-col justify-center items-center">
         <h3 className="text-3xl mt-8 font-semibold">Completed Workouts</h3>
         <DashboardCardList
             data={posts}
