@@ -5,15 +5,15 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
 
 
   return (
-    <section className="w-full bg-gray-100 max-w-full flex-start flex-col px-2 py-8">
-        <h1 className="mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-left pl-4">
-            <span className="green_gradient">{type} Workout</span>
+    <section className="w-full max-w-full flex-start flex-col px-2 py-8">
+        <h1 className="mt-5 text-5xl font-extrabold leading-[1.15] sm:text-6xl text-left pl-4">
+            <span>{type} Workout</span>
         </h1>
         <p className="desc pl-5 text-left max-w-md">{type} and record your custom workout</p>
 
             <form
                 onSubmit={handleSubmit}
-                className="bg-gray-50 mt-10 mx-auto w-full glassmorphism">
+                className="mt-10 mx-auto w-full">
 
                 {/* <div className="form-top">
                     <div className="form-control">
@@ -27,7 +27,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
 
                 <div>
                     <label>
-                        <span className="font-semibold text-base text-gray-700">Focus Tag
+                        <span className="font-semibold text-base">Focus Tag
                         </span>
                             <input
                                 value={post.tag}
@@ -38,7 +38,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                             />
                     </label>
                     <label>
-                        <span className="font-semibold text-base text-gray-700">Exercise:</span>
+                        <span className="font-semibold text-base">Exercise:</span>
                             <input
                                 name='exercise'
                                 value={post.exercise}
@@ -50,7 +50,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                     </label>
                     {/* # of Sets */}
                     <label>
-                        <span className="font-semibold text-base text-gray-700"># of Sets</span>
+                        <span className="font-semibold text-base"># of Sets</span>
                         <input
                             name='sets'
                             value={post.sets}
@@ -62,7 +62,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                     </label>
                     {/* # of Reps */}
                     <label>
-                        <span className="font-semibold text-base text-gray-700"># of Reps</span>
+                        <span className="font-semibold text-base"># of Reps</span>
                         <input
                             name='reps'
                             value={post.reps}
@@ -74,7 +74,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                     </label>
                     {/* Set 1 Weight */}
                     <label>
-                        <span className="font-semibold text-base text-gray-700">Weight</span>
+                        <span className="font-semibold text-base">Weight</span>
                         <input
                             name='weight1'
                             value={post.weight1}
@@ -86,7 +86,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                     </label>
                     {/* Set 2 Weight */}
                     <label>
-                        <span className="font-semibold text-base text-gray-700">Weight</span>
+                        <span className="font-semibold text-base">Weight</span>
                         <input
                             name='weight2'
                             value={post.weight2}
@@ -98,7 +98,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                     </label>
                     {/* Set 3 Weight */}
                     <label>
-                        <span className="font-semibold text-base text-gray-700">Set 3 Weight</span>
+                        <span className="font-semibold text-base">Set 3 Weight</span>
                         <input
                             name='weight3'
                             value={post.weight3}
@@ -209,7 +209,7 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                 <div className="w-full flex justify-end items-center my-8 gap-4">
                     <button
                         disabled={submitting}
-                        className="px-5 py-1.5 text-bold rounded-full bg-emerald-600 text-white"
+                        className="px-5 py-1.5 text-bold rounded-full btn-error"
 
                     >
                         {submitting ? `${type}...` : type}

@@ -4,13 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
-import SwapToggle from './SwapToggle';
+
 
 const Navbar = () => {
     const { data: session } = useSession();
 
     const [providers, setProviders] = useState(null);
-    const [toggleDropdown, setToggleDropdown] = useState(false)
+    //const [toggleDropdown, setToggleDropdown] = useState(false)
 
     useEffect(() => {
         const setUpProviders = async () => {
@@ -41,20 +41,16 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link
-                        href="/create-workout"
-                    >
-                        Create Workout
-                    </Link>
+                    <a>Create Workout</a>
                 <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
+                    <li><Link href="/create-workout">Create New Workout</Link></li>
+                    <li><Link href="/build-workout">Search For Exercises</Link></li>
                 </ul>
                 </li>
                 <li><a>Item 3</a></li>
             </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">Fitness Pro</a>
+            <Link href="/" className="btn btn-ghost normal-case text-xl">Fitness Pro</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">
@@ -67,16 +63,10 @@ const Navbar = () => {
                 </li>
                 <li tabIndex={0}>
                     <details>
-                    <summary>
-                        <Link
-                            href="/create-workout"
-                        >
-                            Create Workout
-                        </Link>
-                    </summary>
+                    <summary>Create Workout</summary>
                     <ul className="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
+                        <li><Link href="/create-workout">Create New Workout</Link></li>
+                        <li><Link href="/build-workout">Search For Exercises</Link></li>
                     </ul>
                     </details>
                 </li>
@@ -87,7 +77,7 @@ const Navbar = () => {
             <button
                 type="button"
                 onClick={signOut}
-                className="btn"
+                className="btn btn-accent btn-sm btn-outline"
             >
                 Sign Out
             </button>
@@ -97,31 +87,30 @@ const Navbar = () => {
                     width={37}
                     height={37}
                     alt="profile"
-                    className="rounded-full"
+                    className="rounded-full ml-4"
                 />
             </Link>
         </div>
         </>
         ) : (
             <>
-            {providers &&
-                Object.values(providers).map((provider) => (
-                    <>
-                    <div className="navbar-start">
-                        <a className="btn btn-ghost normal-case text-xl">Fitness Pro</a>
-                    </div>
-                    <div className="navbar-end">
+            <div className="navbar-start">
+                <Link href="/" className="btn btn-ghost normal-case text-xl">Fitness Pro</Link>
+            </div>
+            <div className="navbar-end">
+                {providers &&
+                    Object.values(providers).map((provider) => (
                         <button
                             type="button"
                             key={provider.name}
                             onClick={() => signIn(provider.id)}
-                            className="btn"
+                            className="btn btn-accent btn-sm"
                         >
                             Sign In
                         </button>
-                    </div>
-                </>
-            ))}
+                ))}
+            </div>
+
             </>
         )}
 

@@ -3,9 +3,9 @@ import SwapToggle from './SwapToggle';
 
 const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
   return (
-    <section className="w-full min-h-screen">
-      <h1 className="head_text text-left pl-4">
-        <span className="green_gradient">
+    <section className="w-full min-h-screen p-5">
+      <h1 className="text-5xl my-8 text-left">
+        <span className="font-display font-bold">
           {name} Profile
         </span>
       </h1>

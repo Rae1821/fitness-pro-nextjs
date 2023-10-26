@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 
-/* #2fc9d7 - turquoise */
-/* #fb9678 - peach */
-/* #00c292 - green */
-/* #fec90d - yellow */
 
 .app {
   @apply relative z-10 flex justify-center items-center flex-col mx-auto;
@@ -17,11 +13,7 @@
   }
 
 .head_text {
-  @apply mt-8 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
-}
-
-.green_gradient {
-  @apply bg-gradient-to-r from-emerald-600 to-amber-600 bg-clip-text text-transparent;
+  @apply mt-8 text-5xl leading-[1.15] text-black sm:text-6xl;
 }
 
 .desc {

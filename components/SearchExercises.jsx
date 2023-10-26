@@ -28,10 +28,11 @@ const SearchExercises = ({ exerciseNames, setExerciseNames }) => {
           {/* Button for the combobox. Click on the icon to see the complete dropdown list. */}
             <Combobox.Button className="absolute top-[14px]">
               <Image
-                src="/images/icons/magnifying-glass.svg"
+                src="/assets/icons/magnifying-glass.svg"
                 alt="search icon"
                 width={24}
                 height={24}
+                className="p-1"
               />
             </Combobox.Button>
             {/* Input field for searching */}
@@ -54,7 +55,7 @@ const SearchExercises = ({ exerciseNames, setExerciseNames }) => {
                   <Combobox.Option
                     key={item}
                     value={item}
-                    className={({ active }) => `relative search-manufacturer__option ${active ? 'bg-success text-white' : 'text-gray-900'}`}
+                    className={({ active }) => `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? 'bg-success text-white' : 'text-gray-900'}`}
                   >
                     {({ selected, active }) => (
                       <>
