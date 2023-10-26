@@ -51,18 +51,18 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
                 <p>{currentDate}</p>
                 <p>#{post.tag}</p>
                 <p>
-                        <Image
-                            src={!open ? '/assets/icons/plus.svg' : '/assets/icons/minus.svg'}
-                            alt="open details"
-                            width={24}
-                            height={24}
-                            onClick={() => toggleWorkout()}
-                        />
+                    <Image
+                        src={!open ? '/assets/icons/plus.svg' : '/assets/icons/minus.svg'}
+                        alt="open details"
+                        width={24}
+                        height={24}
+                        onClick={() => toggleWorkout()}
+                    />
                 </p>
             </div>
         </div>
         <div className="collapse-content">
-        <div className="my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-3 items-center justify-between cursor-pointer">
+            <div className="my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-3 items-center justify-between cursor-pointer">
                 <span className="ml-8">Exercise</span>
                 <span className="sm:text-left text-right">{currentDate}</span>
                 <span className="hidden md:grid">Sets</span>
