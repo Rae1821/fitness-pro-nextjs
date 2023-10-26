@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* #2fc9d7 - turquoise */
+/* #fb9678 - peach */
+/* #00c292 - green */
+/* #fec90d - yellow */
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col mx-auto;
 }

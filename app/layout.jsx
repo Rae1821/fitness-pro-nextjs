@@ -10,10 +10,10 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="dark:bg-gray-900 dark:text-white">
         <Provider>
             <div className="main">
-              <main className="bg-[#f3f6f6]">
+              <main>
                 <Navbar />
                 {children}
               </main>

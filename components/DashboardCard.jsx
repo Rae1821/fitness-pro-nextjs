@@ -15,7 +15,7 @@ const getDate = () => {
 }
 
 
-const DashboardCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+const DashboardCard = ({ post, handleEdit, handleDelete }) => {
 
     const { data: session } = useSession();
     const pathName = usePathname();
@@ -44,7 +44,65 @@ const DashboardCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
 
     <div>
-        <div className="glassmorphism w-[902px]">
+        <div>
+            <div className="my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-3 items-center justify-between cursor-pointer">
+                <span className="ml-8">Exercise</span>
+                <span className="sm:text-left text-right">Date</span>
+                <span className="hidden md:grid">Sets</span>
+                <span className="hidden sm:grid">Reps</span>
+                <span className="hidden md:grid">Weight1</span>
+                <span className="hidden md:grid">Weight2</span>
+                <span className="hidden md:grid">Weight3</span>
+            </div>
+            <ul className="border-b">
+                <li className="bg-gray-50 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
+                    <div className="flex">
+                        <div onClick={handleLikeClick} className="bg-green-400 rounded-lg p-3">
+                            <Image
+                                src={liked ? '/assets/icons/star-filled.svg'
+                                : '/assets/icons/star.svg'
+                                }
+                            alt="like btn"
+                            width={20}
+                            height={20}
+                            className="items-center"
+                            />
+                        </div>
+                        <div className="pl-4">
+                            <p className="text-gray-800 font-bold">{post.exercise}</p>
+                            <p className="text-gray-800 text-sm">#{post.tag}</p>
+                        </div>
+
+                    </div>
+                    <p className="text-gray-600 sm:text-left text-right">
+                        {currentDate}
+                    </p>
+                    <p className="hidden md:flex">{post.sets}</p>
+                    <p className="hidden md:flex">{post.reps}</p>
+                    <p className="hidden md:flex">{post.weight1}</p>
+                    <p className="hidden md:flex">{post.weight2}</p>
+                    <p className="hidden md:flex">{post.weight3}</p>
+
+                </li>
+            </ul>
+
+            {session?.user.id === post.creator._id
+                    && pathName === '/profile' && (
+                        <div className="mt-5 flex items-center justify-end gap-4 boder-t border-gray-100 pt-3">
+                            <p
+                                className="font-inter text-sm cursor-pointer"
+                                onClick={handleEdit}
+                            >
+                                Edit
+                            </p>
+                            <p
+                                className="font-inter text-sm cursor-pointer"
+                                onClick={handleDelete}
+                            >
+                                Delete
+                            </p>
+                        </div>
+                    )}
             <div className="p-4 text-center md:text-left md:pl-4 flex justify-between items-center bg-white/20 w-full">
 
             {/* <div onClick={handleProfileClick}>
@@ -56,24 +114,11 @@ const DashboardCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                     className="rounded-full object-contain"
                 />
             </div> */}
-                    <div className="favorite-btn p-2 rounded-lg flex items-center justify-center" onClick={handleLikeClick}>
-                        <div className="bg-emerald-600/40 p-2 rounded-full mr-2">
-                            <Image
-                                src={liked ? '/assets/icons/star-filled.svg'
-                                : '/assets/icons/star.svg'
-                                }
-                            alt="like btn"
-                            width={20}
-                            height={20}
-                            className="items-center"
-                            />
-                        </div>
 
-                        <p className="text-sm font-semibold text-gray-500">Workout Completed On: <span className="font-semibold pl-2 text-gray-900"> {currentDate}</span></p>
-                    </div>
 
-                    {/* <p>Total exercises completed: </p> */}
-                    <div className="ml-6 font-bold">
+
+
+                    {/* <div className="ml-6 font-bold">
                         <Image
                             src={!open ? '/assets/icons/plus.svg' : '/assets/icons/minus.svg'}
                             alt="open details"
@@ -81,14 +126,11 @@ const DashboardCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                             height={20}
                             onClick={() => toggleWorkout()}
                         />
-                    </div>
+                    </div> */}
 
                 </div>
 
-                <div>
-                    <p>{post.tag}</p>
-                    <p>{post.exercise}</p>
-                </div>
+
 
                 {/* <ul className="">
                 {exerciseRow.map((row, index) => (
@@ -135,23 +177,7 @@ const DashboardCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                     ))}
 
                 </ul> */}
-                {session?.user.id === post.creator._id
-                    && pathName === '/profile' && (
-                        <div className="mt-5 flex items-center justify-end gap-4 boder-t border-gray-100 pt-3">
-                            <p
-                                className="font-inter text-sm cursor-pointer"
-                                onClick={handleEdit}
-                            >
-                                Edit
-                            </p>
-                            <p
-                                className="font-inter text-sm cursor-pointer"
-                                onClick={handleDelete}
-                            >
-                                Delete
-                            </p>
-                        </div>
-                    )}
+
             </div>
 
     </div>

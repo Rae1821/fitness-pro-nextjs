@@ -27,6 +27,11 @@ const EditWorkout = () => {
     const [post, setPost] = useState({
       tag: '',
       exercise: '',
+      sets: 0,
+      reps: 0,
+      weight1: 0,
+      weight2: 0,
+      weight3: 0
     });
 
 
@@ -59,7 +64,12 @@ const EditWorkout = () => {
 
         setPost({
           tag: data.tag,
-          exercise: data.exercise
+          exercise: data.exercise,
+          sets: data.sets,
+          reps: data.reps,
+          weight1: data.weight1,
+          weight2: data.weight2,
+          weight3: data.weight3
         })
 
         // setExerciseRow({
@@ -93,11 +103,16 @@ const EditWorkout = () => {
             body: JSON.stringify({
                 tag: post.tag,
                 exercise: post.exercise,
+                sets: post.sets,
+                reps: post.reps,
+                weight1: post.weight1,
+                weight2: post.weight2,
+                weight3: post.weight3
               })
           });
 
           if (response.ok) {
-            router.push('/');
+            router.push('/profile');
           }
         } catch (error) {
             console.log(error);
@@ -114,8 +129,8 @@ const EditWorkout = () => {
           setPost={setPost}
           // exerciseRow={exerciseRow}
           // setExerciseRow={setExerciseRow}
-           submitting={submitting}
-          // handleSubmit={updateWorkout}
+          submitting={submitting}
+          handleSubmit={updateWorkout}
           // handleFormChange={handleFormChange}
           // handleAddExercise={handleAddExercise}
           // totalExercisesCompleted={totalExercisesCompleted}

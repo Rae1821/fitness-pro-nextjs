@@ -1,0 +1,21 @@
+export const allExerciseNames = [
+    'Push-Ups',
+    'Squats',
+    'Lunges',
+    'Planks',
+    'Crunches',
+    'Deadlifts',
+    'Bench Press',
+    'Bicep Curls',
+    'Tricep Dips',
+   ' Leg Press',
+    'Pull-Ups',
+    'Running',
+    'Cycling',
+    'Swimming',
+    'Jumping Jacks',
+    'Burpees',
+    'Mountain Climbers',
+    'Yoga',
+    'Pilates'
+]

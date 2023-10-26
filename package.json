@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "bcrypt": "^5.1.1",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.3",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10",
+    "daisyui": "^3.9.3",
     "postcss": "^8",
     "tailwindcss": "^3"
   }

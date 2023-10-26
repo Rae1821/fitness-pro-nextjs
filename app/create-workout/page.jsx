@@ -26,7 +26,12 @@ const createNewWorkout = () => {
 
     const [post, setPost] = useState({
         tag: '',
-        exercise: ''
+        exercise: '',
+        sets: 0,
+        reps: 0,
+        weight1: 0,
+        weight2: 0,
+        weight3: 0
     });
 
 
@@ -62,6 +67,11 @@ const createNewWorkout = () => {
                     userId: session?.user.id,
                     tag: post.tag,
                     exercise: post.exercise,
+                    sets: post.sets,
+                    reps: post.reps,
+                    weight1: post.weight1,
+                    weight2: post.weight2,
+                    weight3: post.weight3
                     // exerciseRow: exerciseRow.map((ex) => {
                     //     return {
                     //         tag: ex.tag,

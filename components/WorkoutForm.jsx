@@ -15,29 +15,99 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
                 onSubmit={handleSubmit}
                 className="bg-gray-50 mt-10 mx-auto w-full glassmorphism">
 
+                {/* <div className="form-top">
+                    <div className="form-control">
+                        <label className="label cursor-pointer">
+                            <span className="label-text">Remember me</span>
+                            <input type="checkbox" onChange={() => {}}
+                            checked="checked" className="checkbox" />
+                        </label>
+                    </div>
+                </div> */}
+
                 <div>
-                <label>
-                            <span className="font-semibold text-base text-gray-700">Focus Tag
-                            </span>
-                                <input
-                                    value={post.tag}
-                                    onChange={(e) => setPost({ ...post, tag: e.target.value })}
-                                    placeholder="#strength"
-                                    required
-                                    className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                                />
-                        </label>
-                        <label>
-                            <span className="font-semibold text-base text-gray-700">Exercise:</span>
-                                <input
-                                    name='exercise'
-                                    value={post.exercise}
-                                    onChange={(e) => setPost({ ...post, exercise: e.target.value })}
-                                    placeholder="Deadlift"
-                                    required
-                                    className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                                />
-                        </label>
+                    <label>
+                        <span className="font-semibold text-base text-gray-700">Focus Tag
+                        </span>
+                            <input
+                                value={post.tag}
+                                onChange={(e) => setPost({ ...post, tag: e.target.value })}
+                                placeholder="#strength"
+                                required
+                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            />
+                    </label>
+                    <label>
+                        <span className="font-semibold text-base text-gray-700">Exercise:</span>
+                            <input
+                                name='exercise'
+                                value={post.exercise}
+                                onChange={(e) => setPost({ ...post, exercise: e.target.value })}
+                                placeholder="Deadlift"
+                                required
+                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            />
+                    </label>
+                    {/* # of Sets */}
+                    <label>
+                        <span className="font-semibold text-base text-gray-700"># of Sets</span>
+                        <input
+                            name='sets'
+                            value={post.sets}
+                            onChange={(e) => setPost({ ...post, sets: e.target.value })}
+                            placeholder="3"
+                            required
+                            className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        />
+                    </label>
+                    {/* # of Reps */}
+                    <label>
+                        <span className="font-semibold text-base text-gray-700"># of Reps</span>
+                        <input
+                            name='reps'
+                            value={post.reps}
+                            onChange={(e) => setPost({ ...post, reps: e.target.value })}
+                            placeholder="12"
+                            required
+                            className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        />
+                    </label>
+                    {/* Set 1 Weight */}
+                    <label>
+                        <span className="font-semibold text-base text-gray-700">Weight</span>
+                        <input
+                            name='weight1'
+                            value={post.weight1}
+                            onChange={(e) => setPost({ ...post, weight1: e.target.value })}
+                            placeholder="15"
+                            required
+                            className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        />
+                    </label>
+                    {/* Set 2 Weight */}
+                    <label>
+                        <span className="font-semibold text-base text-gray-700">Weight</span>
+                        <input
+                            name='weight2'
+                            value={post.weight2}
+                            onChange={(e) => setPost({ ...post, weight2: e.target.value })}
+                            placeholder="15"
+                            required
+                            className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        />
+                    </label>
+                    {/* Set 3 Weight */}
+                    <label>
+                        <span className="font-semibold text-base text-gray-700">Set 3 Weight</span>
+                        <input
+                            name='weight3'
+                            value={post.weight3}
+                            onChange={(e) => setPost({ ...post, weight3: e.target.value })}
+                            placeholder="15"
+                            required
+                            className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        />
+                    </label>
                 </div>
 
                     {/* Exercise Row
@@ -138,12 +208,14 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
 
                 <div className="w-full flex justify-end items-center my-8 gap-4">
                     <button
-                        type="submit"
                         disabled={submitting}
                         className="px-5 py-1.5 text-bold rounded-full bg-emerald-600 text-white"
+
                     >
                         {submitting ? `${type}...` : type}
                     </button>
+
+
                     <Link href="/" className="text-gray-500 text-sm">
                         Cancel
                     </Link>

@@ -12,6 +12,26 @@ const WorkoutSchema = new Schema({
     exercise: {
         type: String,
         required: [false, "Exercise is optional"],
+    },
+    sets: {
+        type: Number,
+        required: [false, "Set is optional"],
+    },
+    reps: {
+        type: Number,
+        required: [false, "Reps are optional"],
+    },
+    weight1: {
+        type: Number,
+        required: [false, "Weight is optional"],
+    },
+    weight2: {
+        type: Number,
+        required: [false, "Weight is optional"],
+    },
+    weight3: {
+        type: Number,
+        required: [false, "Weight is optional"],
     }
     // exerciseRow: [
     //     {
