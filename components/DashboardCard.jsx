@@ -6,14 +6,6 @@ import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
 
-const getDate = () => {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
-    const date = today.getDate();
-    return `${month}/${date}/${year}`;
-}
-
 
 const DashboardCard = ({ post, handleEdit, handleDelete }) => {
 
@@ -23,8 +15,6 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
 
 
     const [liked, setLiked] = useState(false);
-    const [currentDate, setCurrentDate] = useState(getDate());
-
     const [open, setOpen] = useState(false);
 
 
@@ -44,12 +34,17 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
 
     <div>
     {/* Daisy UI Collapse */}
-    <div className="collapse bg-base-200">
+    <div className="collapse bg-base-200 mb-4">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
-            <div className="flex justify-between">
-                <p>{currentDate}</p>
-                <p>#{post.tag}</p>
+            <div className="flex justify-between gap-2">
+                <p className="flex flex-col text-sm">Workout Name <span className="text-base font-bold">{post.name}</span></p>
+                <p className="flex flex-col text-sm">
+                    Completed On
+                    <span className="text-base font-bold">{post.date}</span></p>
+                <p className="flex flex-col text-sm">
+                    Duration
+                    <span className="text-base font-bold">{post.duration} min.</span></p>
                 <p>
                     <Image
                         src={!open ? '/assets/icons/plus.svg' : '/assets/icons/minus.svg'}
@@ -62,48 +57,37 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
             </div>
         </div>
         <div className="collapse-content">
-            <div className="my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-3 items-center justify-between cursor-pointer">
-                <span className="ml-8">Exercise</span>
-                <span className="sm:text-left text-right">{currentDate}</span>
-                <span className="hidden md:grid">Sets</span>
-                <span className="hidden sm:grid">Reps</span>
-                <span className="hidden md:grid">Weight1</span>
-                <span className="hidden md:grid">Weight2</span>
-                <span className="hidden md:grid">Weight3</span>
-            </div>
-        <ul className="border-b">
-                <li className="bg-base-100 hover:bg-gray-100 rounded-lg my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
-                    <div className="flex">
-                        <div onClick={handleLikeClick} className="bg-green-400 rounded-lg p-3">
-                            <Image
-                                src={liked ? '/assets/icons/star-filled.svg'
-                                : '/assets/icons/star.svg'
-                                }
-                            alt="like btn"
-                            width={20}
-                            height={20}
-                            className="items-center"
-                            />
-                        </div>
-                        <div className="pl-4">
-                            <p className="text-gray-800 font-bold">{post.exercise}</p>
-                            <p className="text-gray-800 text-sm">#{post.tag}</p>
-                        </div>
 
-                    </div>
-                    <p className="text-gray-600 sm:text-left text-right">
-                        {currentDate}
-                    </p>
-                    <p className="hidden md:flex">{post.sets}</p>
-                    <p className="hidden md:flex">{post.reps}</p>
-                    <p className="hidden md:flex">{post.weight1}</p>
-                    <p className="hidden md:flex">{post.weight2}</p>
-                    <p className="hidden md:flex">{post.weight3}</p>
+            <ul className="border-b">
+                    <li className="bg-base-100 rounded-lg my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
+                        <div className="flex items-center col-span-2">
+                            <div onClick={handleLikeClick} className="rounded-lg p-3">
+                                <Image
+                                    src={liked ? '/assets/icons/star-filled.svg'
+                                    : '/assets/icons/star.svg'
+                                    }
+                                alt="like btn"
+                                width={20}
+                                height={20}
+                                className="items-center"
+                                />
+                            </div>
+                            <div className="pl-4">
+                                <p className="font-bold">{post.exercise}</p>
+                                <p className="text-sm">#{post.tag}</p>
+                            </div>
 
-                </li>
-            </ul>
-            {session?.user.id === post.creator._id
-                    && pathName === '/profile' && (
+                        </div>
+                        <p className="">Sets<span className="block font-bold">{post.sets}</span></p>
+                        <p className="">Reps<span className="block">{post.reps}</span></p>
+                        <p className="">Set 1<span className="block">{post.weight1}lbs.</span></p>
+                        <p className="">Set 2 <span className="block">{post.weight2}lbs.</span></p>
+                        <p className="">Set 3 <span className="block">{post.weight3}lbs.</span></p>
+
+                    </li>
+                </ul>
+                    {session?.user.id === post.creator._id
+                        && pathName === '/profile' && (
                         <div className="mt-5 flex items-center justify-end gap-4 boder-t border-gray-100 pt-3">
                             <p
                                 className="font-inter text-sm cursor-pointer"

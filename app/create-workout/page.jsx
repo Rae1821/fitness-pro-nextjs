@@ -12,19 +12,12 @@ const createNewWorkout = () => {
 
 
     const [submitting, setSubmitting] = useState(false);
-    // const [exercisesCount, setExercisesCount] = useState(0);
-//     const [exerciseRow, setExerciseRow] = useState([{
-//             tag: '',
-//             exercise: '',
-//             sets: 0,
-//             reps: 0,
-//             weight1: 0,
-//             weight2: 0,
-//             weight3: 0
-//         },
-// ])
 
-    const [post, setPost] = useState({
+    const [post, setPost] = useState([
+        {
+        name: '',
+        date: '',
+        duration: 0,
         tag: '',
         exercise: '',
         sets: 0,
@@ -32,7 +25,21 @@ const createNewWorkout = () => {
         weight1: 0,
         weight2: 0,
         weight3: 0
-    });
+    }
+]);
+
+    const postObj = {
+        name: '',
+        date: '',
+        duration: 0,
+        tag: '',
+        exercise: '',
+        sets: 0,
+        reps: 0,
+        weight1: 0,
+        weight2: 0,
+        weight3: 0
+    }
 
 
     // const handleFormChange = (index, event) => {
@@ -65,6 +72,9 @@ const createNewWorkout = () => {
                 method: 'POST',
                 body: JSON.stringify({
                     userId: session?.user.id,
+                    name: post.name,
+                    date: post.date,
+                    duration: post.duration,
                     tag: post.tag,
                     exercise: post.exercise,
                     sets: post.sets,
@@ -86,7 +96,7 @@ const createNewWorkout = () => {
                 }),
             });
             if(response.ok){
-                router.push('/');
+                router.push('/profile');
             }
         } catch (error) {
             console.log(error)

@@ -4,23 +4,3 @@
 
 
 
-.app {
-  @apply relative z-10 flex justify-center items-center flex-col mx-auto;
-}
-
-.head_text {
-  @apply mt-8 text-5xl leading-[1.15] text-black sm:text-6xl;
-}
-
-.desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
-}
-
-.copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
-}
-
-.search_input {
- @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 pl-5 pr-12 text-sm shadow-lg font-medium focus:border-black focus:outline-none focus:ring-0;
-}
-

@@ -25,6 +25,9 @@ const EditWorkout = () => {
     // }])
 
     const [post, setPost] = useState({
+      name: '',
+      date: '',
+      duration: 0,
       tag: '',
       exercise: '',
       sets: 0,
@@ -63,6 +66,9 @@ const EditWorkout = () => {
         const data = await response.json();
 
         setPost({
+          name: data.name,
+          date: data.date,
+          duration: data.duration,
           tag: data.tag,
           exercise: data.exercise,
           sets: data.sets,
@@ -101,6 +107,9 @@ const EditWorkout = () => {
           const response = await fetch(`/api/workout/${workoutId}`, {
             method: "PATCH",
             body: JSON.stringify({
+                name: post.name,
+                date: post.date,
+                duration: post.duration,
                 tag: post.tag,
                 exercise: post.exercise,
                 sets: post.sets,

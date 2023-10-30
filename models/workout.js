@@ -5,6 +5,18 @@ const WorkoutSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    name: {
+        type: String,
+        required: [false, "Name is optional"],
+    },
+    date: {
+        type: String,
+        required: [false, "Date is optional"],
+    },
+    duration: {
+        type: Number,
+        required: [false, "Duration is optional"],
+    },
     tag: {
         type: String,
         required: [false, "Tag is optional"],

@@ -3,12 +3,15 @@ import Workout from '@models/workout';
 
 export const POST = async (req) => {
 
-    const { userId, tag, exercise, sets, reps, weight1, weight2, weight3 } = await req.json();
+    const { userId, name, date, duration, tag, exercise, sets, reps, weight1, weight2, weight3 } = await req.json();
 
     try {
         await connectToDB();
         const newWorkout = new Workout({
             creator: userId,
+            name,
+            date,
+            duration,
             tag,
             exercise,
             sets,

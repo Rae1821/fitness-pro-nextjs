@@ -1,7 +1,7 @@
 import DashboardCard from './DashboardCard';
 import SwapToggle from './SwapToggle';
 
-const Profile = ({ name, desc, data, handleEdit, handleDelete }) => {
+const Profile = ({ name, data, handleEdit, handleDelete }) => {
   return (
     <section className="w-full min-h-screen p-5">
       <h1 className="text-5xl my-8 text-left">
