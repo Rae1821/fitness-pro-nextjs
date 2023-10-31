@@ -11,7 +11,6 @@ const DashboardCardList = ({ data, handleTagClick }) => {
         <DashboardCard
           key={post._id}
           post={post}
-          //exerciseRow={post.exerciseRow}
           handleTagClick={handleTagClick}
         />
       ))}

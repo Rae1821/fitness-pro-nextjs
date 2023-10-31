@@ -29,7 +29,6 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
 
 
 
-
   return (
 
     <div>
@@ -37,8 +36,10 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
     <div className="collapse bg-base-200 mb-4">
         <input type="checkbox" />
         <div className="collapse-title text-xl font-medium">
+
             <div className="flex justify-between gap-2">
-                <p className="flex flex-col text-sm">Workout Name <span className="text-base font-bold">{post.name}</span></p>
+
+                <p className="flex flex-col text-sm">Workout Name <span className="text-base font-bold">{post.workoutName}</span></p>
                 <p className="flex flex-col text-sm">
                     Completed On
                     <span className="text-base font-bold">{post.date}</span></p>
@@ -59,33 +60,29 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
         <div className="collapse-content">
 
             <ul className="border-b">
-                    <li className="bg-base-100 rounded-lg my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
+
+            {post.exerciseObj.map((exer, index) => (
+                <li key={index} className="bg-base-100 rounded-lg my-3 p-2 grid md:grid-cols-7 sm:grid-cols-3 grid-cols-2 items-center justify-between cursor-pointer">
                         <div className="flex items-center col-span-2">
-                            <div onClick={handleLikeClick} className="rounded-lg p-3">
-                                <Image
-                                    src={liked ? '/assets/icons/star-filled.svg'
-                                    : '/assets/icons/star.svg'
-                                    }
-                                alt="like btn"
-                                width={20}
-                                height={20}
-                                className="items-center"
-                                />
-                            </div>
+
                             <div className="pl-4">
-                                <p className="font-bold">{post.exercise}</p>
-                                <p className="text-sm">#{post.tag}</p>
+                                <p className="font-bold">{exer.exercise}</p>
+                                <p className="text-sm">#{exer.tag}</p>
                             </div>
 
                         </div>
-                        <p className="">Sets<span className="block font-bold">{post.sets}</span></p>
-                        <p className="">Reps<span className="block">{post.reps}</span></p>
-                        <p className="">Set 1<span className="block">{post.weight1}lbs.</span></p>
-                        <p className="">Set 2 <span className="block">{post.weight2}lbs.</span></p>
-                        <p className="">Set 3 <span className="block">{post.weight3}lbs.</span></p>
-
+                        <p className="">Sets<span className="block font-bold">{exer.sets}</span></p>
+                        <p className="">Reps<span className="block">{exer.reps}</span></p>
+                        <p className="">Set 1<span className="block">{exer.weight1}lbs.</span></p>
+                        <p className="">Set 2 <span className="block">{exer.weight2}lbs.</span></p>
+                        <p className="">Set 3 <span className="block">{exer.weight3}lbs.</span></p>
                     </li>
+            ))}
+
                 </ul>
+
+
+
                     {session?.user.id === post.creator._id
                         && pathName === '/profile' && (
                         <div className="mt-5 flex items-center justify-end gap-4 boder-t border-gray-100 pt-3">
@@ -105,6 +102,20 @@ const DashboardCard = ({ post, handleEdit, handleDelete }) => {
                     )}
         </div>
     </div>
+
+
+
+        {/* <div onClick={handleLikeClick} className="rounded-lg p-3">
+            <Image
+                src={liked ? '/assets/icons/star-filled.svg'
+                : '/assets/icons/star.svg'
+                }
+            alt="like btn"
+            width={20}
+            height={20}
+            className="items-center"
+            />
+        </div> */}
 
 
 {/*

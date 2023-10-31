@@ -4,60 +4,54 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 import WorkoutForm from '@components/WorkoutForm';
 
 const EditWorkout = () => {
     const router = useRouter();
+    const { data: session } = useSession();
     const searchParams = useSearchParams();
     const workoutId = searchParams.get('id');
 
 
     const [submitting, setSubmitting] = useState(false);
-    // const [exerciseRow, setExerciseRow] = useState([{
-    //         tag: '',
-    //         exercise: '',
-    //         sets: 0,
-    //         reps: 0,
-    //         weight1: 0,
-    //         weight2: 0,
-    //         weight3: 0
-    // }])
 
-    const [post, setPost] = useState({
-      name: '',
-      date: '',
-      duration: 0,
-      tag: '',
-      exercise: '',
-      sets: 0,
-      reps: 0,
-      weight1: 0,
-      weight2: 0,
-      weight3: 0
-    });
+    const [post, setPost] = useState(
+      {
+          workoutName: '',
+          date: '',
+          duration: '',
+          exerciseObj: [
+              {
+                  exercise: '',
+                  tag:'',
+                  sets: 0,
+                  reps: 0,
+                  weight1: 0,
+                  weight2: 0,
+                  weight3: 0
+              }
+          ]
+      }
+    )
 
 
-    // const handleFormChange = (index, event) => {
-    //     let data = [...exerciseRow];
-    //     data[index][event.target.name] = event.target.value;
-    //     setExerciseRow(data)
-    // }
-
-    // const handleAddExercise = () => {
-    //     let newExerciseObj = {
-    //         tag: '',
-    //         exercise: '',
-    //         sets: 0,
-    //         reps: 0,
-    //         weight1: 0,
-    //         weight2: 0,
-    //         weight3: 0
-    //     }
-    //     let newRow = setExerciseRow([...exerciseRow, newExerciseObj])
-    // }
-
-
+    const handleClick = (e) => {
+      e.preventDefault();
+      setPost({
+          ...post,
+          exerciseObj: [...post.exerciseObj, {
+              exercise: '',
+              tag: '',
+              sets: 0,
+              reps: 0,
+              weight1: 0,
+              weight2: 0,
+              weight3: 0,
+          }]
+      });
+    };
 
 
     useEffect(() => {
@@ -66,32 +60,12 @@ const EditWorkout = () => {
         const data = await response.json();
 
         setPost({
-          name: data.name,
+          workoutName: data.name,
           date: data.date,
           duration: data.duration,
-          tag: data.tag,
-          exercise: data.exercise,
-          sets: data.sets,
-          reps: data.reps,
-          weight1: data.weight1,
-          weight2: data.weight2,
-          weight3: data.weight3
+          exerciseObj: data.exerciseObj,
         })
 
-        // setExerciseRow({
-        //   exerciseRow: data.exerciseRow.map((item) => {
-        //       return {
-        //         id: item.id,
-        //         tag: item.tag,
-        //         exercise: item.exercise,
-        //         sets: item.sets,
-        //         reps: item.reps,
-        //         weight1: item.weight1,
-        //         weight2: item.weight2,
-        //         weight3: item.weight3,
-        //       }
-        //   })
-        // });
       };
 
       if (workoutId) getWorkoutDetails();
@@ -105,18 +79,13 @@ const EditWorkout = () => {
 
         try {
           const response = await fetch(`/api/workout/${workoutId}`, {
-            method: "PATCH",
+            method: 'PATCH',
             body: JSON.stringify({
-                name: post.name,
-                date: post.date,
-                duration: post.duration,
-                tag: post.tag,
-                exercise: post.exercise,
-                sets: post.sets,
-                reps: post.reps,
-                weight1: post.weight1,
-                weight2: post.weight2,
-                weight3: post.weight3
+              userId: session?.user.id,
+              workoutName: post.workoutName,
+              date: post.date,
+              duration: post.duration,
+              exerciseObj: post.exerciseObj
               })
           });
 
@@ -133,16 +102,12 @@ const EditWorkout = () => {
 
     return (
       <WorkoutForm
-          type="Edit"
-          post={post}
-          setPost={setPost}
-          // exerciseRow={exerciseRow}
-          // setExerciseRow={setExerciseRow}
-          submitting={submitting}
-          handleSubmit={updateWorkout}
-          // handleFormChange={handleFormChange}
-          // handleAddExercise={handleAddExercise}
-          // totalExercisesCompleted={totalExercisesCompleted}
+        type="Edit"
+        submitting={submitting}
+        handleSubmit={updateWorkout}
+        handleClick={handleClick}
+        post={post}
+        setPost={setPost}
       />
     );
 };

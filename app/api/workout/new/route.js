@@ -3,35 +3,29 @@ import Workout from '@models/workout';
 
 export const POST = async (req) => {
 
-    const { userId, name, date, duration, tag, exercise, sets, reps, weight1, weight2, weight3 } = await req.json();
+    const { userId, workoutName, date, duration, exerciseObj } = await req.json();
 
     try {
         await connectToDB();
+
+        //Create a new workout document
         const newWorkout = new Workout({
             creator: userId,
-            name,
-            date,
-            duration,
-            tag,
-            exercise,
-            sets,
-            reps,
-            weight1,
-            weight2,
-            weight3
-            // exerciseRow: exerciseRow.map((exer) => {
-            //     return {
-            //         tag: exer.tag,
-            //         exercise: exer.exercise,
-            //         sets: exer.sets,
-            //         reps: exer.reps,
-            //         weight1: exer.weight1,
-            //         weight2: exer.weight2,
-            //         weight3: exer.weight3,
-            //     }
-            // }),
+            workoutName: workoutName,
+            date: date,
+            duration: duration,
+            exerciseObj: exerciseObj.map((exercise) => ({
+                exercise: exercise.exercise,
+                tag: exercise.tag,
+                sets: exercise.sets,
+                reps: exercise.reps,
+                weight1: exercise.weight1,
+                weight2: exercise.weight2,
+                weight3: exercise.weight3
+            }))
         });
 
+        //Save the new workout
         await newWorkout.save();
 
         return new Response(JSON.stringify(newWorkout), { status: 201 })

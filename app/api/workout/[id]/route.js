@@ -17,7 +17,7 @@ export const GET = async (request, { params }) => {
 }
 
 export const PATCH = async (request, { params }) => {
-    const { name, date, duration, tag, exercise, sets, reps, weight1, weight2, weight3 } = await request.json();
+    const { workoutName, date, duration, exerciseObj } = await request.json();
 
     try {
         await connectToDB();
@@ -30,22 +30,17 @@ export const PATCH = async (request, { params }) => {
         }
 
         //update the workout with new data
-        existingWorkout.name = name;
+        existingWorkout.workoutName = workoutName;
         existingWorkout.date = date;
         existingWorkout.duration = duration;
-        existingWorkout.tag = tag;
-        existingWorkout.exercise = exercise;
-        existingWorkout.sets = sets;
-        existingWorkout.reps = reps;
-        existingWorkout.weight1 = weight1;
-        existingWorkout.weight2 = weight2;
-        existingWorkout.weight3 = weight3;
+
+        existingWorkout.exerciseObj = exerciseObj;
+
 
         await existingWorkout.save();
 
         return new Response("Successfully updated workout", { status: 200 });
 
-        // return new Response(JSON.stringify(existingWorkout), { status: 200 });
 
     } catch(error) {
         return new Response("Failed to update workout", { status: 500 });

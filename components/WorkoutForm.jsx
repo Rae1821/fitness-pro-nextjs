@@ -1,6 +1,6 @@
-import Link from 'next/link';
+import Link from 'next/link'
 
-const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleFormChange }) => {
+const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleClick }) => {
 
 
 
@@ -14,220 +14,155 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
             <form
                 onSubmit={handleSubmit}
                 className="mt-10 mx-auto w-full">
-
-                <div className="form-top ">
-                    <div className="form-control grid grid-cols-3 gap-4 mb-4">
-                        <label>
-                            <span className="flex flex-col font-semibold justify-center items-center">Workout Name</span>
-                            <input
-                                value={post.name}
-                                onChange={(e) => setPost({ ...post, name: e.target.value })}
-                                placeholder="Arms"
-                                required
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                        </label>
-                        <label>
-                            <span className="flex flex-col font-semibold justify-center items-center">Date Completed</span>
-                            <input
-                                value={post.date}
-                                onChange={(e) => setPost({ ...post, date: e.target.value })}
-                                placeholder="MM/DD/YYYY"
-                                required
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                        </label>
-                        <label>
-                            <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
-                            <input
-                                value={post.duration}
-                                onChange={(e) => setPost({...post, duration: e.target.value })}
-                                placeholder="30 minutes"
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label>
-                    </div>
+                <div className="form-control grid grid-cols-3 gap-4 mb-4">
+                <label>
+                   Workout Name:
+                    <input
+                        type="text"
+                        name="workoutName"
+                        value={post.workoutName}
+                        onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                    />
+                </label>
+                <label>
+                   Date completed:
+                    <input
+                        type="text"
+                        name="date"
+                        value={post.date}
+                        onChange={(e) => setPost({ ...post, date: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                    />
+                </label>
+                <label>
+                   Duration:
+                    <input
+                        type="text"
+                        name="duration"
+                        value={post.duration}
+                        onChange={(e) => setPost({ ...post, duration: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                    />
+                </label>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mx-auto">
-                    <label >
-                        <span className="flex flex-col font-semibold justify-center items-center">Focus Tag
-                        </span>
-                            <input
-                                value={post.tag}
-                                onChange={(e) => setPost({ ...post, tag: e.target.value })}
-                                placeholder="#strength"
-                                required
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                    </label>
+                {post.exerciseObj.map((exer, index) => {
+                return (
+                <div key={index} className="grid grid-cols-2 gap-4 mt-4">
+
                     <label>
-                        <span className="flex flex-col font-bold justify-center items-center">Exercise:</span>
-                            <input
-                                name='exercise'
-                                value={post.exercise}
-                                onChange={(e) => setPost({ ...post, exercise: e.target.value })}
-                                placeholder="Deadlift"
-                                required
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                    </label>
-                    {/* # of Sets */}
-                    <label className="flex flex-col justify-center items-center">
-                        <span className="font-semibold text-base justify-center"># of Sets</span>
+                        Exercise:
                         <input
-                            name='sets'
-                            value={post.sets}
-                            onChange={(e) => setPost({ ...post, sets: e.target.value })}
-                            placeholder="3"
-                            required
-                            className="input input-bordered w-full flex justify-center rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                            type="text"
+                            value={exer.exercise}
+                            name="exercise"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].exercise = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
                         />
                     </label>
-                    {/* # of Reps */}
                     <label>
-                        <span className="flex flex-col justify-center items-center"># of Reps</span>
+                        #Tag:
                         <input
-                            name='reps'
-                            value={post.reps}
-                            onChange={(e) => setPost({ ...post, reps: e.target.value })}
-                            placeholder="12"
-                            required
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                            type="text"
+                            value={exer.tag}
+                            name="tag"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].tag = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+
                         />
                     </label>
-                    {/* Set 1 Weight */}
                     <label>
-                        <span className="font-semibold text-base">Weight</span>
+                        Sets:
                         <input
-                            name='weight1'
-                            value={post.weight1}
-                            onChange={(e) => setPost({ ...post, weight1: e.target.value })}
-                            placeholder="15"
-                            required
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                            type="text"
+                            value={exer.sets}
+                            name="sets"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].sets = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
                         />
                     </label>
-                    {/* Set 2 Weight */}
                     <label>
-                        <span className="font-semibold text-base">Weight</span>
+                        Reps:
                         <input
-                            name='weight2'
-                            value={post.weight2}
-                            onChange={(e) => setPost({ ...post, weight2: e.target.value })}
-                            placeholder="15"
-                            required
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                            type="text"
+                            value={exer.reps}
+                            name="reps"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].reps = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
                         />
                     </label>
-                    {/* Set 3 Weight */}
                     <label>
-                        <span className="font-semibold text-base">Set 3 Weight</span>
+                        Weight 1
                         <input
-                            name='weight3'
-                            value={post.weight3}
-                            onChange={(e) => setPost({ ...post, weight3: e.target.value })}
-                            placeholder="15"
-                            required
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                            type="text"
+                            value={exer.weight1}
+                            name="weight1"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].weight1 = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                        />
+                    </label>
+                    <label>
+                        Weight 2
+                        <input
+                            type="text"
+                            value={exer.weight2}
+                            name="weight2"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].weight2 = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                        />
+                    </label>
+                    <label>
+                        Weight 3
+                        <input
+                            type="text"
+                            value={exer.weight3}
+                            name="weight3"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].weight3 = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
                         />
                     </label>
                 </div>
+            )
+        })}
 
-                    {/* Exercise Row
-                    {exerciseRow.map((obj, index) => (
-                    <div key={index} className="grid grid-cols-7 gap-4 items-center my-8">
-                        <label>
-                            <span className="font-semibold text-base text-gray-700">Focus Tag
-                            </span>
-                                <input
-                                    name='tag'
-                                    value={obj.tag}
-                                    onChange={(event) => handleFormChange(index, event)}
-                                    placeholder="#strength"
-                                    required
-                                    className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                                />
-                        </label>
-                        <label>
-                            <span className="font-semibold text-base text-gray-700">Exercise:</span>
-                                <input
-                                    name='exercise'
-                                    value={obj.exercise}
-                                    onChange={(event) => handleFormChange(index, event)}
-                                    placeholder="Deadlift"
-                                    required
-                                    className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                                />
-                        </label>
-                        {/* # of Sets */}
-                        {/* <label>
-                            <span className="font-semibold text-base text-gray-700"># of Sets</span>
-                            <input
-                                name='sets'
-                                value={obj.sets}
-                                onChange={(event) => handleFormChange(index, event)}
-                                placeholder="3"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label> */}
-                        {/* # of Reps */}
-                        {/* <label>
-                            <span className="font-semibold text-base text-gray-700"># of Reps</span>
-                            <input
-                                name='reps'
-                                value={obj.reps}
-                                onChange={(event) => handleFormChange(index, event)}
-                                placeholder="12"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label> */}
-                        {/* Set 1 Weight */}
-                        {/* <label>
-                            <span className="font-semibold text-base text-gray-700">Weight</span>
-                            <input
-                                name='weight1'
-                                value={obj.weight1}
-                                onChange={(event) => handleFormChange(index, event)}
-                                placeholder="15"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label> */}
-                        {/* Set 2 Weight */}
-                        {/* <label>
-                            <span className="font-semibold text-base text-gray-700">Weight</span>
-                            <input
-                                name='weight2'
-                                value={obj.weight2}
-                                onChange={(event) => handleFormChange(index, event)}
-                                placeholder="15"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label> */}
-                        {/* Set 3 Weight */}
-                        {/* <label>
-                            <span className="font-semibold text-base text-gray-700">Set 3 Weight</span>
-                            <input
-                                name='weight3'
-                                value={obj.weight3}
-                                onChange={(event) => handleFormChange(index, event)}
-                                placeholder="15"
-                                required
-                                className="w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label> */}
-                    {/* </div>
-                    ))}
-                    <button
-                    className="bg-amber-500 py-1 px-3 rounded-full"
-                    onClick={handleAddExercise}
-                    >
-                        Add Exercise
-                    </button> */}
+
+
+                <button
+                className="bg-amber-500 py-1 px-3 rounded-full mt-4"
+                onClick={(e) => handleClick(e)}
+                >
+                    Add Exercise
+                </button>
+
 
 
                 <div className="w-full flex justify-end items-center my-8 gap-4">
@@ -250,3 +185,40 @@ const WorkoutForm = ({ type, post, setPost, submitting, handleSubmit, handleForm
 }
 
 export default WorkoutForm;
+
+
+ {/* <div className="form-top ">
+                    <div className="form-control grid grid-cols-3 gap-4 mb-4">
+                        <label>
+                            <span className="flex flex-col font-semibold justify-center items-center">Workout Name</span>
+                            <input
+                                type="text"
+                                value={post.name}
+                                onChange={(e) => setPost({ ...post, name: e.target.value })}
+                                placeholder="Arms"
+                                required
+                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            />
+                        </label>
+                        <label>
+                            <span className="flex flex-col font-semibold justify-center items-center">Date Completed</span>
+                            <input
+                                type="text"
+                                value={post.date}
+                                onChange={(e) => setPost({ ...post, date: e.target.value })}
+                                placeholder="MM/DD/YYYY"
+                                required
+                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            />
+                        </label>
+                        <label>
+                            <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
+                            <input
+                                value={post.duration}
+                                onChange={(e) => setPost({...post, duration: e.target.value })}
+                                placeholder="30 minutes"
+                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                            />
+                        </label>
+                    </div>
+                </div> */}

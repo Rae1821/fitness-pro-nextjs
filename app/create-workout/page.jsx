@@ -10,56 +10,50 @@ const createNewWorkout = () => {
     const router = useRouter();
     const { data: session } = useSession();
 
-
     const [submitting, setSubmitting] = useState(false);
 
-    const [post, setPost] = useState([
+    const [post, setPost] = useState(
         {
-        name: '',
-        date: '',
-        duration: 0,
-        tag: '',
-        exercise: '',
-        sets: 0,
-        reps: 0,
-        weight1: 0,
-        weight2: 0,
-        weight3: 0
+            workoutName: '',
+            date: '',
+            duration: '',
+            exerciseObj: [
+                {
+                    exercise: '',
+                    tag:'',
+                    sets: 0,
+                    reps: 0,
+                    weight1: 0,
+                    weight2: 0,
+                    weight3: 0
+                }
+            ]
+        }
+    )
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        setPost({
+            ...post,
+            exerciseObj: [...post.exerciseObj, {
+                exercise: '',
+                tag: '',
+                sets: 0,
+                reps: 0,
+                weight1: 0,
+                weight2: 0,
+                weight3: 0,
+            }]
+        });
+        console.log(post)
+    };
+
+    const handleOnChange = (index, e) => {
+        const updatedExerciseObj = [...post.exerciseObj];
+        updatedExerciseObj[index][e.target.name] = e.target.value;
+        setPost({...post, exerciseObj: updatedExerciseObj });
     }
-]);
 
-    const postObj = {
-        name: '',
-        date: '',
-        duration: 0,
-        tag: '',
-        exercise: '',
-        sets: 0,
-        reps: 0,
-        weight1: 0,
-        weight2: 0,
-        weight3: 0
-    }
-
-
-    // const handleFormChange = (index, event) => {
-    //     let data = [...exerciseRow];
-    //     data[index][event.target.name] = event.target.value;
-    //     setExerciseRow(data)
-    // }
-
-    // const handleAddExercise = () => {
-    //     let newExerciseObj = {
-    //         tag: '',
-    //         exercise: '',
-    //         sets: 0,
-    //         reps: 0,
-    //         weight1: 0,
-    //         weight2: 0,
-    //         weight3: 0
-    //     }
-    //     let newRow = setExerciseRow([...exerciseRow, newExerciseObj])
-    // }
 
 
     const createWorkout = async (e) => {
@@ -70,29 +64,15 @@ const createNewWorkout = () => {
             const response = await fetch('/api/workout/new',
             {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify({
                     userId: session?.user.id,
-                    name: post.name,
+                    workoutName: post.workoutName,
                     date: post.date,
                     duration: post.duration,
-                    tag: post.tag,
-                    exercise: post.exercise,
-                    sets: post.sets,
-                    reps: post.reps,
-                    weight1: post.weight1,
-                    weight2: post.weight2,
-                    weight3: post.weight3
-                    // exerciseRow: exerciseRow.map((ex) => {
-                    //     return {
-                    //         tag: ex.tag,
-                    //         exercise: ex.exercise,
-                    //         sets: ex.sets,
-                    //         reps: ex.reps,
-                    //         weight1: ex.weight1,
-                    //         weight2: ex.weight2,
-                    //         weight3: ex.weight3,
-                    //     }
-                    // })
+                    exerciseObj: post.exerciseObj
                 }),
             });
             if(response.ok){
@@ -112,13 +92,9 @@ const createNewWorkout = () => {
         type="Create"
         submitting={submitting}
         handleSubmit={createWorkout}
-        //handleFormChange={handleFormChange}
+        handleClick={handleClick}
         post={post}
         setPost={setPost}
-        //handleAddExercise={handleAddExercise}
-        //exerciseRow={exerciseRow}
-        //setExerciseRow={setExerciseRow}
-        // totalExercisesCompleted={totalExercisesCompleted}
     />
   )
 }
