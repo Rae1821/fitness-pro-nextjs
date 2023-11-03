@@ -36,13 +36,13 @@ const WorkoutSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
+    date: {
+        type: Date,
+        required: [true, "Date is required"],
+    },
     workoutName: {
         type: String,
-        required: [false, "Workout name is required"],
-    },
-    date: {
-        type: String,
-        required: [false, "Date is required"],
+        required: [true, "Workout name is required"],
     },
     duration: {
         type: Number,

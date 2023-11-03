@@ -5,8 +5,10 @@ import { useState, useEffect } from 'react'
 import DashboardCard from './DashboardCard'
 
 const DashboardCardList = ({ data, handleTagClick }) => {
+
   return (
     <div className="mt-4 space-y-6 py-8">
+    {console.log(data)}
       {data.map((post) => (
         <DashboardCard
           key={post._id}
@@ -31,8 +33,8 @@ const Dashboard = () => {
     const fetchPosts = async () => {
       const response = await fetch('/api/workout');
       const data = await response.json();
-
       setPosts(data);
+      console.log(posts)
     }
 
     fetchPosts();

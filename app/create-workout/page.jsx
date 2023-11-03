@@ -6,16 +6,18 @@ import { useRouter } from 'next/navigation';
 
 import WorkoutForm from '@components/WorkoutForm';
 
+
 const createNewWorkout = () => {
     const router = useRouter();
     const { data: session } = useSession();
 
     const [submitting, setSubmitting] = useState(false);
 
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
     const [post, setPost] = useState(
         {
             workoutName: '',
-            date: '',
             duration: '',
             exerciseObj: [
                 {
@@ -33,6 +35,7 @@ const createNewWorkout = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
+        setSelectedDate(selectedDate);
         setPost({
             ...post,
             exerciseObj: [...post.exerciseObj, {
@@ -45,7 +48,7 @@ const createNewWorkout = () => {
                 weight3: 0,
             }]
         });
-        console.log(post)
+
     };
 
     const handleOnChange = (index, e) => {
@@ -53,7 +56,6 @@ const createNewWorkout = () => {
         updatedExerciseObj[index][e.target.name] = e.target.value;
         setPost({...post, exerciseObj: updatedExerciseObj });
     }
-
 
 
     const createWorkout = async (e) => {
@@ -69,8 +71,8 @@ const createNewWorkout = () => {
                 },
                 body: JSON.stringify({
                     userId: session?.user.id,
+                    date: selectedDate,
                     workoutName: post.workoutName,
-                    date: post.date,
                     duration: post.duration,
                     exerciseObj: post.exerciseObj
                 }),
@@ -95,6 +97,9 @@ const createNewWorkout = () => {
         handleClick={handleClick}
         post={post}
         setPost={setPost}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+
     />
   )
 }

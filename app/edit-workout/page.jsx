@@ -1,5 +1,3 @@
-
-
 'use client'
 
 import { useState, useEffect } from 'react';
@@ -8,19 +6,20 @@ import { useSession } from 'next-auth/react';
 
 import WorkoutForm from '@components/WorkoutForm';
 
+
 const EditWorkout = () => {
     const router = useRouter();
     const { data: session } = useSession();
     const searchParams = useSearchParams();
     const workoutId = searchParams.get('id');
 
-
     const [submitting, setSubmitting] = useState(false);
+
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const [post, setPost] = useState(
       {
           workoutName: '',
-          date: '',
           duration: '',
           exerciseObj: [
               {
@@ -58,10 +57,9 @@ const EditWorkout = () => {
       const getWorkoutDetails = async () => {
         const response = await fetch(`/api/workout/${workoutId}`);
         const data = await response.json();
-
+        setSelectedDate(data.selectedDate)
         setPost({
-          workoutName: data.name,
-          date: data.date,
+          workoutName: data.workoutName,
           duration: data.duration,
           exerciseObj: data.exerciseObj,
         })
@@ -83,7 +81,7 @@ const EditWorkout = () => {
             body: JSON.stringify({
               userId: session?.user.id,
               workoutName: post.workoutName,
-              date: post.date,
+              selectedDate: selectedDate,
               duration: post.duration,
               exerciseObj: post.exerciseObj
               })
@@ -108,6 +106,8 @@ const EditWorkout = () => {
         handleClick={handleClick}
         post={post}
         setPost={setPost}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
       />
     );
 };
