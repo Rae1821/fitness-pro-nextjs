@@ -3,14 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
+import { signOut, useSession, getProviders } from 'next-auth/react';
 
 
 const Navbar = () => {
     const { data: session } = useSession();
 
     const [providers, setProviders] = useState(null);
-    //const [toggleDropdown, setToggleDropdown] = useState(false)
 
     useEffect(() => {
         const setUpProviders = async () => {
@@ -25,7 +24,7 @@ const Navbar = () => {
   return (
 
 
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 shadow-md">
         <div className="navbar-start">
             <div className="dropdown">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -48,11 +47,6 @@ const Navbar = () => {
                             Create Workout
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/build-workout">
-                            Find Exercises
-                        </Link>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -69,7 +63,7 @@ const Navbar = () => {
                 <button
                     type="button"
                     onClick={signOut}
-                    className="btn btn-accent btn-xs btn-outline"
+                    className="btn btn-error btn-xs btn-outline"
                 >
                     Sign Out
                 </button>
@@ -87,7 +81,7 @@ const Navbar = () => {
             ) : (
 
                 <div className="navbar-end">
-                    {providers &&
+                    {/* {providers &&
                         Object.values(providers).map((provider) => (
                             <button
                                 type="button"
@@ -97,7 +91,7 @@ const Navbar = () => {
                             >
                                 Sign In
                             </button>
-                    ))}
+                    ))} */}
                 </div>
 
         )}

@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
 import WorkoutForm from '@components/WorkoutForm';
+import ClassForm from '@components/ClassForm';
+import CardioForm from '@components/CardioForm';
+import HighIntensityForm from '@components/HighIntensityForm';
 
 
 const EditWorkout = () => {
@@ -17,14 +20,18 @@ const EditWorkout = () => {
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
+    const [workoutType, setWorkoutType] = useState('');
+
     const [post, setPost] = useState(
       {
           workoutName: '',
+          workoutFocus: '',
+          tag: '',
+          instructor: '',
           duration: '',
           exerciseObj: [
               {
                   exercise: '',
-                  tag:'',
                   sets: 0,
                   reps: 0,
                   weight1: 0,
@@ -42,7 +49,6 @@ const EditWorkout = () => {
           ...post,
           exerciseObj: [...post.exerciseObj, {
               exercise: '',
-              tag: '',
               sets: 0,
               reps: 0,
               weight1: 0,
@@ -60,6 +66,9 @@ const EditWorkout = () => {
         setSelectedDate(data.selectedDate)
         setPost({
           workoutName: data.workoutName,
+          workoutFocus: data.workoutFocus,
+          tag: data.tag,
+          instructor: data.instructor,
           duration: data.duration,
           exerciseObj: data.exerciseObj,
         })
@@ -80,8 +89,11 @@ const EditWorkout = () => {
             method: 'PATCH',
             body: JSON.stringify({
               userId: session?.user.id,
-              workoutName: post.workoutName,
               selectedDate: selectedDate,
+              workoutName: post.workoutName,
+              workoutFocus: post.workoutFocus,
+              tag: post.tag,
+              instructor: post.instructor,
               duration: post.duration,
               exerciseObj: post.exerciseObj
               })
@@ -99,8 +111,9 @@ const EditWorkout = () => {
 
 
     return (
+
       <WorkoutForm
-        type="Edit"
+        type="Save"
         submitting={submitting}
         handleSubmit={updateWorkout}
         handleClick={handleClick}
@@ -109,7 +122,10 @@ const EditWorkout = () => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
+
     );
 };
 
 export default EditWorkout;
+
+

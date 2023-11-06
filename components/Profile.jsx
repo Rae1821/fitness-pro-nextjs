@@ -1,4 +1,5 @@
-import DashboardCard from './DashboardCard';
+import WorkoutCard from './WorkoutCard';
+
 
 const Profile = ({ name, data, handleEdit, handleDelete }) => {
   return (
@@ -16,7 +17,8 @@ const Profile = ({ name, data, handleEdit, handleDelete }) => {
           <div className="flex justify-center">
             <ul>
               {data.map((post) => (
-              <DashboardCard
+
+              <WorkoutCard
                 key={post._id}
                 post={post}
                 selectedDate={post.selectedDate}
@@ -26,12 +28,7 @@ const Profile = ({ name, data, handleEdit, handleDelete }) => {
               ))}
             </ul>
           </div>
-
-
-
        </div>
-
-
     </section>
   )
 }

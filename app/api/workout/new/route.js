@@ -3,7 +3,7 @@ import Workout from '@models/workout';
 
 export const POST = async (req) => {
 
-    const { userId, date, workoutName, duration, exerciseObj } = await req.json();
+    const { userId, date, workoutName, workoutFocus, tag, instructor, duration, exerciseObj } = await req.json();
 
     try {
         await connectToDB();
@@ -13,10 +13,12 @@ export const POST = async (req) => {
             creator: userId,
             date: date,
             workoutName: workoutName,
+            workoutFocus: workoutFocus,
+            tag: tag,
+            instructor: instructor,
             duration: duration,
             exerciseObj: exerciseObj.map((exercise) => ({
                 exercise: exercise.exercise,
-                tag: exercise.tag,
                 sets: exercise.sets,
                 reps: exercise.reps,
                 weight1: exercise.weight1,

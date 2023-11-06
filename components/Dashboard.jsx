@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-import DashboardCard from './DashboardCard'
+import WorkoutCard from './WorkoutCard'
 
 const DashboardCardList = ({ data, handleTagClick }) => {
 
@@ -10,7 +10,7 @@ const DashboardCardList = ({ data, handleTagClick }) => {
     <div className="mt-4 space-y-6 py-8">
     {console.log(data)}
       {data.map((post) => (
-        <DashboardCard
+        <WorkoutCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
@@ -19,6 +19,8 @@ const DashboardCardList = ({ data, handleTagClick }) => {
     </div>
   )
 }
+
+
 
 const Dashboard = () => {
 

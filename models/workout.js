@@ -3,31 +3,27 @@ import { Schema, model, models } from 'mongoose';
 const ExerciseSchema = new Schema({
     exercise: {
         type: String,
-        required: [true, "Exercise is required"],
-    },
-    tag: {
-        type: String,
-        required: [true, "Tag is required"],
+        required: [false, "Exercise is required"],
     },
     sets: {
         type: Number,
-        required: [true, "Set is required"],
+        required: [false, "Set is required"],
     },
     reps: {
         type: Number,
-        required: [true, "Reps are required"],
+        required: [false, "Reps are required"],
     },
     weight1: {
         type: Number,
-        required: [true, "Weight is required"],
+        required: [false, "Weight is required"],
     },
     weight2: {
         type: Number,
-        required: [true, "Weight is required"],
+        required: [false, "Weight is required"],
     },
     weight3: {
         type: Number,
-        required: [true, "Weight is required"],
+        required: [false, "Weight is required"],
     }
 })
 
@@ -42,7 +38,19 @@ const WorkoutSchema = new Schema({
     },
     workoutName: {
         type: String,
-        required: [true, "Workout name is required"],
+        required: [false, "Workout name is not required"],
+    },
+    workoutFocus: {
+        type: String,
+        required: [false, "Workout focus is not required"],
+    },
+    tag: {
+        type: String,
+        required: [false, "Tag is required"],
+    },
+    instructor: {
+        type: String,
+        required: [false, "Instructor is not required"],
     },
     duration: {
         type: Number,

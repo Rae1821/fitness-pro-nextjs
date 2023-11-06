@@ -10,35 +10,53 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
 
   return (
     <section className="w-full max-w-full flex-start flex-col px-6 py-8">
-        <h1 className="mt-5 text-5xl font-extrabold leading-[1.15] sm:text-6xl text-left">
-            <span>{type} Workout</span>
+        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] text-center lg:text-left">
+            <span>Strength Workout</span>
         </h1>
-        <p className="text-left max-w-md">{type} and record your custom workout</p>
+        <p className="text-center text-sm md:text-base lg:text-left">{type} and record your strength workout</p>
 
             <form
                 onSubmit={handleSubmit}
                 className="mt-10 mx-auto w-full">
                 {/* Top of Form */}
-                <div className="form-control grid grid-cols-1 md:grid-cols-3 gap-4 pb-4 mb-4 border-b border-slate-300">
+                <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 mb-4 border-b border-slate-300">
                     <label>
                         <span className="flex flex-col font-semibold items-center mb-2">Date Completed</span>
-                        <div className="flex justify-center w-full relative">
+                        <div className="flex justify-center w-full">
                             <DatePicker
                                 selected={selectedDate}
                                 onChange={(date)=> setSelectedDate(date)}
-                                className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm w-72 md:w-64 lg:w-96"
+                                className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm w-80 sm:w-96 lg:w-72"
                             />
                         </div>
 
                     </label>
                     <label>
-                        <span className="flex flex-col font-semibold justify-center items-center">Workout Name</span>
+                        <span className="flex flex-col font-semibold justify-center items-center">Workout Focus</span>
                         <input
                             type="text"
                             name="workoutName"
                             value={post.workoutName}
+                            placeholder="Legs"
                             onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        />
+                    </label>
+                    <label>
+                        <span className="flex flex-col font-semibold justify-center items-center">
+                            #Tag:
+                        </span>
+                        <input
+                            type="text"
+                            value={post.tag}
+                            name="tag"
+                            placeholder="strength"
+                            onChange={(e) => {
+                                const updatedExerciseObj = [...post.exerciseObj];
+                                updatedExerciseObj[index].tag = e.target.value;
+                                setPost({ ...post, exerciseObj: updatedExerciseObj });
+                            }}
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
                         />
                     </label>
 
@@ -48,6 +66,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                             type="text"
                             name="duration"
                             value={post.duration}
+                            placeholder="30"
                             onChange={(e) => setPost({ ...post, duration: e.target.value })}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
                         />
@@ -63,6 +82,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                         <input
                             type="text"
                             value={exer.exercise}
+                            placeholder="Deadlift"
                             name="exercise"
                             onChange={(e) => {
                                 const updatedExerciseObj = [...post.exerciseObj];
@@ -72,21 +92,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2 shadow-sm"
                         />
                     </label>
-                    <label>
-                        #Tag:
-                        <input
-                            type="text"
-                            value={exer.tag}
-                            name="tag"
-                            onChange={(e) => {
-                                const updatedExerciseObj = [...post.exerciseObj];
-                                updatedExerciseObj[index].tag = e.target.value;
-                                setPost({ ...post, exerciseObj: updatedExerciseObj });
-                            }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
 
-                        />
-                    </label>
                     <label>
                         Sets:
                         <input
