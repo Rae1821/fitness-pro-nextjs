@@ -20,9 +20,6 @@ const createNewWorkout = () => {
 
     const [workoutType, setWorkoutType] = useState('')
 
-    const [workoutClass, setWorkoutClass] = useState({
-
-    })
 
     const [post, setPost] = useState(
         {
@@ -30,6 +27,9 @@ const createNewWorkout = () => {
             workoutFocus: '',
             tag: '',
             instructor: '',
+            time: '',
+            speed: '',
+            incline: '',
             duration: '',
             exerciseObj: [
                 {
@@ -63,14 +63,24 @@ const createNewWorkout = () => {
 
     const handleSelected = () => {
        setWorkoutType(workoutType)
-       console.log(workoutType);
+
     }
 
-    const handleOnChange = (index, e) => {
+    const handleOnChange = (e) => {
         const updatedExerciseObj = [...post.exerciseObj];
-        updatedExerciseObj[index][e.target.name] = e.target.value;
+        updatedExerciseObj[e.target.name] = e.target.value;
         setPost({...post, exerciseObj: updatedExerciseObj });
     }
+
+    const handleSubmit = () => {
+        createWorkout();
+    }
+
+
+
+
+
+
 
 
     const createWorkout = async (e) => {
@@ -89,8 +99,11 @@ const createNewWorkout = () => {
                     date: selectedDate,
                     workoutName: post.workoutName,
                     workoutFocus: post.workoutFocus,
-                    tag: post.tag,
+                    tag: post.tag.toLowerCase(),
                     instructor: post.instructor,
+                    time: post.time,
+                    speed: post.speed,
+                    incline: post.incline,
                     duration: post.duration,
                     exerciseObj: post.exerciseObj,
 
@@ -127,11 +140,11 @@ const createNewWorkout = () => {
         </div>
 
 
-
         {workoutType === 'Strength' ?
 
             <WorkoutForm
                 type="Create"
+                tag="strength"
                 submitting={submitting}
                 handleSubmit={createWorkout}
                 handleClick={handleClick}
@@ -142,49 +155,52 @@ const createNewWorkout = () => {
             />
 
 
-            : workoutType === 'Class' ?
-                <ClassForm
-                    type="Create"
-                    submitting={submitting}
-                    handleSubmit={createWorkout}
-                    post={post}
-                    setPost={setPost}
-                    selectedDate={selectedDate}
-                    setSelectedDate={setSelectedDate}
-                 />
+        : workoutType === 'Class' ?
+            <ClassForm
+                type="Create"
+                tag="class"
+                submitting={submitting}
+                handleSubmit={createWorkout}
+                post={post}
+                setPost={setPost}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+            />
 
-            : workoutType === 'Cardio' ?
-                <CardioForm
-                    type="Create"
-                    submitting={submitting}
-                    handleSubmit={createWorkout}
-                    post={post}
-                    setPost={setPost}
-                    selectedDate={selectedDate}
-                    setSelectedDate={setSelectedDate}
-                />
+        : workoutType === 'Cardio' ?
+            <CardioForm
+                type="Create"
+                tag="cardio"
+                submitting={submitting}
+                handleSubmit={createWorkout}
+                post={post}
+                setPost={setPost}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+            />
 
-            :  workoutType === 'HIIT' ?
-                <HighIntensityForm
-                    type="Create"
-                    submitting={submitting}
-                    handleSubmit={createWorkout}
-                    post={post}
-                    setPost={setPost}
-                    selectedDate={selectedDate}
-                    setSelectedDate={setSelectedDate}
-                />
+        :  workoutType === 'HIIT' ?
+            <HighIntensityForm
+                type="Create"
+                tag="hiit"
+                submitting={submitting}
+                handleSubmit={createWorkout}
+                post={post}
+                setPost={setPost}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+            />
 
-            : <div></div>
+        : <div></div>
 
         }
 
-
     </div>
-
-
 
   )
 }
 
 export default createNewWorkout;
+
+
+

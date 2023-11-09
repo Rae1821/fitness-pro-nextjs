@@ -13,10 +13,10 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
   return (
 
     <section className="w-full max-w-full flex-start flex-col px-6 py-8">
-       <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-center lg:text-left">
-            <span>{type} Workout</span>
+       <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-emerald-600 via-emerald-300 to-orange-500 inline-block text-transparent bg-clip-text pb-1">
+            HIIT Workout
         </h1>
-        <p className="text-center lg:text-left text-sm md:text-base">{type} and record your HIIT workout</p>
+        <p className="text-left text-sm md:text-base">{type} and record your HIIT workout</p>
 
 
         <form
@@ -35,17 +35,6 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                     </div>
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
-                    <input
-                        type="text"
-                        name="duration"
-                        placeholder="45"
-                        value={post.duration}
-                        onChange={(e) => setPost({ ...post, duration: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                    />
-                </label>
-                <label>
                     <span className="flex flex-col font-semibold justify-center items-center">Workout Name</span>
                     <input
                         type="text"
@@ -57,16 +46,29 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                     />
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">
-                        #Tag:
+                    <span className="flex flex-col font-semibold items-center mb-2">
+                        #Tag
                     </span>
+                    <select
+                        value={post.tag}
+                        onChange={(e) => setPost({...post, tag: e.target.value})} className="select select-bordered select-info w-full"
+                    >
+                        <option>Pick One</option>
+                        <option>Cardio</option>
+                        <option>Class</option>
+                        <option>HIIT</option>
+                        <option>Strength</option>
+                    </select>
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
                     <input
                         type="text"
-                        value={post.tag}
-                        name="tag"
-                        placeholder="HIIT"
-                        onChange={(e) => setPost({...post, tag: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                        name="duration"
+                        placeholder="45"
+                        value={post.duration}
+                        onChange={(e) => setPost({ ...post, duration: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
                     />
                 </label>
             </div>
@@ -166,7 +168,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
 
 
             <button
-            className="btn btn-warning btn-sm py-1 px-3 mt-4"
+            className="btn bg-orange-400 hover:bg-orange-300 btn-sm py-1 px-3 mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise

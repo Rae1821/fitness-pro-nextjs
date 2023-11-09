@@ -63,7 +63,7 @@ const Navbar = () => {
                 <button
                     type="button"
                     onClick={signOut}
-                    className="btn btn-error btn-xs btn-outline"
+                    className="btn btn-ghost btn-xs btn-outline"
                 >
                     Sign Out
                 </button>

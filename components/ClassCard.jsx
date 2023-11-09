@@ -3,12 +3,10 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
+import { LiaBellSolid } from 'react-icons/lia';
 
 
-import { GrRun } from "react-icons/gr"
-
-
-const CardioCard = ({ post, handleEdit, handleDelete }) => {
+const ClassCard = ({ post, handleEdit, handleDelete }) => {
     const { data: session } = useSession();
     const pathName = usePathname();
     const router = useRouter();
@@ -31,19 +29,17 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border border-base-200 bg-base-100 mb-4 max-w-3xl font-display md:px-4 shadow-lg bg-base-50 ">
-
+        <div className="collapse collapse-plus border  border-base-200 bg-base-100 mb-4 max-w-3xl font-display md:px-4 shadow-lg bg-base-50">
             <input type="checkbox" />
-
             <div className="collapse-title text-xl font-medium">
-
-                <div className="flex items-center justify-between ">
+                <div className="flex justify-between items-center gap-2">
                     <div className="flex items-center">
-                        <div className="p-2 rounded-full mr-4 bg-error">
-                            <GrRun />
+                        <div className="p-2 rounded-full mr-4 bg-success">
+                            <LiaBellSolid />
+                            <span className="sr-only">{post.tag}</span>
                         </div>
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Activity Name
+                        Class Name
                         <span className="font-semibold lg:text-lg">{post.workoutName}</span>
                         </p>
                     </div>
@@ -55,17 +51,21 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                         Duration
                         <span className="font-bold">{post.duration} min.</span>
                     </p>
-
                 </div>
             </div>
+
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
-                <div className="flex flex-row justify-between items-center">
+                <div className="grid grid-cols-4">
+                    <p className="flex flex-col col-start-2 text-xs md:text-sm lg:text-base font-light">
+                        Class Time
+                        <span className="font-bold">{post.time}</span>
+                    </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Speed
+                        Class Focus
                         <span className="font-bold">{post.workoutFocus}</span>
                     </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Incline
+                        Instructor
                         <span className="font-bold">{post.instructor}</span>
                     </p>
                 </div>
@@ -94,4 +94,4 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   )
 }
 
-export default CardioCard
+export default ClassCard

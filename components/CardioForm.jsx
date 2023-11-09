@@ -13,10 +13,10 @@ const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submit
   return (
 
     <section className="w-full max-w-full flex-start flex-col px-6 py-8">
-        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-center lg:text-left">
-            <span>{type} Workout</span>
+        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-emerald-600 via-emerald-300 to-orange-500 inline-block text-transparent bg-clip-text pb-1">
+          Cardio Workout
         </h1>
-        <p className="text-center lg:text-left text-sm md:text-base">{type} and record your cardio workout</p>
+        <p className="text-left text-sm md:text-base">{type} and record your cardio workout</p>
 
 
         <form
@@ -35,17 +35,6 @@ const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submit
                     </div>
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
-                    <input
-                        type="text"
-                        name="duration"
-                        placeholder="30"
-                        value={post.duration}
-                        onChange={(e) => setPost({ ...post, duration: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                    />
-                </label>
-                <label>
                     <span className="flex flex-col font-semibold justify-center items-center">Activity Type</span>
                     <input
                         type="text"
@@ -57,16 +46,51 @@ const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submit
                     />
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">
-                        #Tag:
+                    <span className="flex flex-col font-semibold items-center mb-2">
+                        #Tag
                     </span>
+                    <select
+                        value={post.tag}
+                        onChange={(e) => setPost({...post, tag: e.target.value})} className="select select-bordered select-ghost w-full"
+                    >
+                        <option>Pick One</option>
+                        <option>Cardio</option>
+                        <option>Class</option>
+                        <option>HIIT</option>
+                        <option>Strength</option>
+                    </select>
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
                     <input
                         type="text"
-                        value={post.tag}
-                        name="tag"
-                        placeholder="cardio"
-                        onChange={(e) => setPost({...post, tag: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                        name="duration"
+                        placeholder="30"
+                        value={post.duration}
+                        onChange={(e) => setPost({ ...post, duration: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                    />
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Speed</span>
+                    <input
+                        type="text"
+                        name="speed"
+                        placeholder="3.0"
+                        value={post.speed}
+                        onChange={(e) => setPost({ ...post, speed: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                    />
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Incline</span>
+                    <input
+                        type="text"
+                        name="incline"
+                        placeholder="5"
+                        value={post.incline}
+                        onChange={(e) => setPost({ ...post, incline: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
                     />
                 </label>
 

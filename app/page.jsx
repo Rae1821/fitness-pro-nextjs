@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { signIn, useSession, getProviders } from 'next-auth/react';
 import Link from 'next/link';
+import { quoteData } from '@utils/quoteData'
 
 
 const Home = () => {
@@ -11,23 +12,43 @@ const Home = () => {
 
     const [providers, setProviders] = useState(null);
 
+    const [randomQuote, setRandomQuote] = useState({
+        id: 0,
+        quote: '',
+        author: '',
+    })
+
     useEffect(() => {
         const setUpProviders = async () => {
-            const response = await getProviders();
-            setProviders(response);
-        }
-            setUpProviders();
+          const response = await getProviders();
+          setProviders(response);
+      }
+          setUpProviders();
     }, [])
 
+    useEffect(() => {
+      const getRandomQuote = () => {
+        let randomIndex = Math.floor(Math.random() * quoteData.length);
+        const quoteIndex = quoteData[randomIndex]
+        setRandomQuote(quoteIndex)
+      }
+
+        getRandomQuote();
+
+    }, [])
+
+
+
+
   return (
-    <div className="hero min-h-screen" style={{backgroundImage: 'url(/assets/images/main-bg.jpg)'}}>
-      <div className="hero-overlay bg-opacity-60"></div>
+    <div className="hero min-h-screen" style={{backgroundImage: 'url(/assets/images/bg-4.jpg)'}}>
+      <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Welcome Back</h1>
-            <p className="mb-5">"The only bad workout is the one you didn't do"
+            <h1 className="mb-5 text-6xl font-bold">Welcome Back</h1>
+            <p className="mb-5 text-gray-300 max-w-sm">"{randomQuote.quote}"
             <br />
-              <span className="text-xs">- someone awesome</span></p>
+              <span className="text-xs">- {randomQuote.author}</span></p>
 
               {session?.user ? (
                 <div>

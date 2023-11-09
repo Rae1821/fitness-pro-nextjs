@@ -14,7 +14,7 @@ const SwapToggle = () => {
     }, [theme])
 
   return (
-    <div className="fixed right-4 bottom-4">
+    <div className="fixed right-4 bottom-1">
 
         <label className="swap swap-rotate">
 

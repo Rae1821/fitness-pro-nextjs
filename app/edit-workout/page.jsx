@@ -20,14 +20,15 @@ const EditWorkout = () => {
 
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    const [workoutType, setWorkoutType] = useState('');
-
     const [post, setPost] = useState(
       {
           workoutName: '',
           workoutFocus: '',
           tag: '',
           instructor: '',
+          time: '',
+          speed: '',
+          incline: '',
           duration: '',
           exerciseObj: [
               {
@@ -69,6 +70,9 @@ const EditWorkout = () => {
           workoutFocus: data.workoutFocus,
           tag: data.tag,
           instructor: data.instructor,
+          time: data.time,
+          speed: data.speed,
+          incline: data.incline,
           duration: data.duration,
           exerciseObj: data.exerciseObj,
         })
@@ -92,8 +96,10 @@ const EditWorkout = () => {
               selectedDate: selectedDate,
               workoutName: post.workoutName,
               workoutFocus: post.workoutFocus,
-              tag: post.tag,
+              tag: post.tag.toLowerCase(),
               instructor: post.instructor,
+              speed: post.speed,
+              incline: post.incline,
               duration: post.duration,
               exerciseObj: post.exerciseObj
               })
@@ -111,17 +117,53 @@ const EditWorkout = () => {
 
 
     return (
+      <div>
 
-      <WorkoutForm
-        type="Save"
-        submitting={submitting}
-        handleSubmit={updateWorkout}
-        handleClick={handleClick}
-        post={post}
-        setPost={setPost}
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-      />
+        {post.tag === "strength" ? (
+          <WorkoutForm
+            type="Save"
+            submitting={submitting}
+            handleSubmit={updateWorkout}
+            handleClick={handleClick}
+            post={post}
+            setPost={setPost}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+          />
+        ) : post.tag === "class" ? (
+          <ClassForm
+              type="Save"
+              submitting={submitting}
+              handleSubmit={updateWorkout}
+              post={post}
+              setPost={setPost}
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
+            />
+        ) : post.tag === "cardio" ? (
+            <CardioForm
+                type="Save"
+                submitting={submitting}
+                handleSubmit={updateWorkout}
+                post={post}
+                setPost={setPost}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+            />
+        ) : post.tag === "hiit" ? (
+            <HighIntensityForm
+                type="Create"
+                submitting={submitting}
+                handleSubmit={updateWorkout}
+                post={post}
+                setPost={setPost}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+            />
+        ) : null
+        }
+
+        </div>
 
     );
 };

@@ -8,29 +8,51 @@ const Stats = ({ data }) => {
 
     const [userData, setUserData] = useState([])
 
+    const [strengthCount, setStrengthCount] = useState(0)
+    const [classData, setClassData] = useState(0)
+    const [cardioData, setCardioData] = useState(0)
+    const [HIITData, setHIITData] = useState(0)
+
     const [userStats, setUserStats] = useState('')
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-          const response = await fetch('/api/workout');
-          const data = await response.json();
-          setUserData(data);
-        }
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //       const response = await fetch('/api/workout');
+    //       const data = await response.json();
+    //       setUserData(data);
+    //     }
 
-        fetchPosts();
-      }, [])
+    //     fetchPosts();
+    //   }, [])
 
-     // console.log(userData)
+      //const totalWorkouts = userData.length;
 
-      const totalWorkouts = userData.length;
+      console.log(data)
 
-      const yearlyWorkouts = userData.map((workout) => {
-            let date = workout.date
 
-            console.log(date)
-      })
+      // const yearlyWorkouts = userData.map((workout) => {
+      //       let date = workout.date
 
-      console.log(userData)
+      //       console.log(date)
+      // })
+
+
+      // const tagData = userData.map((obj) => {
+      //     obj.tag === "strength" ? setStrengthCount(prevStrengthCount => prevStrengthCount + 1)
+      //     : null
+      // })
+
+      // const findTag = () => {
+      //   for(let i = 0; i < userData.length; i++) {
+      //     console.log(userData[i].tag)
+      //     if(userData[i].tag === "strength") {
+      //       setStrengthCount(prevStrengthCount => prevStrengthCount++)
+      //     }
+      //   }
+      // }
+
+      // findTag()
+
 
 
   return (
@@ -40,13 +62,13 @@ const Stats = ({ data }) => {
 
     <div className="stat">
         <div className="stat-title">Workouts</div>
-        <div className="stat-value">{totalWorkouts}</div>
+        <div className="stat-value">{}</div>
         <div className="stat-desc">Total To Date</div>
     </div>
 
     <div className="stat">
-        <div className="stat-title">New Users</div>
-        <div className="stat-value">4,200</div>
+        <div className="stat-title">Strength Workouts</div>
+        <div className="stat-value">{}</div>
         <div className="stat-desc">↗︎ 400 (22%)</div>
     </div>
 

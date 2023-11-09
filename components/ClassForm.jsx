@@ -13,10 +13,10 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
   return (
 
     <section className="w-full max-w-full flex-start flex-col px-6 py-8">
-        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-center lg:text-left">
-            <span>{type} Workout</span>
+        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-emerald-600 via-emerald-300 to-orange-500 inline-block text-transparent bg-clip-text pb-1">
+            Class Workout
         </h1>
-        <p className="text-center lg:text-left text-sm md:text-base">{type} and record your class workout</p>
+        <p className="text-left text-sm md:text-base">{type} and record your class workout</p>
 
 
     <form
@@ -46,18 +46,33 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                 />
             </label>
             <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">
-                        #Tag:
+                    <span className="flex flex-col font-semibold items-center mb-2">
+                        #Tag
                     </span>
-                    <input
-                        type="text"
+                    <select
                         value={post.tag}
-                        name="tag"
-                        placeholder="cardio"
-                        onChange={(e) => setPost({...post, tag: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                    />
+                        onChange={(e) => setPost({...post, tag: e.target.value})} className="select select-bordered select-ghost w-full"
+                    >
+                        <option>Pick One</option>
+                        <option>Cardio</option>
+                        <option>Class</option>
+                        <option>HIIT</option>
+                        <option>Strength</option>
+                    </select>
                 </label>
+            <label>
+                <span className="flex flex-col font-semibold justify-center items-center">
+                    Class Time
+                </span>
+                <input
+                    type="text"
+                    value={post.time}
+                    name="time"
+                    placeholder="5:30pm"
+                    onChange={(e) => setPost({...post, time: e.target.value })}
+                    className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                />
+            </label>
 
             <label>
                 <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
@@ -76,8 +91,8 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                     type="text"
                     name="classType"
                     placeholder="Abs"
-                    value={post.classFocus}
-                    onChange={(e) => setPost({ ...post, classFocus: e.target.value })}
+                    value={post.workoutFocus}
+                    onChange={(e) => setPost({ ...post, workoutFocus: e.target.value })}
                     className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
                 />
             </label>

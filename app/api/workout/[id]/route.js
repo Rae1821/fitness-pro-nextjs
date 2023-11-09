@@ -17,7 +17,7 @@ export const GET = async (request, { params }) => {
 }
 
 export const PATCH = async (request, { params }) => {
-    const { selectedDate, workoutName, workoutFocus, tag, instructor, duration, exerciseObj } = await request.json();
+    const { selectedDate, workoutName, workoutFocus, tag, instructor, time, speed, incline, duration, exerciseObj } = await request.json();
 
     try {
         await connectToDB();
@@ -35,6 +35,9 @@ export const PATCH = async (request, { params }) => {
         existingWorkout.workoutFocus = workoutFocus;
         existingWorkout.tag = tag;
         existingWorkout.instructor = instructor;
+        existingWorkout.time = time;
+        existingWorkout.speed = speed;
+        existingWorkout.incline = incline;
         existingWorkout.duration = duration;
         existingWorkout.exerciseObj = exerciseObj;
 

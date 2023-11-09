@@ -52,6 +52,18 @@ const WorkoutSchema = new Schema({
         type: String,
         required: [false, "Instructor is not required"],
     },
+    time: {
+        type: String,
+        required: [false, "Time is not required"],
+    },
+    speed: {
+        type: String,
+        required: [false, "Speed is not required"],
+    },
+    incline: {
+        type: String,
+        required: [false, "Incline is not required"],
+    },
     duration: {
         type: Number,
         required: [true, "Duration is required"],
