@@ -36,7 +36,6 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
             <input type="checkbox" />
 
             <div className="collapse-title text-xl font-medium">
-
                 <div className="flex items-center justify-between ">
                     <div className="flex items-center">
                         <div className="p-2 rounded-full mr-4 bg-error">
@@ -59,14 +58,14 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                 </div>
             </div>
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
-                <div className="flex flex-row justify-between items-center">
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
+                <div className="grid grid-cols-4">
+                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light col-start-3">
                         Speed
-                        <span className="font-bold">{post.workoutFocus}</span>
+                        <span className="font-bold">{post.speed}</span>
                     </p>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
+                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light col-start-4">
                         Incline
-                        <span className="font-bold">{post.instructor}</span>
+                        <span className="font-bold">{post.incline}</span>
                     </p>
                 </div>
 

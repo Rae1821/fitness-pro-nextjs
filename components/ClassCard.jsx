@@ -30,7 +30,9 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
     <div>
     {/* Daisy UI Collapse */}
         <div className="collapse collapse-plus border  border-base-200 bg-base-100 mb-4 max-w-3xl font-display md:px-4 shadow-lg bg-base-50">
+
             <input type="checkbox" />
+
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center gap-2">
                     <div className="flex items-center">

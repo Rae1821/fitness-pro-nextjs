@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 
 
-const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitting, handleSubmit }) => {
+const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelectedDate, submitting, handleSubmit }) => {
 
 
 
@@ -46,19 +46,8 @@ const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submit
                     />
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold items-center mb-2">
-                        #Tag
-                    </span>
-                    <select
-                        value={post.tag}
-                        onChange={(e) => setPost({...post, tag: e.target.value})} className="select select-bordered select-ghost w-full"
-                    >
-                        <option>Pick One</option>
-                        <option>Cardio</option>
-                        <option>Class</option>
-                        <option>HIIT</option>
-                        <option>Strength</option>
-                    </select>
+                    <span className="flex flex-col font-semibold items-center mb-2">#Tag</span>
+                    <p className="input input-bordered w-full flex mt-2 p-3 outline-0">{post.tag}</p>
                 </label>
                 <label>
                     <span className="flex flex-col font-semibold justify-center items-center">Duration</span>

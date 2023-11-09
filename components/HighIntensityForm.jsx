@@ -24,6 +24,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
             className="mt-10 mx-auto w-full">
             {/* Top of Form */}
             <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 mb-4 border-b border-slate-300">
+            {/* Date Completed Input */}
                 <label>
                     <span className="flex flex-col font-semibold items-center mb-2">Date Completed</span>
                     <div className="flex justify-center w-full relative">
@@ -34,6 +35,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                         />
                     </div>
                 </label>
+                {/* Workout Name Input */}
                 <label>
                     <span className="flex flex-col font-semibold justify-center items-center">Workout Name</span>
                     <input
@@ -45,21 +47,12 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                         className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
                     />
                 </label>
+                {/* pre-populated tag */}
                 <label>
-                    <span className="flex flex-col font-semibold items-center mb-2">
-                        #Tag
-                    </span>
-                    <select
-                        value={post.tag}
-                        onChange={(e) => setPost({...post, tag: e.target.value})} className="select select-bordered select-info w-full"
-                    >
-                        <option>Pick One</option>
-                        <option>Cardio</option>
-                        <option>Class</option>
-                        <option>HIIT</option>
-                        <option>Strength</option>
-                    </select>
+                    <span className="flex flex-col font-semibold items-center mb-2">#Tag</span>
+                    <p className="input input-bordered w-full flex mt-2 p-3 outline-0">{post.tag}</p>
                 </label>
+                {/* Duration Input */}
                 <label>
                     <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
                     <input
@@ -185,7 +178,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                 </button>
 
 
-                <Link href="/" className="text-gray-500 text-sm">
+                <Link href="/profile" className="text-gray-500 text-sm">
                     Cancel
                 </Link>
             </div>

@@ -20,7 +20,6 @@ const createNewWorkout = () => {
 
     const [workoutType, setWorkoutType] = useState('')
 
-
     const [post, setPost] = useState(
         {
             workoutName: '',
@@ -63,7 +62,6 @@ const createNewWorkout = () => {
 
     const handleSelected = () => {
        setWorkoutType(workoutType)
-
     }
 
     const handleOnChange = (e) => {
@@ -75,11 +73,6 @@ const createNewWorkout = () => {
     const handleSubmit = () => {
         createWorkout();
     }
-
-
-
-
-
 
 
 
@@ -127,8 +120,8 @@ const createNewWorkout = () => {
             <h2 className="mt-10 mb-4 text-center">Choose your workout type</h2>
             <div className="form-control w-full max-w-xs mx-auto">
                 <select
-                    value={workoutType}
-                    onChange={(e) => {setWorkoutType(e.target.value)}} className="select select-bordered select-info"
+                    value={post.tag}
+                    onChange={(e) => setPost({...post, tag: e.target.value })} className="select select-bordered select-info"
                 >
                     <option>Pick one</option>
                     <option>Cardio</option>
@@ -140,11 +133,10 @@ const createNewWorkout = () => {
         </div>
 
 
-        {workoutType === 'Strength' ?
+        {post.tag === 'Strength' ?
 
             <WorkoutForm
                 type="Create"
-                tag="strength"
                 submitting={submitting}
                 handleSubmit={createWorkout}
                 handleClick={handleClick}
@@ -155,10 +147,9 @@ const createNewWorkout = () => {
             />
 
 
-        : workoutType === 'Class' ?
+        : post.tag === 'Class' ?
             <ClassForm
                 type="Create"
-                tag="class"
                 submitting={submitting}
                 handleSubmit={createWorkout}
                 post={post}
@@ -167,10 +158,9 @@ const createNewWorkout = () => {
                 setSelectedDate={setSelectedDate}
             />
 
-        : workoutType === 'Cardio' ?
+        : post.tag === 'Cardio' ?
             <CardioForm
                 type="Create"
-                tag="cardio"
                 submitting={submitting}
                 handleSubmit={createWorkout}
                 post={post}
@@ -179,10 +169,9 @@ const createNewWorkout = () => {
                 setSelectedDate={setSelectedDate}
             />
 
-        :  workoutType === 'HIIT' ?
+        :  post.tag === 'HIIT' ?
             <HighIntensityForm
                 type="Create"
-                tag="hiit"
                 submitting={submitting}
                 handleSubmit={createWorkout}
                 post={post}
