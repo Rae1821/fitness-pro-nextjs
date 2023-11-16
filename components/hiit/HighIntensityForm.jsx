@@ -9,14 +9,16 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
 
 
 
-
   return (
 
-    <section className="w-full max-w-full flex-start flex-col px-6 py-8">
-       <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-emerald-600 via-emerald-300 to-orange-500 inline-block text-transparent bg-clip-text pb-1">
-            HIIT Workout
-        </h1>
-        <p className="text-left text-sm md:text-base">{type} and record your HIIT workout</p>
+    <section className="w-full max-w-full flex-col px-6 py-8">
+        <div className="flex flex-col items-center md:items-start">
+            <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-400 inline-block text-transparent bg-clip-text pb-1">
+                HIIT Workout
+            </h1>
+                <p className="text-left text-sm md:text-base">{type} and record your HIIT workout</p>
+        </div>
+
 
 
         <form
@@ -161,7 +163,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
 
 
             <button
-            className="btn bg-orange-400 hover:bg-orange-300 btn-sm py-1 px-3 mt-4"
+            className="btn btn-warning btn-sm py-1 px-3 mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise

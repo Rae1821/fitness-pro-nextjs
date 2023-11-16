@@ -1,22 +1,13 @@
-import CardioCard from './CardioCard';
-import WorkoutCard from './WorkoutCard';
-import ClassCard from './ClassCard';
-import HighIntensityCard from './HighIntensityCard';
-
-import Image from 'next/image'
+import CardioCard from './cardio/CardioCard';
+import WorkoutCard from './strength/WorkoutCard';
+import ClassCard from './class/ClassCard';
+import HighIntensityCard from './hiit/HighIntensityCard';
 
 
-
-
-const Profile = ({ name, data, handleEdit, handleDelete }) => {
+const Profile = ({ data, handleEdit, handleDelete }) => {
   return (
     <section className="w-full min-h-screen p-2 mx-auto max-w-7xl">
-      <h1 className="text-6xl mt-8 text-center lg:text-left font-display font-bold orange_gradient pb-1">
-          {name} <span className="">
-          Profile
-            </span>
-      </h1>
-      <p className="text-center text-gray-600 sm:text-xl max-w-2xl lg:text-left ">Find all your completed workouts here</p>
+      <p className="text-gray-600 sm:text-xl max-w-2xl text-left ml-4 ">Find all your completed workouts here</p>
 
        <div className="mt-24 text-left grid grid-cols-1 gap-10">
           <div className="w-full">
@@ -25,6 +16,7 @@ const Profile = ({ name, data, handleEdit, handleDelete }) => {
             <div className="">
               <ul>
                 {data.map((post) => (
+                  post.tag === "strength" ? (
                   <WorkoutCard
                     key={post._id}
                     post={post}
@@ -32,13 +24,14 @@ const Profile = ({ name, data, handleEdit, handleDelete }) => {
                     handleEdit={() => handleEdit && handleEdit(post)}
                     handleDelete={() => handleDelete && handleDelete(post)}
                   />
+                  ) : null
                 ))}
               </ul>
             </div>
           </div>
 
-
           <div className="w-full">
+          {}
             <h2 className="text-xl text-center mb-4 font-display font-semibold">Completed Cardio Workouts</h2>
             <div>
               <ul>
@@ -52,11 +45,9 @@ const Profile = ({ name, data, handleEdit, handleDelete }) => {
                     handleDelete={() => handleDelete && handleDelete(post)}
                   />
                   ) : null
-
                 ))}
               </ul>
             </div>
-
           </div>
 
           <div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-import WorkoutCard from './WorkoutCard'
+import WorkoutCard from './strength/WorkoutCard'
 
 const DashboardCardList = ({ data, handleTagClick }) => {
 

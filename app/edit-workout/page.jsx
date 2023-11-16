@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
-import WorkoutForm from '@components/WorkoutForm';
-import ClassForm from '@components/ClassForm';
-import CardioForm from '@components/CardioForm';
-import HighIntensityForm from '@components/HighIntensityForm';
+import WorkoutForm from '@components/strength/WorkoutForm';
+import ClassForm from '@components/class/ClassForm';
+import CardioForm from '@components/cardio/CardioForm';
+import HighIntensityForm from '@components/hiit/HighIntensityForm';
 
 
 const EditWorkout = () => {
@@ -27,9 +27,11 @@ const EditWorkout = () => {
           tag: '',
           instructor: '',
           time: '',
-          speed: '',
-          incline: '',
-          duration: '',
+          intervals: 0,
+          speedHigh: 0,
+          speedLow: 0,
+          incline: 0,
+          duration: 0,
           exerciseObj: [
               {
                   exercise: '',
@@ -71,7 +73,9 @@ const EditWorkout = () => {
           tag: data.tag,
           instructor: data.instructor,
           time: data.time,
-          speed: data.speed,
+          intervals: data.intervals,
+          speedHigh: data.speedHigh,
+          speedLow: data.speedLow,
           incline: data.incline,
           duration: data.duration,
           exerciseObj: data.exerciseObj,
@@ -98,7 +102,10 @@ const EditWorkout = () => {
               workoutFocus: post.workoutFocus,
               tag: post.tag.toLowerCase(),
               instructor: post.instructor,
-              speed: post.speed,
+              time: post.time,
+              intervals: post.intervals,
+              speedHigh: post.speedHigh,
+              speedLow: post.speedLow,
               incline: post.incline,
               duration: post.duration,
               exerciseObj: post.exerciseObj

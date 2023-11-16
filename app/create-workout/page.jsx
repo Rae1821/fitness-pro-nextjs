@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-import WorkoutForm from '@components/WorkoutForm';
-import ClassForm from '@components/ClassForm';
-import CardioForm from '@components/CardioForm';
-import HighIntensityForm from '@components/HighIntensityForm';
+import WorkoutForm from '@components/strength/WorkoutForm';
+import ClassForm from '@components/class/ClassForm';
+import CardioForm from '@components/cardio/CardioForm';
+import HighIntensityForm from '@components/hiit/HighIntensityForm';
 
 
 const createNewWorkout = () => {
@@ -27,9 +27,11 @@ const createNewWorkout = () => {
             tag: '',
             instructor: '',
             time: '',
-            speed: '',
-            incline: '',
-            duration: '',
+            intervals: '',
+            speedHigh: 0,
+            speedLow: 0,
+            incline: 0,
+            duration: 0,
             exerciseObj: [
                 {
                     exercise: '',
@@ -95,7 +97,9 @@ const createNewWorkout = () => {
                     tag: post.tag.toLowerCase(),
                     instructor: post.instructor,
                     time: post.time,
-                    speed: post.speed,
+                    intervals: post.intervals,
+                    speedHigh: post.speedHigh,
+                    speedLow: post.speedLow,
                     incline: post.incline,
                     duration: post.duration,
                     exerciseObj: post.exerciseObj,
@@ -121,7 +125,7 @@ const createNewWorkout = () => {
             <div className="form-control w-full max-w-xs mx-auto">
                 <select
                     value={post.tag}
-                    onChange={(e) => setPost({...post, tag: e.target.value })} className="select select-bordered select-info"
+                    onChange={(e) => setPost({...post, tag: e.target.value })} className="select select-bordered"
                 >
                     <option>Pick one</option>
                     <option>Cardio</option>

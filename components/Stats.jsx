@@ -15,60 +15,52 @@ const Stats = ({ data }) => {
 
     const [userStats, setUserStats] = useState('')
 
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //       const response = await fetch('/api/workout');
-    //       const data = await response.json();
-    //       setUserData(data);
-    //     }
+    let nov = []
+    let oct = []
 
-    //     fetchPosts();
-    //   }, [])
+    useEffect(() => {
+        const fetchPosts = async () => {
+          const response = await fetch('/api/workout');
+          const data = await response.json();
+          setUserData(data);
+        }
 
-      //const totalWorkouts = userData.length;
+        fetchPosts();
+      }, [])
 
-      console.log(data)
+      console.log(userData)
+
+      const monthlyWorkouts = userData.map((post) => {
+        const formattedMonth = new Date(post.date).toLocaleDateString('en-US', {
+          month: 'numeric',
+        })
+        if(formattedMonth === '11') {
+          nov.push(formattedMonth)
+        } else {
+          oct.push(formattedMonth)
+        }
+        return formattedMonth
+
+      })
 
 
-      // const yearlyWorkouts = userData.map((workout) => {
-      //       let date = workout.date
 
-      //       console.log(date)
-      // })
-
-
-      // const tagData = userData.map((obj) => {
-      //     obj.tag === "strength" ? setStrengthCount(prevStrengthCount => prevStrengthCount + 1)
-      //     : null
-      // })
-
-      // const findTag = () => {
-      //   for(let i = 0; i < userData.length; i++) {
-      //     console.log(userData[i].tag)
-      //     if(userData[i].tag === "strength") {
-      //       setStrengthCount(prevStrengthCount => prevStrengthCount++)
-      //     }
-      //   }
-      // }
-
-      // findTag()
 
 
 
   return (
 
-
     <div className="stats stats-vertical lg:stats-horizontal shadow">
 
     <div className="stat">
         <div className="stat-title">Workouts</div>
-        <div className="stat-value">{}</div>
+        <div className="stat-value">{userData.length}</div>
         <div className="stat-desc">Total To Date</div>
     </div>
 
     <div className="stat">
-        <div className="stat-title">Strength Workouts</div>
-        <div className="stat-value">{}</div>
+        <div className="stat-title">Workouts This Month</div>
+        <div className="stat-value">{nov.length}</div>
         <div className="stat-desc">↗︎ 400 (22%)</div>
     </div>
 

@@ -3,32 +3,17 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { LiaDumbbellSolid } from "react-icons/lia";
+import { LiaHeartbeatSolid } from "react-icons/lia";
 
 
-
-const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
-
+const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
     const { data: session } = useSession();
     const pathName = usePathname();
     const router = useRouter();
 
 
-    // const [liked, setLiked] = useState(false);
-    // const [open, setOpen] = useState(false);
-
-
-    // const handleLikeClick = () => {
-    //     setLiked(prevSetLiked => !prevSetLiked)
-    // }
-
-
-    // const toggleWorkout = (index) => {
-    //     setOpen(prevOpen => !prevOpen)
-    // }
-
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'long',
+        month: 'numeric',
         day: 'numeric',
         year: 'numeric',
     });
@@ -42,20 +27,16 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
 
   return (
-
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border  border-base-200 bg-base-100 mb-4 max-w-3xl font-display md:px-4 shadow-lg bg-base-50">
+        <div className="collapse collapse-plus border-b  border-base-200 mb-4 font-display md:px-4 rounded-none">
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
-
                 <div className="flex justify-between items-center gap-2">
+                <p className="badge badge-outline badge-warning">HIIT</p>
                     <div className="flex items-center">
-                        <div className="p-2 rounded-full mr-4 bg-info">
-                            <LiaDumbbellSolid />
-                        </div>
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Workout Name
+                        Class Name
                         <span className="font-semibold lg:text-lg">{post.workoutName}</span>
                         </p>
                     </div>
@@ -67,9 +48,9 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                         Duration
                         <span className="font-bold">{post.duration} min.</span>
                     </p>
-
                 </div>
             </div>
+
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
 
                 {post.exerciseObj.map((exer, index) => (
@@ -85,7 +66,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr className="hover">
                                 <th className="text-sm md:text-base lg:text-base w-40">{exer.exercise}
                                     <br />
                                     <span className={post.tag === 'strength' ? "badge badge-xs badge-info mt-2" : post.tag === 'cardio' ? "badge badge-xs badge-error" : post.tag === 'hiit' ? 'badge badge-xs badge-warning' : "badge badge-xs badge-success"}>{post.tag}</span>
@@ -100,42 +81,29 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                     </table>
                 ))}
 
-                    {session?.user.id === post.creator._id
-                        && pathName === '/profile' && (
-                        <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
-                            <p
-                                className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-accent"
-                                onClick={handleEdit}
-                            >
-                                Edit
-                            </p>
-                            <p
-                                className="font-inter text-sm cursor-pointer btn btn-ghost btn-sm"
-                                onClick={handleDelete}
-                            >
-                                Delete
-                            </p>
-                        </div>
+
+                {session?.user.id === post.creator._id
+                    && pathName === '/profile' && (
+                    <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
+                        <p
+                            className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-accent"
+                            onClick={handleEdit}
+                        >
+                            Edit
+                        </p>
+                        <p
+                            className="font-inter text-sm cursor-pointer btn btn-ghost btn-sm"
+                            onClick={handleDelete}
+                        >
+                            Delete
+                        </p>
+                    </div>
                     )}
             </div>
+
         </div>
     </div>
   )
 }
 
-export default WorkoutCard
-
-
-
-
-        {/* <div onClick={handleLikeClick} className="rounded-lg p-3">
-            <Image
-                src={liked ? '/assets/icons/star-filled.svg'
-                : '/assets/icons/star.svg'
-                }
-            alt="like btn"
-            width={20}
-            height={20}
-            className="items-center"
-            />
-        </div> */}
+export default HighIntensityCard

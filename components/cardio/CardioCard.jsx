@@ -3,17 +3,19 @@
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { LiaBellSolid } from 'react-icons/lia';
 
 
-const ClassCard = ({ post, handleEdit, handleDelete }) => {
+import { GrRun } from "react-icons/gr"
+
+
+const CardioCard = ({ post, handleEdit, handleDelete }) => {
     const { data: session } = useSession();
     const pathName = usePathname();
     const router = useRouter();
 
 
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'long',
+        month: 'numeric',
         day: 'numeric',
         year: 'numeric',
     });
@@ -29,19 +31,16 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border  border-base-200 bg-base-100 mb-4 max-w-3xl font-display md:px-4 shadow-lg bg-base-50">
+        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 rounded-none w-full max-w-3xl hover:bg-[#191e25]">
 
             <input type="checkbox" />
 
             <div className="collapse-title text-xl font-medium">
-                <div className="flex justify-between items-center gap-2">
+                <div className="flex items-center gap-5 justify-between">
+                <p className="badge badge-outline badge-error">cardio</p>
                     <div className="flex items-center">
-                        <div className="p-2 rounded-full mr-4 bg-success">
-                            <LiaBellSolid />
-                            <span className="sr-only">{post.tag}</span>
-                        </div>
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Class Name
+                        Activity Name
                         <span className="font-semibold lg:text-lg">{post.workoutName}</span>
                         </p>
                     </div>
@@ -53,24 +52,38 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
                         Duration
                         <span className="font-bold">{post.duration} min.</span>
                     </p>
+
                 </div>
             </div>
-
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
-                <div className="grid grid-cols-4">
-                    <p className="flex flex-col col-start-2 text-xs md:text-sm lg:text-base font-light">
-                        Class Time
-                        <span className="font-bold">{post.time}</span>
+                {/* <div className="grid grid-cols-4">
+                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light col-start-3">
+                        Speed
+                        <span className="font-bold">{post.speed}</span>
                     </p>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Class Focus
-                        <span className="font-bold">{post.workoutFocus}</span>
+                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light col-start-4">
+                        Incline
+                        <span className="font-bold">{post.incline}</span>
                     </p>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Instructor
-                        <span className="font-bold">{post.instructor}</span>
-                    </p>
-                </div>
+                </div> */}
+                <table className="table table-md table-auto">
+                    <thead>
+                        <tr className="text-center border-neutral">
+                            <th># of Intervals</th>
+                            <th>Speed High</th>
+                            <th>Speed Low</th>
+                            <th>Incline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="text-center">
+                            <td>10</td>
+                            <td>{post.speed}</td>
+                            <td>{post.speed}</td>
+                            <td>{post.incline}</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 {session?.user.id === post.creator._id
                         && pathName === '/profile' && (
@@ -96,4 +109,4 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
   )
 }
 
-export default ClassCard
+export default CardioCard

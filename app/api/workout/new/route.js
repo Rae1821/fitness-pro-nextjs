@@ -3,10 +3,11 @@ import Workout from '@models/workout';
 
 export const POST = async (req) => {
 
-    const { userId, date, workoutName, workoutFocus, tag, instructor, time, speed, incline,duration, exerciseObj } = await req.json();
+    const { userId, date, workoutName, workoutFocus, tag, instructor, time, intervals, speedHigh, speedLow, incline,duration, exerciseObj } = await req.json();
 
     try {
         await connectToDB();
+
 
         //Create a new workout document
         const newWorkout = new Workout({
@@ -17,7 +18,9 @@ export const POST = async (req) => {
             tag: tag,
             instructor: instructor,
             time: time,
-            speed: speed,
+            intervals: intervals,
+            speedHigh: speedHigh,
+            speedLow: speedLow,
             incline: incline,
             duration: duration,
             exerciseObj: exerciseObj.map((exercise) => ({

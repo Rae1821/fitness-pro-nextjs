@@ -9,10 +9,13 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
 
   return (
     <section className="w-full max-w-full flex-start flex-col px-6 py-8">
-        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] text-left bg-gradient-to-r from-emerald-600 via-emerald-400 to-orange-500 inline-block text-transparent bg-clip-text pb-1">
-            Strength Workout
-        </h1>
-        <p className="text-sm md:text-base lg:text-left">{type} and record your strength workout</p>
+        <div className="flex flex-col items-center md:items-start">
+            <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.15] text-left bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 inline-block text-transparent bg-clip-text pb-1">
+                Strength Workout
+            </h1>
+            <p className="text-sm md:text-base lg:text-left">{type} and record your strength workout</p>
+        </div>
+
 
         <form
             onSubmit={handleSubmit}
@@ -156,7 +159,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
             })}
 
             <button
-            className="btn bg-orange-400 hover:bg-orange-300 btn-sm py-1 px-3 mt-4"
+            className="btn btn-info btn-sm py-1 px-3 mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise
