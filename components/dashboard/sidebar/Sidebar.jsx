@@ -3,6 +3,8 @@ import MenuLink from "./menuLink/MenuLink";
 import { MdBrush, MdDashboard, MdOutlineAccountCircle, MdAutoAwesome } from 'react-icons/md';
 import { FaDumbbell } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
+import Card from "../Card";
+import CompletedWorkouts from "../CompletedWorkouts";
 
 
 const menuItems = [
@@ -66,9 +68,11 @@ const Sidebar = () => {
 
     <div className="drawer-content flex flex-col items-center justify-center">
       {/* Page content here */}
-      <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
+
+
+      {/* <label htmlFor="my-drawer-2" className="btn drawer-button lg:hidden">
         <IoIosArrowForward />
-      </label>
+      </label> */}
     </div>
 
     <div className="drawer-side">

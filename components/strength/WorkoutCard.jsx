@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { LiaDumbbellSolid } from "react-icons/lia";
 
 
 const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
@@ -37,7 +35,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display md:px-4 w-full max-w-3xl shadow-lg">
+        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display md:px-4 w-full max-w-3xl shadow-lg bg-neutral">
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center gap-5">
@@ -59,7 +57,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
                 </div>
             </div>
-            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2">
+            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-sm">
 
                 {post.exerciseObj.map((exer, index) => (
                     <table key={index} className="table table-xs table-auto md:table-sm">
@@ -74,26 +72,25 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="hover:bg-neutral border-neutral">
-                                <th className="text-xs md:text-base lg:text-base w-40">{exer.exercise}
+                            <tr className="hover:bg-neutral border-neutral text-center">
+                                <th className="text-xs md:text-base w-40">{exer.exercise}
                                     <br />
-                                    {/* <span className="badge badge-xs badge-info">{post.tag}</span> */}
                                 </th>
-                                <td className="text-center ">{exer.sets}</td>
-                                <td className="text-center">{exer.reps}</td>
-                                <td className="text-center">{exer.weight1}</td>
-                                <td className="text-center">{exer.weight2}</td>
-                                <td className="text-center">{exer.weight3}</td>
+                                <td>{exer.sets}</td>
+                                <td>{exer.reps}</td>
+                                <td>{exer.weight1}</td>
+                                <td>{exer.weight2}</td>
+                                <td>{exer.weight3}</td>
                             </tr>
                         </tbody>
                     </table>
                 ))}
 
                     {session?.user.id === post.creator._id
-                        && pathName === '/profile' && (
+                        && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                             <p
-                                className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-accent"
+                                className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
                                 onClick={handleEdit}
                             >
                                 Edit

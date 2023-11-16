@@ -9,19 +9,18 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
     <div className="p-5 rounded-lg mt-5">
         <div className="flex items-start">
             {/* <Search placeholder="Search for a workout..."  /> */}
-            <Link href="/create-workout">
-                <button className="btn btn-accent btn-sm">New</button>
-            </Link>
         </div>
         <div>
-            <ul className="flex items-center justify-between max-w-3xl my-2">
+            {/* <ul className="flex items-center justify-between max-w-3xl my-2">
                 <li>Tag</li>
                 <li>Workout Name</li>
                 <li>Completed</li>
                 <li>Duration</li>
-            </ul>
+            </ul> */}
+            <h2 className="text-2xl mb-2">Recent Workouts</h2>
         </div>
         <div>
+        {/* Cardio Workouts */}
             <ul>
                 {data.map((post) => (
                     post.tag === "cardio" ? (
@@ -37,7 +36,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
             </ul>
         </div>
         <div>
-            <p>Strength Workouts</p>
+            {/* Strength Workouts */}
             <ul>
                 {data.map((post) => (
                     post.tag === "strength" ? (
@@ -53,7 +52,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
             </ul>
         </div>
         <div>
-            <p>Class Workouts</p>
+            {/* Class Workouts */}
             <ul>
                 {data.map((post) => (
                     post.tag === "class" ? (
@@ -69,7 +68,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
             </ul>
         </div>
         <div>
-            <p>HIIT Workouts</p>
+            {/* HIIT Workouts */}
             <ul>
                 {data.map((post) => (
                     post.tag === "hiit" ? (

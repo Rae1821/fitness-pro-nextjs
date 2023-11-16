@@ -1,9 +1,7 @@
 'use client'
 
-import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { LiaHeartbeatSolid } from "react-icons/lia";
 
 
 const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
@@ -29,7 +27,7 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b  border-base-200 mb-4 font-display md:px-4 rounded-none">
+        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display md:px-4 w-full max-w-3xl shadow-lg bg-neutral">
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center gap-2">
@@ -54,9 +52,9 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
 
                 {post.exerciseObj.map((exer, index) => (
-                    <table key={index} className="table table-xs table-auto md:table-md table-zebra">
+                    <table key={index} className="table table-xs table-auto md:table-md">
                         <thead>
-                            <tr className="text-center">
+                            <tr className="text-center border-neutral">
                                 <th></th>
                                 <th>Sets</th>
                                 <th>Reps</th>
@@ -66,10 +64,8 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="hover">
+                            <tr className="hover:bg-neutral border-neutral text-center">
                                 <th className="text-sm md:text-base lg:text-base w-40">{exer.exercise}
-                                    <br />
-                                    <span className={post.tag === 'strength' ? "badge badge-xs badge-info mt-2" : post.tag === 'cardio' ? "badge badge-xs badge-error" : post.tag === 'hiit' ? 'badge badge-xs badge-warning' : "badge badge-xs badge-success"}>{post.tag}</span>
                                 </th>
                                 <td className="text-center ">{exer.sets}</td>
                                 <td className="text-center">{exer.reps}</td>
@@ -86,7 +82,7 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
                     && pathName === '/profile' && (
                     <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                         <p
-                            className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-accent"
+                            className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
                             onClick={handleEdit}
                         >
                             Edit

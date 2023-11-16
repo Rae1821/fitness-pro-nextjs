@@ -64,13 +64,35 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                     />
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Speed</span>
+                    <span className="flex flex-col font-semibold justify-center items-center">Intervals</span>
                     <input
                         type="text"
-                        name="speed"
+                        name="intervals"
+                        placeholder="10"
+                        value={post.intervals}
+                        onChange={(e) => setPost({ ...post, intervals: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                    />
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Speed High</span>
+                    <input
+                        type="text"
+                        name="speedHigh"
+                        placeholder="6.0"
+                        value={post.speedHigh}
+                        onChange={(e) => setPost({ ...post, speedHigh: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                    />
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Speed Low</span>
+                    <input
+                        type="text"
+                        name="speedLow"
                         placeholder="3.0"
-                        value={post.speed}
-                        onChange={(e) => setPost({ ...post, speed: e.target.value })}
+                        value={post.speedLow}
+                        onChange={(e) => setPost({ ...post, speedLow: e.target.value })}
                         className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
                     />
                 </label>

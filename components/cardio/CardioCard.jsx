@@ -1,11 +1,8 @@
 'use client'
 
-import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
-
-import { GrRun } from "react-icons/gr"
 
 
 const CardioCard = ({ post, handleEdit, handleDelete }) => {
@@ -31,13 +28,13 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 rounded-none w-full max-w-3xl hover:bg-[#191e25]">
+        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full max-w-3xl mb-4 bg-neutral shadow-lg">
 
             <input type="checkbox" />
 
             <div className="collapse-title text-xl font-medium">
                 <div className="flex items-center gap-5 justify-between">
-                <p className="badge badge-outline badge-error">cardio</p>
+                <p className="badge badge-outline badge-accent">cardio</p>
                     <div className="flex items-center">
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Activity Name
@@ -56,17 +53,7 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                 </div>
             </div>
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
-                {/* <div className="grid grid-cols-4">
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light col-start-3">
-                        Speed
-                        <span className="font-bold">{post.speed}</span>
-                    </p>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light col-start-4">
-                        Incline
-                        <span className="font-bold">{post.incline}</span>
-                    </p>
-                </div> */}
-                <table className="table table-md table-auto">
+                <table className="table table-xs table-auto md:table-sm">
                     <thead>
                         <tr className="text-center border-neutral">
                             <th># of Intervals</th>
@@ -76,20 +63,20 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="text-center">
-                            <td>10</td>
-                            <td>{post.speed}</td>
-                            <td>{post.speed}</td>
+                        <tr className="text-center hover:bg-neutral border-neutral">
+                            <td>{post.intervals}</td>
+                            <td>{post.speedHigh}</td>
+                            <td>{post.speedLow}</td>
                             <td>{post.incline}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 {session?.user.id === post.creator._id
-                        && pathName === '/profile' && (
+                        && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                             <p
-                                className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-accent"
+                                className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-error"
                                 onClick={handleEdit}
                             >
                                 Edit

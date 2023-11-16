@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
-import { LiaBellSolid } from 'react-icons/lia';
+
 
 
 const ClassCard = ({ post, handleEdit, handleDelete }) => {
@@ -30,7 +29,7 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 rounded-none">
+        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral max-w-3xl w-full mb-4">
 
             <input type="checkbox" />
 
@@ -55,26 +54,30 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
             </div>
 
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
-                <div className="grid grid-cols-4">
-                    <p className="flex flex-col col-start-2 text-xs md:text-sm lg:text-base font-light">
-                        Class Time
-                        <span className="font-bold">{post.time}</span>
-                    </p>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Class Focus
-                        <span className="font-bold">{post.workoutFocus}</span>
-                    </p>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Instructor
-                        <span className="font-bold">{post.instructor}</span>
-                    </p>
-                </div>
+                <table className="table table-sm table-auto">
+                    <thead>
+                        <tr className="text-center border-neutral">
+                            <th></th>
+                            <th>Time</th>
+                            <th>Class Focus</th>
+                            <th>Instructor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="hover:bg-neutral border-neutral text-center">
+                            <td></td>
+                            <td>{post.time}</td>
+                            <td>{post.workoutFocus}</td>
+                            <td>{post.instructor}</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 {session?.user.id === post.creator._id
-                        && pathName === '/profile' && (
+                        && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                             <p
-                                className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-accent"
+                                className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
                                 onClick={handleEdit}
                             >
                                 Edit
@@ -88,7 +91,6 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
                         </div>
                     )}
             </div>
-
         </div>
     </div>
   )

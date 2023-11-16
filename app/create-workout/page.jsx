@@ -27,7 +27,7 @@ const createNewWorkout = () => {
             tag: '',
             instructor: '',
             time: '',
-            intervals: '',
+            intervals: 0,
             speedHigh: 0,
             speedLow: 0,
             incline: 0,
