@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 
 const SwapToggle = () => {
 
-    const [theme, setTheme] = useState('night');
+    const [theme, setTheme] = useState('dracula');
     const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'night' : 'light');
+        setTheme(theme === 'light' ? 'dracula' : 'light');
     };
 
     useEffect(() => {

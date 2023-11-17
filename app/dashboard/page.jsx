@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Card from "@components/dashboard/Card"
 import CompletedWorkouts from "@components/dashboard/CompletedWorkouts";
+import Stats from '@components/Stats';
 
 const menuItems = [
   {
@@ -113,10 +114,11 @@ const MyDashboard = () => {
       <div className="drawer-content flex flex-col items-center justify-center">
       {/* Page content here */}
 
-        <div className="flex flex-col md:flex-row gap-5 justify-between">
-          <Card />
+        <div>
+          <Stats />
           <Card />
         </div>
+
         <div>
           <CompletedWorkouts
             data={totalPosts}
@@ -125,8 +127,10 @@ const MyDashboard = () => {
           />
         </div>
 
-        <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+        <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open sidebar</label>
       </div>
+
+        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
 
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>

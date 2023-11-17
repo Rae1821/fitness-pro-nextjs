@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -16,13 +17,19 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
         year: 'numeric',
     });
 
+
     const sortedDate = formattedDate.split('/')
 
     const newSortedDate = sortedDate.sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
     })
 
+    // const d = new Date(post.date)
 
+    // console.log(d)
+    // console.log(d.getMonth())
+    // console.log(d.getFullYear())
+    // console.log(d.getDate())
 
   return (
     <div>
@@ -79,7 +86,7 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
 
 
                 {session?.user.id === post.creator._id
-                    && pathName === '/profile' && (
+                    && pathName === '/dashboard' && (
                     <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                         <p
                             className="font-inter text-sm cursor-pointer btn btn-sm btn-error"

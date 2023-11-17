@@ -36,44 +36,42 @@ const Stats = ({ data }) => {
         })
         if(formattedMonth === '11') {
           nov.push(formattedMonth)
-        } else {
+        } else if(formattedMonth === '10') {
           oct.push(formattedMonth)
         }
         return formattedMonth
-
       })
 
-
+      const currentDate = new Date();
+      console.log(currentDate)
 
 
 
 
   return (
-
+<>
     <div className="stats stats-vertical lg:stats-horizontal shadow">
 
-    <div className="stat">
+    <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>
-        <div className="stat-value">{userData.length}</div>
+        <div className="stat-value text-center">{userData.length}</div>
         <div className="stat-desc">Total To Date</div>
     </div>
 
-    <div className="stat">
-        <div className="stat-title">Workouts This Month</div>
-        <div className="stat-value">{nov.length}</div>
+    <div className="stat bg-neutral shadow-md">
+        <div className="stat-title">This Month</div>
+        <div className="stat-value text-center">{nov.length}</div>
         <div className="stat-desc">↗︎ 400 (22%)</div>
     </div>
 
-    <div className="stat">
-        <div className="stat-title">New Registers</div>
-        <div className="stat-value">1,200</div>
+    <div className="stat bg-neutral shadow-md">
+        <div className="stat-title">Last Month</div>
+        <div className="stat-value text-center">{oct.length}</div>
         <div className="stat-desc">↘︎ 90 (14%)</div>
     </div>
 
     </div>
-
-
-
+</>
 
   )
 }
