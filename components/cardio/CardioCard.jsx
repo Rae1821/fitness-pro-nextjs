@@ -12,7 +12,8 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
 
 
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'numeric',
+        weekday: 'short'
+,       month: 'short',
         day: 'numeric',
         year: 'numeric',
     });

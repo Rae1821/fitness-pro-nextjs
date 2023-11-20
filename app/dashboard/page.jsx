@@ -107,6 +107,7 @@ const MyDashboard = () => {
 
 
 
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -116,7 +117,6 @@ const MyDashboard = () => {
 
         <div>
           <Stats />
-          <Card />
         </div>
 
         <div>
@@ -147,26 +147,6 @@ const MyDashboard = () => {
         </ul>
       </div>
     </div>
-
-    // <div className="flex">
-    //     <div className="flex flex-col gap-5">
-    //       <div className="flex flex-col md:flex-row gap-5 justify-between">
-    //         {/* <Card />
-    //         <Card />
-    //         <Card /> */}
-    //       </div>
-    //       <div>
-    //         <CompletedWorkouts
-    //           data={totalPosts}
-    //           handleEdit={handleEdit}
-    //           handleDelete={handleDelete}
-    //         />
-    //       </div>
-    //     </div>
-    // </div>
-
-
-
   )
 }
 

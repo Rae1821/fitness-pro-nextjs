@@ -61,13 +61,13 @@ const Stats = ({ data }) => {
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">This Month</div>
         <div className="stat-value text-center">{nov.length}</div>
-        <div className="stat-desc">↗︎ 400 (22%)</div>
+        <div className="stat-desc text-lime-500">↗︎ 400 (22%)</div>
     </div>
 
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Last Month</div>
         <div className="stat-value text-center">{oct.length}</div>
-        <div className="stat-desc">↘︎ 90 (14%)</div>
+        <div className="stat-desc text-rose-400">↘︎ 90 (14%)</div>
     </div>
 
     </div>

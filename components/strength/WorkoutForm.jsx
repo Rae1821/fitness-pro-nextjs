@@ -29,7 +29,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                         <DatePicker
                             selected={selectedDate}
                             onChange={(date)=> setSelectedDate(date)}
-                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm w-80 sm:w-96 lg:w-72"
+                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
                         />
                     </div>
                 </label>
@@ -42,7 +42,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                         value={post.workoutName}
                         placeholder="Legs"
                         onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
                 {/* pre-populated tag */}
@@ -59,7 +59,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                         value={post.duration}
                         placeholder="30"
                         onChange={(e) => setPost({ ...post, duration: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
             </div>
@@ -80,7 +80,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].exercise = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2 shadow-sm"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 shadow-sm"
                         />
                     </label>
 
@@ -95,7 +95,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].sets = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-smoutline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -109,7 +109,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].reps = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -123,7 +123,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].weight1 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -137,7 +137,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].weight2 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -151,7 +151,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].weight3 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                 </div>
@@ -159,7 +159,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
             })}
 
             <button
-            className="btn btn-info btn-sm py-1 px-3 mt-4"
+            className="btn btn-info btn-sm btn-outline py-1 px-3 mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise
@@ -168,7 +168,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
             <div className="w-full flex justify-end items-center my-8 gap-4">
                 <button
                     disabled={submitting}
-                    className="px-5 py-1.5 text-bold btn btn-success btn-sm"
+                    className="px-5 py-1.5 text-bold btn btn-accent btn-sm"
 
                 >
                     {submitting ? `${type}...` : type}

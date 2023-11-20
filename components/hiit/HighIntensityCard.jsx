@@ -38,7 +38,7 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete }) => {
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center gap-2">
-                <p className="badge badge-outline badge-warning">HIIT</p>
+                <p className="badge badge-outline badge-warning">hiit</p>
                     <div className="flex items-center">
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Class Name

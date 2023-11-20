@@ -13,34 +13,19 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
 
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'numeric',
+        weekday: 'short',
+        month: 'short',
         day: 'numeric',
         year: 'numeric',
     });
 
-    const formattedMonth = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'numeric',
+    const sortedDate = formattedDate.split('/')
+
+    const newSortedDate = sortedDate.sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
     })
 
-    //const sortedDate = formattedDate.split('/')
 
-    // const d = new Date(post.date)
-
-    // const sortedDate = d.sort((a,b) => {
-    //     return new Date(a.date ) - new Date(b.date)
-    // })
-
-    // const newSortedDate = sortedDate.sort((a, b) => {
-    //     return new Date(a.date) - new Date(b.date);
-    // })
-
-
-
-
-    // console.log(d)
-    // console.log(d.getMonth())
-    // console.log(d.getFullYear())
-    // console.log(d.getDate())
 
   return (
 
@@ -59,7 +44,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                     </div>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base row-start-2 font-light">
                     Date
-                        <span className="font-bold">{post.date}</span>
+                        <span className="font-bold">{newSortedDate.join('/')}</span>
                     </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Duration
