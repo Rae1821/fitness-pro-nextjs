@@ -31,7 +31,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display md:px-4 w-full max-w-3xl shadow-lg bg-neutral">
+        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display md:px-4 w-full shadow-lg bg-neutral">
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center gap-5">

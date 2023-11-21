@@ -30,7 +30,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                         <DatePicker
                             selected={selectedDate}
                             onChange={(date)=> setSelectedDate(date)}
-                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm w-80 sm:w-96 lg:w-72"
+                            className="input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
                         />
                     </div>
                 </label>
@@ -42,7 +42,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                         placeholder="All Out Athlete"
                         value={post.workoutName}
                         onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>
             {/* pre-populated tag */}
@@ -61,7 +61,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                         name="time"
                         placeholder="5:30pm"
                         onChange={(e) => setPost({...post, time: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0 col-span-2"
                     />
                 </label>
                 {/* Duration Input */}
@@ -73,7 +73,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                         placeholder="45"
                         value={post.duration}
                         onChange={(e) => setPost({ ...post, duration: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>
                 {/* Class Focus Input */}
@@ -85,7 +85,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                         placeholder="Abs"
                         value={post.workoutFocus}
                         onChange={(e) => setPost({ ...post, workoutFocus: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>
                 {/* Class Instructor Input */}
@@ -97,7 +97,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                         placeholder="Rachel"
                         value={post.instructor}
                         onChange={(e) => setPost({ ...post, instructor: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>
             </div>
@@ -109,7 +109,7 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
                     {submitting ? `${type}...` : type}
                 </button>
 
-                <Link href="/" className="text-gray-500 text-sm">
+                <Link href="/" className="text-sm">
                     Cancel
                 </Link>
             </div>

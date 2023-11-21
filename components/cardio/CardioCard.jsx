@@ -29,7 +29,7 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full max-w-3xl mb-4 bg-neutral shadow-lg">
+        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full  mb-4 bg-neutral shadow-lg">
 
             <input type="checkbox" />
 

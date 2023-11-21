@@ -20,7 +20,6 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
         </div>
 
 
-
         <form
             onSubmit={handleSubmit}
             className="mt-10 mx-auto w-full">
@@ -33,7 +32,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                         <DatePicker
                             selected={selectedDate}
                             onChange={(date)=> setSelectedDate(date)}
-                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm w-80 sm:w-96 lg:w-72"
+                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
                         />
                     </div>
                 </label>
@@ -46,7 +45,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                         placeholder="Arms and Abs"
                         value={post.workoutName}
                         onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
                 {/* pre-populated tag */}
@@ -63,7 +62,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                         placeholder="45"
                         value={post.duration}
                         onChange={(e) => setPost({ ...post, duration: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
             </div>
@@ -84,7 +83,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                                 updatedExerciseObj[index].exercise = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2 shadow-sm"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0 col-span-2 shadow-sm"
                         />
                     </label>
                     <label>
@@ -98,7 +97,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                                 updatedExerciseObj[index].sets = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -112,7 +111,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                                 updatedExerciseObj[index].reps = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -126,7 +125,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                                 updatedExerciseObj[index].weight1 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -140,7 +139,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                                 updatedExerciseObj[index].weight2 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -154,7 +153,7 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                                 updatedExerciseObj[index].weight3 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0 col-span-2"
                         />
                     </label>
                 </div>

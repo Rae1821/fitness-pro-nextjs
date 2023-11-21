@@ -50,7 +50,7 @@ const Stats = ({ data }) => {
 
   return (
 <>
-    <div className="stats stats-vertical lg:stats-horizontal shadow">
+    <div className="stats stats-vertical md:stats-horizontal shadow">
 
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>

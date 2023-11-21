@@ -45,7 +45,7 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                         placeholder="Treadmill Run"
                         value={post.workoutName}
                         onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
                 <label>
@@ -60,7 +60,7 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                         placeholder="30"
                         value={post.duration}
                         onChange={(e) => setPost({ ...post, duration: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
                 <label>
@@ -71,7 +71,7 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                         placeholder="10"
                         value={post.intervals}
                         onChange={(e) => setPost({ ...post, intervals: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
                 <label>
@@ -82,7 +82,7 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                         placeholder="6.0"
                         value={post.speedHigh}
                         onChange={(e) => setPost({ ...post, speedHigh: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
                 <label>
@@ -93,7 +93,7 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                         placeholder="3.0"
                         value={post.speedLow}
                         onChange={(e) => setPost({ ...post, speedLow: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>
                 <label>
@@ -104,7 +104,7 @@ const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelecte
                         placeholder="5"
                         value={post.incline}
                         onChange={(e) => setPost({ ...post, incline: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
                     />
                 </label>
 

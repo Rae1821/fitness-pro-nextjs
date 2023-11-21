@@ -16,49 +16,46 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
         // return new Date(post.date)
         return post.date
     })
-    //console.log(dateArr)
 
-    //console.log(dateArr.sort((a,b) => {
-    //     return new Date(a.date) - new Date(b.date)
-    // })
-    // )
 
     const handleTagClick = (e) => {
         setSelectedTag(e.target.value)
     }
 
   return (
-    <div className="p-5 rounded-lg mt-5">
-        <div className="flex items-center justify-center mb-4">
+    <div className="p-5 rounded-lg mt-10">
+
+        <div className="flex items-center  mb-4 justify-between mx-4">
+        <h2 className="text-2xl">Recent Workouts</h2>
             <div className="flex gap-5">
                 <button
                     value="all"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-sm">
+                    className="btn btn-xs">
                     All
                 </button>
                 <button
                     value="cardio"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-sm btn-ouline btn-error">
+                    className="btn btn-xs btn-error">
                     Cardio
                 </button>
                 <button
                     value="class"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-sm btn-ouline">
+                    className="btn btn-xs btn-success">
                     Class
                 </button>
                 <button
                     value="hiit"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-sm btn-ouline">
+                    className="btn btn-xs btn-warning">
                     HIIT
                 </button>
                 <button
                     value="strength"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-sm btn-ouline">
+                    className="btn btn-xs btn-info">
                     Strength
                 </button>
             </div>

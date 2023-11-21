@@ -12,7 +12,8 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
 
 
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        month: 'numeric',
+        weekday: 'short',
+        month: 'short',
         day: 'numeric',
         year: 'numeric',
     });
@@ -29,7 +30,7 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral max-w-3xl w-full mb-4">
+        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral w-full mb-4">
 
             <input type="checkbox" />
 
