@@ -101,56 +101,56 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
                         />
                     </label>
                     <label>
-                        Reps:
+                        Weight:
                         <input
                             type="text"
-                            value={exer.reps}
-                            name="reps"
+                            value={exer.weight}
+                            name="weight"
                             onChange={(e) => {
                                 const updatedExerciseObj = [...post.exerciseObj];
-                                updatedExerciseObj[index].reps = e.target.value;
+                                updatedExerciseObj[index].weight = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
-                        Weight 1
+                        Rep 1
                         <input
                             type="text"
-                            value={exer.weight1}
-                            name="weight1"
+                            value={exer.rep1}
+                            name="rep1"
                             onChange={(e) => {
                                 const updatedExerciseObj = [...post.exerciseObj];
-                                updatedExerciseObj[index].weight1 = e.target.value;
+                                updatedExerciseObj[index].rep1 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
-                        Weight 2
+                        Rep 2
                         <input
                             type="text"
-                            value={exer.weight2}
-                            name="weight2"
+                            value={exer.rep2}
+                            name="rep2"
                             onChange={(e) => {
                                 const updatedExerciseObj = [...post.exerciseObj];
-                                updatedExerciseObj[index].weight2 = e.target.value;
+                                updatedExerciseObj[index].rep2 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
-                        Weight 3
+                        Rep 3
                         <input
                             type="text"
-                            value={exer.weight3}
-                            name="weight3"
+                            value={exer.rep3}
+                            name="rep3"
                             onChange={(e) => {
                                 const updatedExerciseObj = [...post.exerciseObj];
-                                updatedExerciseObj[index].weight3 = e.target.value;
+                                updatedExerciseObj[index].rep3 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0 col-span-2"

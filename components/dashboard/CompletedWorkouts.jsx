@@ -10,12 +10,8 @@ import WorkoutCard from "../strength/WorkoutCard"
 const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
 
     const [selectedTag, setSelectedTag] = useState('all')
-    console.log(selectedTag)
 
-    const dateArr = data.map((post) => {
-        // return new Date(post.date)
-        return post.date
-    })
+   const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));
 
 
     const handleTagClick = (e) => {
@@ -62,7 +58,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
         </div>
 
         <div>
-            {data.map((post) => (
+            {sortedData.map((post) => (
                 selectedTag === "cardio" && post.tag === "cardio" ?
                 <ul>
                 <CardioCard
@@ -94,7 +90,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
                     <WorkoutCard
                         key={post._id}
                         post={post}
-                        selectedDate={post.selectedDate}
+                        selectedDate={post.selectedDate} //
                         handleEdit={() => handleEdit && handleEdit(post)}
                         handleDelete={() => handleDelete && handleDelete(post)}
                     />

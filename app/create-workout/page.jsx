@@ -36,10 +36,10 @@ const createNewWorkout = () => {
                 {
                     exercise: '',
                     sets: 0,
-                    reps: 0,
-                    weight1: 0,
-                    weight2: 0,
-                    weight3: 0
+                    weight: 0,
+                    rep1: 0,
+                    rep2: 0,
+                    rep3: 0
                 }
             ]
         }
@@ -53,10 +53,10 @@ const createNewWorkout = () => {
             exerciseObj: [...post.exerciseObj, {
                 exercise: '',
                 sets: 0,
-                reps: 0,
-                weight1: 0,
-                weight2: 0,
-                weight3: 0,
+                weight: 0,
+                rep1: 0,
+                rep2: 0,
+                rep3: 0,
             }]
         });
 
@@ -138,7 +138,6 @@ const createNewWorkout = () => {
 
 
         {post.tag === 'Strength' ?
-
             <WorkoutForm
                 type="Create"
                 submitting={submitting}

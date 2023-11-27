@@ -19,35 +19,32 @@ Chart.register(
     Legend
 );
 
-
-
 const BarChart = ({ data }) => {
 
+    //extract the months from each workout
+    const monthsData = data.map((post) => new Date(post.date).getMonth());
+    console.log(monthsData)
 
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // const exerciseArr = exerciseObjData.flatMap((obj) => {
-    //     return obj.exerciseObj
-    // })
+    // const month = monthsData.map((month) => (
+    //     console.log(months[month])
+    // ))
 
-    // const weight1Arr = exerciseArr.map((exer) => {
-    //     return exer.weight1
-    // })
+    //count the occurences of each month
+    const workoutCountByMonth = monthsData.reduce((acc, month) => {
 
-    // labels: data.map(({ date }) =>
-    //     new Date(date).toLocaleDateString('en-US', {
-    //         weekday: 'short',
-    //         month: 'short',
-    //         day: 'numeric',
-    //     })
-    //     ),
-
+        acc[month] = (acc[month] || 0) + 1;
+        return acc;
+    }, {})
+    console.log(workoutCountByMonth)
 
     const chartData = {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
         datasets: [
             {
                 label: '# of Workouts',
-                data: [10, 20, 5, 0, 2, 15, 20, 4, 9, 12, 11, 10],
+                data: workoutCountByMonth,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',

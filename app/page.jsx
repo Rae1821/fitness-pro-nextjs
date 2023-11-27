@@ -46,14 +46,17 @@ const Home = () => {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
             <h1 className="mb-5 text-6xl text-gray-200 font-bold">Welcome Back</h1>
-            <p className="mb-5 text-gray-300 max-w-sm">"{randomQuote.quote}"
-            <br />
-              <span className="text-xs">- {randomQuote.author}</span></p>
 
               {session?.user ? (
-                <div className="flex justify-between max-w-xs gap-2 mx-auto">
+                <div>
+                  <p className="mb-5 text-gray-300 max-w-sm">"{randomQuote.quote}"
+                  <br />
+                  <span className="text-xs">- {randomQuote.author}</span></p>
+
+                  <div className="flex justify-between max-w-xs gap-2 mx-auto">
                   <Link href="/create-workout" className="btn btn-sm btn-accent">Record Workout</Link>
                   <Link href="/dashboard" className="btn btn-sm btn-accent btn-outline">My Dashboard</Link>
+                  </div>
                 </div>
 
 

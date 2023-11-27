@@ -34,31 +34,26 @@ const menuItems = [
     ]
   },
   {
-    title: "Workouts",
+    title: "Workout Page",
     list: [
       {
-        title: "Total",
-        path: "/profile",
-        icon: <MdAutoAwesome />
-      },
-      {
         title: "Strength",
-        path: "/strength-workouts",
+        path: "/strength",
         icon: <FaDumbbell />,
       },
       {
         title: "Cardio",
-        path: "/strength-workouts",
+        path: "/cardio",
         icon: <FaDumbbell />,
       },
       {
         title: "Class",
-        path: "/strength-workouts",
+        path: "/class",
         icon: <FaDumbbell />,
       },
       {
         title: "HIIT",
-        path: "/strength-workouts",
+        path: "/hiit",
         icon: <FaDumbbell />,
       },
     ]

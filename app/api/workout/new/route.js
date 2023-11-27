@@ -26,10 +26,10 @@ export const POST = async (req) => {
             exerciseObj: exerciseObj.map((exercise) => ({
                 exercise: exercise.exercise,
                 sets: exercise.sets,
-                reps: exercise.reps,
-                weight1: exercise.weight1,
-                weight2: exercise.weight2,
-                weight3: exercise.weight3
+                weight: exercise.weight,
+                rep1: exercise.rep1,
+                rep2: exercise.rep2,
+                rep3: exercise.rep3
             }))
         });
 

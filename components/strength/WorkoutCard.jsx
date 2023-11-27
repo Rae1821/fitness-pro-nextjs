@@ -10,21 +10,12 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
     const pathName = usePathname();
     const router = useRouter();
 
-
-
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
         weekday: 'short',
         month: 'short',
         day: 'numeric',
         year: 'numeric',
     });
-
-    const sortedDate = formattedDate.split('/')
-
-    const newSortedDate = sortedDate.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    })
-
 
 
   return (
@@ -44,7 +35,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                     </div>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base row-start-2 font-light">
                     Date
-                        <span className="font-bold">{newSortedDate.join('/')}</span>
+                        <span className="font-bold">{formattedDate}</span>
                     </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Duration
@@ -65,6 +56,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                                 <th>Weight 1</th>
                                 <th>Weight 2</th>
                                 <th>Weight 3</th>
+                                <th>Load</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,6 +69,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                                 <td>{exer.weight1}</td>
                                 <td>{exer.weight2}</td>
                                 <td>{exer.weight3}</td>
+                                <td>{(exer.weight1 + exer.weight2 + exer.weight3) * exer.reps}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,14 +1,13 @@
 'use client'
 
 import { useSession } from 'next-auth/react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 
 
 const ClassCard = ({ post, handleEdit, handleDelete }) => {
     const { data: session } = useSession();
     const pathName = usePathname();
-    const router = useRouter();
 
 
     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
@@ -17,14 +16,6 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
         day: 'numeric',
         year: 'numeric',
     });
-
-    const sortedDate = formattedDate.split('/')
-
-    const newSortedDate = sortedDate.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    })
-
-    console.log()
 
 
   return (
@@ -45,7 +36,7 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
                     </div>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base row-start-2 font-light">
                     Date
-                        <span className="font-bold">{newSortedDate.join('/')}</span>
+                        <span className="font-bold">{formattedDate}</span>
                     </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Duration

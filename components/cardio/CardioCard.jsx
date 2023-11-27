@@ -18,11 +18,6 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
         year: 'numeric',
     });
 
-    const sortedDate = formattedDate.split('/')
-
-    const newSortedDate = sortedDate.sort((a, b) => {
-        return new Date(a.date) - new Date(b.date);
-    })
 
 
 
@@ -44,7 +39,7 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                     </div>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base row-start-2 font-light">
                     Date
-                        <span className="font-bold">{newSortedDate.join('/')}</span>
+                        <span className="font-bold">{formattedDate}</span>
                     </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Duration

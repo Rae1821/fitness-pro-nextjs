@@ -36,10 +36,10 @@ const EditWorkout = () => {
               {
                   exercise: '',
                   sets: 0,
-                  reps: 0,
-                  weight1: 0,
-                  weight2: 0,
-                  weight3: 0
+                  weight: 0,
+                  rep1: 0,
+                  rep2: 0,
+                  rep3: 0
               }
           ]
       }
@@ -53,10 +53,10 @@ const EditWorkout = () => {
           exerciseObj: [...post.exerciseObj, {
               exercise: '',
               sets: 0,
-              reps: 0,
-              weight1: 0,
-              weight2: 0,
-              weight3: 0,
+              weight: 0,
+              rep1: 0,
+              rep2: 0,
+              rep3: 0,
           }]
       });
     };
@@ -159,7 +159,7 @@ const EditWorkout = () => {
             />
         ) : post.tag === "hiit" ? (
             <HighIntensityForm
-                type="Create"
+                type="Save"
                 submitting={submitting}
                 handleSubmit={updateWorkout}
                 post={post}

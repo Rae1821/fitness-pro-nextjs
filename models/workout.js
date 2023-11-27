@@ -3,27 +3,27 @@ import { Schema, model, models } from 'mongoose';
 const ExerciseSchema = new Schema({
     exercise: {
         type: String,
-        required: [false, "Exercise is required"],
+        required: [false, "Exercise is not required"],
     },
     sets: {
         type: Number,
-        required: [false, "Set is required"],
+        required: [false, "Set is not required"],
     },
-    reps: {
+    weight: {
         type: Number,
-        required: [false, "Reps are required"],
+        required: [false, "Weight is not required"],
     },
-    weight1: {
+    rep1: {
         type: Number,
-        required: [false, "Weight is required"],
+        required: [false, "Rep is not required"],
     },
-    weight2: {
+    rep2: {
         type: Number,
-        required: [false, "Weight is required"],
+        required: [false, "Rep is not required"],
     },
-    weight3: {
+    rep3: {
         type: Number,
-        required: [false, "Weight is required"],
+        required: [false, "Rep is not required"],
     }
 })
 
