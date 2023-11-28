@@ -1,7 +1,7 @@
 import '@styles/globals.css';
 import Navbar from '@components/Navbar';
 import Provider from '@/components/Provider';
-import SwapToggle from '@components/SwapToggle';
+//import SwapToggle from '@components/SwapToggle';
 
 export const metadata = {
     title: "Fitness Pro",
@@ -10,14 +10,14 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dracula">
       <body suppressHydrationWarning={true}>
         <Provider>
             <div className="main">
               <main>
                 <Navbar />
                 {children}
-                <SwapToggle />
+                {/* <SwapToggle /> */}
               </main>
             </div>
         </Provider>

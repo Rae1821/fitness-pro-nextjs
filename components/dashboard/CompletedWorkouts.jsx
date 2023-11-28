@@ -13,15 +13,14 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
 
    const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));
 
-
     const handleTagClick = (e) => {
         setSelectedTag(e.target.value)
     }
 
   return (
-    <div className="p-5 rounded-lg mt-10">
+    <div className="p-2 rounded-lg mt-10 mx-auto">
 
-        <div className="flex items-center  mb-4 justify-between mx-4">
+        <div className="flex items-center mb-4 justify-between mx-4">
         <h2 className="text-2xl">Recent Workouts</h2>
             <div className="flex gap-5">
                 <button
@@ -57,7 +56,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
             </div>
         </div>
 
-        <div>
+        <div className="w-full">
             {sortedData.map((post) => (
                 selectedTag === "cardio" && post.tag === "cardio" ?
                 <ul>

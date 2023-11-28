@@ -10,26 +10,33 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
     const pathName = usePathname();
     const router = useRouter();
 
-    const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-    });
+    // const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    //     weekday: 'short',
+    //     month: 'short',
+    //     day: 'numeric',
+    //     year: 'numeric',
+    // });
+    const formattedDate = new Date(post.date).toLocaleDateString();
 
+    const totalLoad = post.exerciseObj.reduce((acc, exer) => {
+         const totalWeight = (exer.weight1 + exer.weight2 + exer.weight3) * exer.reps
+         return acc + totalWeight
+})
+
+    //console.log(totalLoad)
 
   return (
 
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display md:px-4 w-full shadow-lg bg-neutral">
+        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display mx-auto md:px-4 max-w-sm md:max-w-4xl w-full shadow-lg bg-neutral">
             <input type="checkbox" />
             <div className="collapse-title text-xl font-medium">
-                <div className="flex justify-between items-center gap-5">
-                <p className="badge badge-outline badge-info">strength</p>
+                <div className="flex justify-between items-center gap-2">
+                    <p className="badge badge-outline badge-info badge-sm md:badge-md">strength</p>
                     <div className="flex items-center">
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Workout Name
+                        Focus
                         <span className="font-semibold lg:text-lg">{post.workoutName}</span>
                         </p>
                     </div>
@@ -41,9 +48,9 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                         Duration
                         <span className="font-bold">{post.duration} min.</span>
                     </p>
-
                 </div>
             </div>
+
             <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-sm">
 
                 {post.exerciseObj.map((exer, index) => (
