@@ -11,29 +11,31 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
     const router = useRouter();
 
 
-    const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        weekday: 'short'
-,       month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-    });
+//     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+//         weekday: 'short'
+// ,       month: 'short',
+//         day: 'numeric',
+//         year: 'numeric',
+//     });
 
-
+    const formattedDate = new Date(post.date).toLocaleDateString();
 
 
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full  mb-4 bg-neutral shadow-lg">
+        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full  mb-4 bg-neutral shadow-lg md:max-w-4xl mx-auto">
 
             <input type="checkbox" />
 
             <div className="collapse-title text-xl font-medium">
                 <div className="flex items-center gap-5 justify-between">
-                <p className="badge badge-outline badge-accent">cardio</p>
+                    <div className='w-8'>
+                        <p className="badge badge-outline badge-accent badge-sm md:badge-md">cardio</p>
+                    </div>
                     <div className="flex items-center">
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Activity Name
+                        Activity
                         <span className="font-semibold lg:text-lg">{post.workoutName}</span>
                         </p>
                     </div>

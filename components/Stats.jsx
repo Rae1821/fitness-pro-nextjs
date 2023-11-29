@@ -8,12 +8,15 @@ const Stats = ({ data }) => {
 
     const [userData, setUserData] = useState([])
 
-    const [strengthCount, setStrengthCount] = useState(0)
-    const [classData, setClassData] = useState(0)
-    const [cardioData, setCardioData] = useState(0)
-    const [HIITData, setHIITData] = useState(0)
+    const [userStats, setUserStats] = useState({
+        currentMonth: [],
+        lastMonth: [],
+    })
 
-    const [userStats, setUserStats] = useState('')
+    const [currentMonth, setCurrentMonth] = useState([])
+    const [lastMonth, setLastMonth] = useState([])
+
+
 
     let nov = []
     let oct = []
@@ -34,23 +37,27 @@ const Stats = ({ data }) => {
         const formattedMonth = new Date(post.date).toLocaleDateString('en-US', {
           month: 'numeric',
         })
-        if(formattedMonth === '11') {
-          nov.push(formattedMonth)
-        } else if(formattedMonth === '10') {
-          oct.push(formattedMonth)
+        const currentDate = new Date();
+        const thisMonth = currentDate.getMonth() + 1;
+
+        if(formattedMonth === thisMonth) {
+          setCurrentMonth(prevCurrentMonth => prevCurrentMonth+ 1);
+        } else if(formattedMonth === (thisMonth -1)) {
+          setLastMonth(prevLastMonth => prevLastMonth + 1)
         }
+        console.log(formattedMonth)
         return formattedMonth
       })
 
-      const currentDate = new Date();
-      console.log(currentDate)
 
+      console.log(currentMonth)
+      console.log(lastMonth)
 
 
 
   return (
 <>
-    <div className="stats stats-vertical md:stats-horizontal shadow">
+    <div className="stats stats-horizontal justify-center md:stats-horizontal shadow text-center">
 
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>

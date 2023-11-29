@@ -107,7 +107,7 @@ const createNewWorkout = () => {
                 }),
             });
             if(response.ok){
-                router.push('/profile');
+                router.push('/dashboard');
             }
         } catch (error) {
             console.log(error)

@@ -10,27 +10,29 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
     const pathName = usePathname();
 
 
-    const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-        weekday: 'short',
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-    });
+    // const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
+    //     weekday: 'short',
+    //     month: 'short',
+    //     day: 'numeric',
+    //     year: 'numeric',
+    // });
+
+    const formattedDate = new Date(post.date).toLocaleDateString();
 
 
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral w-full mb-4">
+        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral w-full mb-4 mx-auto max-w-4xl">
 
             <input type="checkbox" />
 
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center gap-2">
-                <p className="badge badge-outline badge-success">class</p>
+                <p className="badge badge-outline badge-success badge-sm md:badge-md">class</p>
                     <div className="flex items-center">
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Class Name
+                        Class
                         <span className="font-semibold lg:text-lg">{post.workoutName}</span>
                         </p>
                     </div>

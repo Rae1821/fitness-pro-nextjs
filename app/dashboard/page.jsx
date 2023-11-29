@@ -66,10 +66,11 @@ const MyDashboard = () => {
 
   const [totalPosts, setTotalPosts] = useState([]);
   const [exerciseObjData, setExerciseObjData] = useState('');
+  const [favorite, setFavorite] = useState(false)
 
   //fetch posts and save to total posts state
   useEffect(() => {
-    const fetchPosts = async () => {
+      const fetchPosts = async () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
 
@@ -110,13 +111,17 @@ const MyDashboard = () => {
     }
   };
 
+  //handle favorited posts
+  const handleLikeClick = () => {
+    // setFavorite(prevFavorite => !prevFavorite)
+    console.log("clicked")
+  }
 
 
   return (
 
-
-    <div>
-      <div className="my-10">
+    <div className="flex flex-col items-center justify-center">
+      <div className="mt-10">
         <Stats />
       </div>
       <div className="w-full">
@@ -124,6 +129,8 @@ const MyDashboard = () => {
             data={totalPosts}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
+            handleLikeClick={handleLikeClick}
+            favorite={favorite}
           />
       </div>
     </div>

@@ -7,21 +7,18 @@ import HighIntensityCard from "../hiit/HighIntensityCard"
 import WorkoutCard from "../strength/WorkoutCard"
 
 
-const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
+const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 
     const [selectedTag, setSelectedTag] = useState('all')
 
    const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));
 
-    const handleTagClick = (e) => {
-        setSelectedTag(e.target.value)
-    }
 
   return (
     <div className="p-2 rounded-lg mt-10 mx-auto">
+        <h2 className="text-3xl text-center mb-6">Recent Workouts</h2>
 
-        <div className="flex items-center mb-4 justify-between mx-4">
-        <h2 className="text-2xl">Recent Workouts</h2>
+        <div className="flex items-center justify-center mx-4 mb-6">
             <div className="flex gap-5">
                 <button
                     value="all"
@@ -32,7 +29,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
                 <button
                     value="cardio"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-xs btn-error">
+                    className="btn btn-xs btn-accent">
                     Cardio
                 </button>
                 <button
@@ -92,6 +89,8 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete}) => {
                         selectedDate={post.selectedDate} //
                         handleEdit={() => handleEdit && handleEdit(post)}
                         handleDelete={() => handleDelete && handleDelete(post)}
+                        handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
+                        favorite={favorite}
                     />
                 : selectedTag === "all" ?
                     <div>

@@ -97,7 +97,7 @@ const EditWorkout = () => {
             method: 'PATCH',
             body: JSON.stringify({
               userId: session?.user.id,
-              selectedDate: selectedDate,
+              date: selectedDate,
               workoutName: post.workoutName,
               workoutFocus: post.workoutFocus,
               tag: post.tag.toLowerCase(),
@@ -113,7 +113,7 @@ const EditWorkout = () => {
           });
 
           if (response.ok) {
-            router.push('/profile');
+            router.push('/dashboard');
           }
         } catch (error) {
             console.log(error);
