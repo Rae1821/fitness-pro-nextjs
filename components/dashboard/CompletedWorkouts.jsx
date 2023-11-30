@@ -7,7 +7,7 @@ import HighIntensityCard from "../hiit/HighIntensityCard"
 import WorkoutCard from "../strength/WorkoutCard"
 
 
-const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
+const CompletedWorkouts = ({ data, handleEdit, handleDelete, favorite, handleLikeClick }) => {
 
     const [selectedTag, setSelectedTag] = useState('all')
 
@@ -15,21 +15,21 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 
 
   return (
-    <div className="p-2 rounded-lg mt-10 mx-auto">
+    <div className="rounded-lg mt-10 mx-auto">
         <h2 className="text-3xl text-center mb-6">Recent Workouts</h2>
 
-        <div className="flex items-center justify-center mx-4 mb-6">
-            <div className="flex gap-5">
+        <div className="flex items-center justify-center mx-auto mb-6">
+            <div className="flex gap-2">
                 <button
                     value="all"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-xs">
+                    className="btn btn-xs btn-accent">
                     All
                 </button>
                 <button
                     value="cardio"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-xs btn-accent">
+                    className="btn btn-xs btn-primary">
                     Cardio
                 </button>
                 <button

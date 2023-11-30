@@ -39,7 +39,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display mx-auto pl-0 md:px-4 shadow-lg bg-neutral max-w-4xl">
+        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display mx-auto shadow-lg bg-neutral max-w-[370px] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl ml-0">
 
             <input className="pr-2" type="checkbox" />
             <div className="collapse-title text-xl font-medium">
@@ -70,23 +70,24 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                 </div>
             </div>
 
-            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-sm w-full">
+            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-sm max-w-[370px]">
 
-                {post.exerciseObj.map((exer, index) => (
-                    <table key={index} className="table table-xs md:table-sm table-auto">
+
+                    <table className="table table-xs">
                         <thead>
-                            <tr className="text-center border-neutral">
+                            <tr className="text-center border-neutral text-xs md:text-sm lg:text-md ">
                                 <th></th>
                                 <th>Sets</th>
-                                <th>Weight</th>
-                                <th>Rep 1</th>
-                                <th>Rep 2</th>
-                                <th>Rep 3</th>
+                                <th>Lbs</th>
+                                <th>R 1</th>
+                                <th>R 2</th>
+                                <th>R 3</th>
                                 {/* <th>Load</th> */}
                             </tr>
                         </thead>
                         <tbody>
-                            <tr className="hover:bg-neutral border-neutral text-center">
+                        {post.exerciseObj.map((exer, index) => (
+                            <tr key={index} className="hover:bg-neutral border-neutral text-center">
                                 <th className="text-xs md:text-base font-normal w-20">{exer.exercise}
                                 </th>
                                 <td>{exer.sets}</td>
@@ -95,10 +96,12 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                                 <td>{exer.rep2}</td>
                                 <td>{exer.rep3}</td>
                                 {/* <td>{(exer.weight1 + exer.weight2 + exer.weight3) * exer.reps}</td> */}
+                                <td></td>
                             </tr>
+                        ))}
+
                         </tbody>
                     </table>
-                ))}
 
                     {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (

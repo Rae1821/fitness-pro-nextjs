@@ -31,7 +31,7 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
             <div className="collapse-title text-xl font-medium">
                 <div className="flex items-center gap-5 justify-between">
                     <div className='w-8'>
-                        <p className="badge badge-outline badge-accent badge-sm md:badge-md">cardio</p>
+                        <p className="badge badge-outline badge-primary badge-sm md:badge-md">cardio</p>
                     </div>
                     <div className="flex items-center">
                         <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">

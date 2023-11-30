@@ -102,11 +102,11 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                         Weight:
                         <input
                             type="text"
-                            value={exer.reps}
+                            value={exer.weight}
                             name="reps"
                             onChange={(e) => {
                                 const updatedExerciseObj = [...post.exerciseObj];
-                                updatedExerciseObj[index].reps = e.target.value;
+                                updatedExerciseObj[index].weight = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
