@@ -1,21 +1,15 @@
 'use client'
 
+
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 
 
 
-const ClassCard = ({ post, handleEdit, handleDelete }) => {
+const ClassCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite }) => {
+
     const { data: session } = useSession();
     const pathName = usePathname();
-
-
-    // const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-    //     weekday: 'short',
-    //     month: 'short',
-    //     day: 'numeric',
-    //     year: 'numeric',
-    // });
 
     const formattedDate = new Date(post.date).toLocaleDateString();
 
@@ -23,7 +17,7 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral w-full mb-4 mx-auto max-w-4xl">
+        <div className="collapse collapse-plus border-b border-base-200 font-display md:px-4 shadow-lg bg-neutral w-full mb-4 mx-auto max-w-[370px] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
 
             <input type="checkbox" />
 
@@ -70,6 +64,18 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
                 {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
+                            <div onClick={handleLikeClick}>
+                                <img
+                                    src={favorite ? '/assets/icons/star-filled.svg'
+                                    : '/assets/icons/star.svg'
+                                    }
+                                    alt="like btn"
+                                    width={20}
+                                    height={20}
+                                    className="items-center cursor-pointer"
+
+                                />
+                            </div>
                             <p
                                 className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
                                 onClick={handleEdit}

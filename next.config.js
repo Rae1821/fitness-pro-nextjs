@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['lh3.googleusercontent.com', 'v2.exercisedb.io'],
+        domains: ['lh3.googleusercontent.com'],
     },
     webpack(config) {
         config.experiments = {

@@ -1,22 +1,16 @@
 'use client'
 
+
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
 
 
-const CardioCard = ({ post, handleEdit, handleDelete }) => {
+const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite }) => {
+
     const { data: session } = useSession();
     const pathName = usePathname();
     const router = useRouter();
-
-
-//     const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-//         weekday: 'short'
-// ,       month: 'short',
-//         day: 'numeric',
-//         year: 'numeric',
-//     });
 
     const formattedDate = new Date(post.date).toLocaleDateString();
 
@@ -24,7 +18,7 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full  mb-4 bg-neutral shadow-lg md:max-w-4xl mx-auto">
+        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full  mb-4 bg-neutral shadow-lg max-w-[370px] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
 
             <input type="checkbox" />
 
@@ -73,6 +67,17 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                 {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
+                            <div onClick={handleLikeClick}>
+                                <img
+                                    src={favorite ? '/assets/icons/star-filled.svg'
+                                    : '/assets/icons/star.svg'
+                                    }
+                                    alt="like btn"
+                                    width={20}
+                                    height={20}
+                                    className="items-center cursor-pointer"
+                                />
+                            </div>
                             <p
                                 className="font-inter text-sm cursor-pointer btn btn-sm btn-outline btn-error"
                                 onClick={handleEdit}

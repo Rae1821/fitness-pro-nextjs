@@ -1,8 +1,6 @@
 "use client"
 
-import MenuLink from '@components/dashboard/sidebar/menuLink/MenuLink';
-import { MdBrush, MdDashboard, MdOutlineAccountCircle } from 'react-icons/md';
-import { FaDumbbell } from "react-icons/fa6";
+
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -11,54 +9,6 @@ import Stats from '@components/Stats';
 //import BarChart from '@components/dashboard/BarChart';
 
 
-const menuItems = [
-  {
-    title: "Pages",
-    list: [
-      {
-        title: "Dashboard",
-        path: "/dashboard",
-        icon: <MdDashboard />,
-      },
-      {
-        title: "Create Workout",
-        path: "/create-workout",
-        icon: <MdBrush />,
-      },
-      {
-        title: "My Profile",
-        path:  "/profile",
-        icon: <MdOutlineAccountCircle />,
-      }
-    ]
-  },
-  {
-    title: "Workout Page",
-    list: [
-      {
-        title: "Strength",
-        path: "/strength",
-        icon: <FaDumbbell />,
-      },
-      {
-        title: "Cardio",
-        path: "/cardio",
-        icon: <FaDumbbell />,
-      },
-      {
-        title: "Class",
-        path: "/class",
-        icon: <FaDumbbell />,
-      },
-      {
-        title: "HIIT",
-        path: "/hiit",
-        icon: <FaDumbbell />,
-      },
-    ]
-  },
-]
-
 
 const MyDashboard = () => {
   const router = useRouter();
@@ -66,7 +16,7 @@ const MyDashboard = () => {
 
   const [totalPosts, setTotalPosts] = useState([]);
   const [exerciseObjData, setExerciseObjData] = useState('');
-  const [favorite, setFavorite] = useState(false)
+
 
   //fetch posts and save to total posts state
   useEffect(() => {
@@ -111,11 +61,6 @@ const MyDashboard = () => {
     }
   };
 
-  //handle favorited posts
-  const handleLikeClick = () => {
-    // setFavorite(prevFavorite => !prevFavorite)
-    console.log("clicked")
-  }
 
 
   return (
@@ -129,8 +74,6 @@ const MyDashboard = () => {
             data={totalPosts}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
-            handleLikeClick={handleLikeClick}
-            favorite={favorite}
           />
       </div>
     </div>
