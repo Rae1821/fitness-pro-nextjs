@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from "next/navigation";
 
 import Profile from '@components/Profile'
+import BarChart from '@components/dashboard/BarChart';
 
 const UserProfile = ({ params }) => {
 
@@ -26,11 +27,15 @@ const UserProfile = ({ params }) => {
 
 
   return (
+    <>
       <Profile
         name={userName}
         desc={`Welcome to ${userName}'s personalized profile page`}
         data={userPosts}
       />
+
+
+    </>
   )
 }
 

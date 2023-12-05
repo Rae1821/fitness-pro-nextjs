@@ -1,10 +1,11 @@
 'use client'
 
+import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
 
 
-const WorkoutCard = ({ post, handleEdit, handleDelete, favorite, handleLikeClick }) => {
+const WorkoutCard = ({ post, handleEdit, handleDelete, handleLikeClick, liked }) => {
 
     const { data: session } = useSession();
     const pathName = usePathname();
@@ -87,16 +88,16 @@ const WorkoutCard = ({ post, handleEdit, handleDelete, favorite, handleLikeClick
                     {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
-                            <div onClick={handleLikeClick}>
-                                <img
-                                    src={favorite ? '/assets/icons/star-filled.svg'
+                            <div >
+                                <Image
+                                    src={liked ? '/assets/icons/star-filled.svg'
                                     : '/assets/icons/star.svg'
                                     }
                                     alt="like btn"
                                     width={20}
                                     height={20}
                                     className="items-center cursor-pointer"
-
+                                    onClick={handleLikeClick}
                                 />
                             </div>
                             <p

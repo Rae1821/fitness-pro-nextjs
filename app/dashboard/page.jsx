@@ -1,13 +1,13 @@
 "use client"
 
-
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import CompletedWorkouts from "@components/dashboard/CompletedWorkouts";
 import Stats from '@components/Stats';
 //import BarChart from '@components/dashboard/BarChart';
-
+import WorkoutCard from "@components/strength/WorkoutCard";
 
 
 const MyDashboard = () => {
@@ -16,6 +16,7 @@ const MyDashboard = () => {
 
   const [totalPosts, setTotalPosts] = useState([]);
   const [exerciseObjData, setExerciseObjData] = useState('');
+  const [favorite, setFavorite] = useState(false)
 
 
   //fetch posts and save to total posts state
@@ -61,6 +62,10 @@ const MyDashboard = () => {
     }
   };
 
+  function handleFavorite() {
+    setFavorite(prevFavorite => !prevFavorite)
+    router.push('/profile');
+  }
 
 
   return (
@@ -74,6 +79,8 @@ const MyDashboard = () => {
             data={totalPosts}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
+            favorite={favorite}
+            handleFavorite={handleFavorite}
           />
       </div>
     </div>

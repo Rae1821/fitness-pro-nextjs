@@ -1,6 +1,5 @@
 'use client'
 
-import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2';
 import {
@@ -24,15 +23,20 @@ ChartJS.register(
     Legend,
 );
 
-const BarChart = ({ post }) => {
+const BarChart = ({ data }) => {
 
-    const { data: session } = useSession();
+
 
     const [chartData, setChartData] = useState({
         datasets: []
     })
 
     const [chartOptions, setChartOptions] = useState({})
+
+    const monthlyWorkouts = data.filter((workout) => {
+        const workoutDate = new Date(workout.date);
+        const currentMonth = new Date().getMonth() + 1;
+        const workoutMonth = workoutDate.getMonth() + 1;
 
     useEffect(() => {
         setChartData({
@@ -93,4 +97,4 @@ const BarChart = ({ post }) => {
   )
 }
 
-export default BarChart
+export default BarChart;

@@ -1,5 +1,6 @@
 'use client'
 
+
 import { useState } from 'react'
 import CardioCard from "../cardio/CardioCard"
 import ClassCard from "../class/ClassCard"
@@ -11,22 +12,15 @@ import WorkoutCard from "../strength/WorkoutCard"
 const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 
     const [selectedTag, setSelectedTag] = useState('all')
-    const [favorite, setFavorite] = useState([])
+    const [liked, setLiked] = useState(true);
 
 
-    const handleLikeClick = (post) => {
-        setFavorite((prevFavorite) => {
-            const isFavorite = prevFavorite.includes(post._id);
-            console.log(post._id)
-            if(isFavorite) {
-                //remove from favorites
-                return prevFavorite.filter((postId) => postId !== post._id)
-            } else {
-                //add to favorites
-                return [...prevFavorite, post._id]
-            }
-        });
-    };
+   const handleLikeClick = (post) => {
+    setLiked(prevSetLiked => !prevSetLiked)
+    console.log(liked)
+
+   }
+
 
    const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));
 
@@ -80,8 +74,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                     selectedDate={post.selectedDate}
                     handleEdit={() => handleEdit && handleEdit(post)}
                     handleDelete={() => handleDelete && handleDelete(post)}
-                    handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                    favorite={favorite.includes(post._id)}
+                    handleLikeClick={(e) => handleLikeClick(e.target.value)}
                 />
                 </ul>
 
@@ -93,7 +86,6 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                     handleEdit={() => handleEdit && handleEdit(post)}
                     handleDelete={() => handleDelete && handleDelete(post)}
                     handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                    favorite={favorite.includes(post._id)}
                 />
                 : selectedTag === "hiit" && post.tag === "hiit" ?
                     <HighIntensityCard
@@ -102,8 +94,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                         selectedDate={post.selectedDate}
                         handleEdit={() => handleEdit && handleEdit(post)}
                         handleDelete={() => handleDelete && handleDelete(post)}
-                        handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                        favorite={favorite.includes(post._id)}
+                        handleLikeClick={() => handleLikeClick(post)}
                     />
                 : selectedTag === "strength" && post.tag === "strength" ?
                     <WorkoutCard
@@ -112,8 +103,8 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                         selectedDate={post.selectedDate} //
                         handleEdit={() => handleEdit && handleEdit(post)}
                         handleDelete={() => handleDelete && handleDelete(post)}
-                        favorite={favorite.includes(post._id)}
-                        handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
+                        handleLikeClick={(e) => handleLikeClick(post)}
+                        liked={liked}
                     />
                 : selectedTag === "all" ?
                     <div>
@@ -124,8 +115,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                                 selectedDate={post.selectedDate}
                                 handleEdit={() => handleEdit && handleEdit(post)}
                                 handleDelete={() => handleDelete && handleDelete(post)}
-                                handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                                favorite={favorite.includes(post._id)}
+                                handleLikeClick={() => handleLikeClick(post)}
                             />
                         : post.tag === "class" ?
                             <ClassCard
@@ -134,8 +124,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                                 selectedDate={post.selectedDate}
                                 handleEdit={() => handleEdit && handleEdit(post)}
                                 handleDelete={() => handleDelete && handleDelete(post)}
-                                handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                                favorite={favorite.includes(post._id)}
+                                handleLikeClick={() => handleLikeClick(post)}
                             />
                         : post.tag === "hiit" ?
                             <HighIntensityCard
@@ -144,8 +133,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                                 selectedDate={post.selectedDate}
                                 handleEdit={() => handleEdit && handleEdit(post)}
                                 handleDelete={() => handleDelete && handleDelete(post)}
-                                handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                                favorite={favorite.includes(post._id)}
+                                handleLikeClick={() => handleLikeClick(post)}
                             />
                         : post.tag === "strength" ?
                             <WorkoutCard
@@ -154,8 +142,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                                 selectedDate={post.selectedDate}
                                 handleEdit={() => handleEdit && handleEdit(post)}
                                 handleDelete={() => handleDelete && handleDelete(post)}
-                                handleLikeClick={() => handleLikeClick && handleLikeClick(post)}
-                                favorite={favorite.includes(post._id)}
+                                handleLikeClick={() => handleLikeClick(post)}
                             />
                         : <div></div>
                         }
@@ -168,3 +155,18 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 }
 
 export default CompletedWorkouts
+
+
+// const handleLikeClick = (post) => {
+//     setFavorite((prevFavorite) => {
+//         const isFavorite = prevFavorite.includes(post._id);
+//         //console.log(post._id)
+//         if(isFavorite) {
+//             //remove from favorites
+//             return prevFavorite.filter((postId) => postId !== post._id)
+//         } else {
+//             //add to favorites
+//             return [...prevFavorite, post._id]
+//         }
+//     });
+// };
