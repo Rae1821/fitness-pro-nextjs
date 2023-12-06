@@ -10,7 +10,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en" data-theme="dracula">
+    <html lang="en" data-theme="light">
       <body suppressHydrationWarning={true}>
         <Provider>
             <div className="main">

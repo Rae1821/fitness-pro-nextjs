@@ -3,6 +3,7 @@
 
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
+import { FaHeartbeat } from "react-icons/fa";
 
 
 
@@ -18,24 +19,29 @@ const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite 
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 font-display md:px-4 w-full  mb-4 bg-neutral shadow-lg max-w-[370px] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
+        <div className="collapse collapse-plus border-b border-neutral-content font-display md:px-4 w-full mb-4 bg-base-100 hover:bg-primary text-info-content sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto">
 
             <input type="checkbox" />
 
             <div className="collapse-title text-xl font-medium">
                 <div className="flex items-center gap-5 justify-between">
                     <div className='w-8'>
-                        <p className="badge badge-outline badge-primary badge-sm md:badge-md">cardio</p>
-                    </div>
-                    <div className="flex items-center">
-                        <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
-                        Activity
-                        <span className="font-semibold lg:text-lg">{post.workoutName}</span>
+                        {/* <p className="badge badge-outline badge-primary badge-sm md:badge-md">cardio</p> */}
+                        <p className="bg-base-100 hover:bg-[#2fc9d7] rounded-2xl flex justify-center items-center">
+                            <FaHeartbeat
+                                className="text-[#2fc9d7] mx-2 my-2 hover:text-[#F2F2F2]"
+                            />
                         </p>
                     </div>
-                    <p className="flex flex-col text-xs md:text-sm lg:text-base row-start-2 font-light">
-                    Date
-                        <span className="font-bold">{formattedDate}</span>
+                    <div className="flex items-center">
+                        <p className="flex flex-col text-sm md:text-sm lg:text-base font-bold">
+                        {post.workoutName}
+                        <span className="text-[#D9D9D9] font-regular text-xs">Activity</span>
+                        </p>
+                    </div>
+                    <p className="flex flex-col text-sm md:text-sm lg:text-base row-start-2 font-bold">
+                    {formattedDate}
+                        <span className="font-regular text-[#D9D9D9]">Date</span>
                     </p>
                     <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
                         Duration
@@ -44,10 +50,10 @@ const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite 
 
                 </div>
             </div>
-            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-md">
+            <div className="collapse-content bg-[#ffffff]  px-0 md:px-4 pt-2 rounded-md">
                 <table className="table table-xs table-auto md:table-sm">
                     <thead>
-                        <tr className="text-center border-neutral">
+                        <tr className="text-center border-[#F2F2F2]">
                             <th># of Intervals</th>
                             <th>Speed High</th>
                             <th>Speed Low</th>
@@ -55,7 +61,7 @@ const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="text-center hover:bg-neutral border-neutral">
+                        <tr className="text-center hover:bg-[#F2F2F2] border-[#F2F2F2]">
                             <td>{post.intervals}</td>
                             <td>{post.speedHigh}</td>
                             <td>{post.speedLow}</td>

@@ -1,11 +1,13 @@
 'use client'
 
+import { useState } from 'react';
 import Image from 'next/image';
 import { useSession } from 'next-auth/react';
 import { usePathname, useRouter } from 'next/navigation';
+import { FaDumbbell } from "react-icons/fa";
 
 
-const WorkoutCard = ({ post, handleEdit, handleDelete, handleLikeClick, liked }) => {
+const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
     const { data: session } = useSession();
     const pathName = usePathname();
@@ -24,17 +26,18 @@ const WorkoutCard = ({ post, handleEdit, handleDelete, handleLikeClick, liked })
 
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-base-100 mb-4 font-display mx-auto md:px-2 w-full shadow-lg bg-neutral max-w-[370px] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl">
+        <div className="collapse collapse-plus border-b border-neutral-content mb-4 font-display mx-auto md:px-2 w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl bg-[#ffffff] hover:bg-[#2fc9d7] text-[#272925]">
             <input className="pr-2" type="checkbox" />
             <div className="collapse-title text-xl font-medium">
                 <div className="flex justify-between items-center">
                     <div>
-                        <p className="badge badge-outline badge-info badge-sm md:badge-md">strength</p>
+                        {/* <p className="badge badge-outline badge-info badge-sm md:badge-md">strength</p> */}
+                        <p className="bg-[#F2F2F2] p-2 rounded-full"><FaDumbbell className="text-[#2fc9d7]"/></p>
                     </div>
                     <div className="flex items-center justify-start">
-                        <p className="flex flex-col text-xs md:text-sm lg:text-base font-light">
+                        <p className="flex flex-col text-xs md:text-sm lg:text-base font-light text-[#D9D9D9]">
                         Focus
-                        <span className="font-semibold lg:text-lg">{post.workoutName}</span>
+                        <span className="font-semibold lg:text-lg text-[#]">{post.workoutName}</span>
                         </p>
                     </div>
                     <div>
@@ -52,12 +55,12 @@ const WorkoutCard = ({ post, handleEdit, handleDelete, handleLikeClick, liked })
                 </div>
             </div>
 
-            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-sm">
+            <div className="collapse-content bg-[#ffffff] text-info-content px-0 md:px-4 pt-2 rounded-sm">
 
 
                     <table className="table table-xs table-auto">
                         <thead>
-                            <tr className="text-center border-neutral text-xs md:text-sm lg:text-md ">
+                            <tr className="text-center border-[#F2F2F2] text-xs md:text-sm lg:text-md text-info-content">
                                 <th></th>
                                 <th>Sets</th>
                                 <th>Lbs</th>
@@ -69,7 +72,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete, handleLikeClick, liked })
                         </thead>
                         <tbody>
                         {post.exerciseObj.map((exer, index) => (
-                            <tr key={index} className="hover:bg-neutral border-neutral text-center text-xs md:text-md lg:text-lg">
+                            <tr key={index} className=" hover:bg-[#F2F2F2] border-[#F2F2F2] text-center text-xs md:text-md lg:text-lg">
                                 <th className="text-left">{exer.exercise}
                                 </th>
                                 <td>{exer.sets}</td>
@@ -88,18 +91,6 @@ const WorkoutCard = ({ post, handleEdit, handleDelete, handleLikeClick, liked })
                     {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
-                            <div >
-                                <Image
-                                    src={liked ? '/assets/icons/star-filled.svg'
-                                    : '/assets/icons/star.svg'
-                                    }
-                                    alt="like btn"
-                                    width={20}
-                                    height={20}
-                                    className="items-center cursor-pointer"
-                                    onClick={handleLikeClick}
-                                />
-                            </div>
                             <p
                                 className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
                                 onClick={handleEdit}

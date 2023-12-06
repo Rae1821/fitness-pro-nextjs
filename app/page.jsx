@@ -4,11 +4,15 @@ import { useState, useEffect } from 'react';
 import { signIn, useSession, getProviders } from 'next-auth/react';
 import Link from 'next/link';
 import { quoteData } from '@utils/quoteData'
+import { useSearchParams } from "next/navigation";
 
 
-const Home = () => {
+const Home = ({ params }) => {
 
   const { data: session } = useSession();
+
+  const searchParams = useSearchParams();
+  const userName = searchParams.get("name");
 
     const [providers, setProviders] = useState(null);
 
@@ -18,6 +22,7 @@ const Home = () => {
         author: '',
     })
 
+    //get provider
     useEffect(() => {
         const setUpProviders = async () => {
           const response = await getProviders();
@@ -26,6 +31,7 @@ const Home = () => {
           setUpProviders();
     }, [])
 
+    //get quote
     useEffect(() => {
       const getRandomQuote = () => {
         let randomIndex = Math.floor(Math.random() * quoteData.length);
@@ -45,24 +51,25 @@ const Home = () => {
       <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-6xl text-gray-200 font-bold">Welcome Back</h1>
 
               {session?.user ? (
-                <div>
-                  <p className="mb-5 text-gray-300 max-w-sm">"{randomQuote.quote}"
-                  <br />
-                  <span className="text-xs">- {randomQuote.author}</span></p>
+                <>
+                  <div className="mb-8">
+                    <h1 className="text-7xl font-display font-bold mb-4">Let&apos;s Gooo</h1>
+                    <p className=" text-gray-300 max-w-sm">"{randomQuote.quote}"
+                    <br />
+                    <span className="text-xs">- {randomQuote.author}</span></p>
+                  </div>
 
                   <div className="flex justify-between max-w-xs gap-2 mx-auto">
-                  <Link href="/create-workout" className="btn btn-sm btn-accent">Record Workout</Link>
-                  <Link href="/dashboard" className="btn btn-sm btn-accent btn-outline">My Dashboard</Link>
+                    <Link href="/create-workout" className="btn btn-sm btn-accent">Record Workout</Link>
+                    <Link href="/dashboard" className="btn btn-sm btn-accent btn-outline">My Dashboard</Link>
                   </div>
-                </div>
-
-
+                </>
                 ) : (
 
                 <div>
+                  <h1 className="mb-5 text-6xl text-gray-200 font-bold">Welcome Back</h1>
                     {providers &&
                         Object.values(providers).map((provider) => (
                             <button

@@ -27,24 +27,28 @@ const BarChart = ({ data }) => {
 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // const month = monthsData.map((month) => (
-    //     console.log(months[month])
-    // ))
+    const monthCount = monthsData.map((month) => month)
+console.log(monthCount)
 
     //count the occurences of each month
-    const workoutCountByMonth = monthsData.reduce((acc, month) => {
+    // const workoutCountByMonth = monthsData.reduce((acc, month) => {
 
-        acc[month] = (acc[month] || 0) + 1;
-        return acc;
-    }, {})
-    console.log(workoutCountByMonth)
+    //     acc[month] = (acc[month] || 0) + 1;
+    //     return acc;
+    // }, {})
+    // console.log(workoutCountByMonth)
+    const workoutCountsByMonth = monthsData.map((month) => {
+        return
+    })
+    console.log(workoutCountsByMonth)
+    // ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     const chartData = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        labels: monthsData,
         datasets: [
             {
                 label: '# of Workouts',
-                data: workoutCountByMonth,
+                data: workoutCountsByMonth,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -99,6 +103,7 @@ const BarChart = ({ data }) => {
   return (
     <div>
         <Bar
+            datasetIdKey='id'
             data={chartData}
             options={chartOptions}
         />
