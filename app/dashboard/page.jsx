@@ -64,8 +64,8 @@ const MyDashboard = () => {
 
   return (
 
-    <div className="flex flex-col items-center justify-center bg-[#ffffff]">
-      <div className="mt-10">
+    <div className="flex flex-col items-center justify-center max-w-screen lg:max-w-4xl mx-auto">
+      <div className="mt-20 mb-10">
         <Stats />
       </div>
       <div className="w-full">

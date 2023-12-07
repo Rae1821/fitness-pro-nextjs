@@ -47,7 +47,7 @@ const Home = ({ params }) => {
 
 
   return (
-    <div className="hero min-h-screen" style={{backgroundImage: 'url(/assets/images/bg-4.jpg)'}}>
+    <div className="hero min-h-screen" data-theme='dracula' style={{backgroundImage: 'url(/assets/images/bg-4.jpg)'}}>
       <div className="hero-overlay bg-opacity-70"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
@@ -55,7 +55,7 @@ const Home = ({ params }) => {
               {session?.user ? (
                 <>
                   <div className="mb-8">
-                    <h1 className="text-7xl font-display font-bold mb-4">Let&apos;s Gooo</h1>
+                    <h1 className="text-6xl font-display font-bold mb-4 text-gray-200">Let&apos;s work out</h1>
                     <p className=" text-gray-300 max-w-sm">"{randomQuote.quote}"
                     <br />
                     <span className="text-xs">- {randomQuote.author}</span></p>
@@ -69,7 +69,7 @@ const Home = ({ params }) => {
                 ) : (
 
                 <div>
-                  <h1 className="mb-5 text-6xl text-gray-200 font-bold">Welcome Back</h1>
+                  <h1 className="mb-5 text-6xl font-bold">Welcome Back</h1>
                     {providers &&
                         Object.values(providers).map((provider) => (
                             <button

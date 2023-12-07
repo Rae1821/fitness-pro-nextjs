@@ -25,18 +25,18 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
     <div className="mt-10 mx-auto">
         <h2 className="text-3xl text-center mb-6">Recent Workouts</h2>
 
-        <div className="flex items-center justify-center mx-auto mb-6">
+        <div className="flex items-center justify-center mx-auto mb-16">
             <div className="flex gap-2">
                 <button
                     value="all"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-xs btn-accent">
+                    className="btn btn-xs btn-primary">
                     All
                 </button>
                 <button
                     value="cardio"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-xs btn-primary">
+                    className="btn btn-xs btn-accent">
                     Cardio
                 </button>
                 <button
@@ -54,7 +54,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                 <button
                     value="strength"
                     onClick={(e) => setSelectedTag(e.target.value)}
-                    className="btn btn-xs btn-info">
+                    className="btn btn-xs btn-primary">
                     Strength
                 </button>
             </div>
