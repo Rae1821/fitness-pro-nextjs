@@ -16,21 +16,21 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete, handleLikeClick, fa
   return (
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-b-neutral mb-4 font-display md:px-2 w-full hover:bg-warning bg-base-100 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto rounded-sm">
+        <div className="collapse collapse-plus border-b border-b-neutral mb-4 font-display md:px-2 w-full hover:bg-[#F2C335] bg-base-100 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto rounded-tl-2xl rounded-tr-2xl">
 
             <input type="checkbox" className="peer"/>
 
             <div className="collapse-title text-xl peer-checked:bg-warning">
                 <div className="grid grid-cols-4 lg:grid-cols-[100px_250px_250px_200px] items-center ">
                     <div className="w-9">
-                        <p className="bg-neutral p-2 rounded-full">
+                        <p className="bg-slate-200 p-2 rounded-full">
                             <FaBolt className="text-warning"/>
                         </p>
                     </div>
                     <div className="flex items-center">
                         <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold  text-slate-900">
                         {post.workoutName}
-                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-300">
+                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-500">
                                 Focus
                             </span>
                         </p>
@@ -38,13 +38,13 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete, handleLikeClick, fa
                     <div>
                         <p className="flex flex-col text-sm md:text-base lg:text-xl row-start-2 font-bold text-slate-900">
                         {formattedDate}
-                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-300">Date</span>
+                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-400">Date</span>
                         </p>
                     </div>
                     <div>
                         <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold text-slate-900">
                         {post.duration} min.
-                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-300">
+                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-500">
                                 Duration
                             </span>
                         </p>
@@ -58,7 +58,7 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete, handleLikeClick, fa
                 {post.exerciseObj.map((exer, index) => (
                     <table key={index} className="table table-xs table-auto md:table-md lg:table-lg">
                         <thead>
-                            <tr className="text-center border-neutral">
+                            <tr className="text-center border-neutral text-slate-500">
                                 <th></th>
                                 <th>Sets</th>
                                 <th>Weight</th>
