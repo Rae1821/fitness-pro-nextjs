@@ -84,8 +84,8 @@ const Stats = ({ data }) => {
         <div className="stat-value text-center">{workoutCounts.currentMonth}</div>
         <div className={
           workoutCounts.currentMonth > workoutCounts.previousMonth
-          ? 'stat-desc text-lime-300 flex items-center gap-1 justify-center mt-1'
-          : 'stat-desc text-rose-400 flex items-center gap-1 justify-center mt-1'}
+          ? 'stat-desc text-success flex items-center gap-1 justify-center mt-1'
+          : 'stat-desc text-accent flex items-center gap-1 justify-center mt-1'}
           >
           <span>{workoutCounts.currentMonth > workoutCounts.previousMonth
             ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -115,8 +115,8 @@ const Stats = ({ data }) => {
         <div className="stat-title">Last Month</div>
         <div className="stat-value text-center">{workoutCounts.previousMonth}</div>
         <div className={workoutCounts.previousMonth > workoutCounts.monthBeforeLast
-        ? "stat-desc text-lime-300 flex items-center gap-1 justify-center mt-1"
-        : "stat-desc text-rose-400 flex items-center gap-1 justify-center mt-1"
+        ? "stat-desc text-success flex items-center gap-1 justify-center mt-1"
+        : "stat-desc text-accent flex items-center gap-1 justify-center mt-1"
         }>
           <span>{workoutCounts.previousMonth > workoutCounts.monthBeforeLast
             ? <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20

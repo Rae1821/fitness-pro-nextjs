@@ -38,8 +38,15 @@ console.log(monthCount)
     // }, {})
     // console.log(workoutCountByMonth)
     const workoutCountsByMonth = monthsData.map((month) => {
-        return
+        let monthTotal = 0
+        console.log(months[month])
+        if(months[month] === month) {
+            monthTotal += 1
+        }
+        return monthTotal
     })
+
+    const workoutCounts = monthsData.filter((item) => months[item])
     console.log(workoutCountsByMonth)
     // ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
@@ -85,13 +92,13 @@ console.log(monthCount)
             x: {
                 display: true,
                 ticks: {
-                    color: "white"
+                    color: "black"
                 }
             },
             y: {
                 display: true,
                 ticks: {
-                    color: "white"
+                    color: "black"
                 }
             }
         },
