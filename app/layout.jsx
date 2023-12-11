@@ -2,6 +2,7 @@ import '@styles/globals.css';
 import Navbar from '@components/Navbar';
 import Provider from '@/components/Provider';
 //import SwapToggle from '@components/SwapToggle';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
     title: "Fitness Pro",
