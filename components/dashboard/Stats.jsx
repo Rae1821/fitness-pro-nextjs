@@ -17,10 +17,6 @@ const Stats = ({ data }) => {
     const [lastMonth, setLastMonth] = useState(0)
 
 
-
-    let nov = []
-    let oct = []
-
     useEffect(() => {
         const fetchPosts = async () => {
           const response = await fetch('/api/workout');

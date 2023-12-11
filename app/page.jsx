@@ -52,8 +52,23 @@ const Home = ({ params }) => {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
 
-              {session?.user ? (
-                <>
+          {!session?.user ?
+            <div>
+              <h1 className="mb-5 text-6xl font-bold">Welcome Back</h1>
+
+              {providers &&
+                  Object.values(providers).map((provider) => (
+                      <button
+                          type="button"
+                          key={provider.name}
+                          onClick={() => signIn(provider.id)}
+                          className="btn btn-accent btn-sm"
+                      >
+                          Sign In
+                      </button>
+              ))}
+            </div>
+                : <>
                   <div className="mb-8">
                     <h1 className="text-6xl font-display font-bold mb-4 text-gray-200">Let&apos;s work out</h1>
                     <p className=" text-gray-300 max-w-sm">"{randomQuote.quote}"
@@ -65,24 +80,7 @@ const Home = ({ params }) => {
                     <Link href="/create-workout" className="btn btn-sm btn-accent">Record Workout</Link>
                     <Link href="/dashboard" className="btn btn-sm btn-accent btn-outline">My Dashboard</Link>
                   </div>
-                </>
-                ) : (
-
-                <div>
-                  <h1 className="mb-5 text-6xl font-bold">Welcome Back</h1>
-                    {providers &&
-                        Object.values(providers).map((provider) => (
-                            <button
-                                type="button"
-                                key={provider.name}
-                                onClick={() => signIn(provider.id)}
-                                className="btn btn-accent btn-sm"
-                            >
-                                Sign In
-                            </button>
-                    ))}
-                </div>
-              )}
+                </> }
         </div>
     </div>
 </div>

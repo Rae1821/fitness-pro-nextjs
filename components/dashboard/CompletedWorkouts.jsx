@@ -18,6 +18,8 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 
 
 
+
+
    const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));
 
 
@@ -70,7 +72,6 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                     selectedDate={post.selectedDate}
                     handleEdit={() => handleEdit && handleEdit(post)}
                     handleDelete={() => handleDelete && handleDelete(post)}
-
                 />
                 </ul>
 

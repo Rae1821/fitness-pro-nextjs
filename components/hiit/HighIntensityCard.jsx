@@ -28,9 +28,9 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete, handleLikeClick, fa
                         </p>
                     </div>
                     <div className="flex items-center">
-                        <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold  text-slate-900">
+                        <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold  text-slate-900 leading-4">
                         {post.workoutName}
-                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-500">
+                            <span className="font-normal text-xs md:text-sm lg:text-base text-slate-400">
                                 Focus
                             </span>
                         </p>
@@ -59,12 +59,12 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete, handleLikeClick, fa
                     <table key={index} className="table table-xs table-auto md:table-md lg:table-lg">
                         <thead>
                             <tr className="text-center border-neutral text-slate-500">
-                                <th></th>
-                                <th>Sets</th>
-                                <th>Weight</th>
-                                <th>Rep 1</th>
-                                <th>Rep 2</th>
-                                <th>Rep 3</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Exercise</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Sets</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Weight</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Rep 1</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Rep 2</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Rep 3</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -85,17 +85,6 @@ const HighIntensityCard = ({ post, handleEdit, handleDelete, handleLikeClick, fa
                 {session?.user.id === post.creator._id
                     && pathName === '/dashboard' && (
                     <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
-                        <div onClick={handleLikeClick}>
-                            <img
-                                src={favorite ? '/assets/icons/star-filled.svg'
-                                : '/assets/icons/star.svg'
-                                }
-                                alt="like btn"
-                                width={20}
-                                height={20}
-                                className="items-center cursor-pointer"
-                            />
-                        </div>
                         <p
                             className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
                             onClick={handleEdit}

@@ -40,19 +40,19 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                     <div className="flex items-center justify-start">
                         <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold text-slate-900">
                         {post.workoutName}
-                        <span className="font-normal text-xs md:text-sm lg:text-lg text-slate-300">Focus</span>
+                        <span className="font-normal text-xs md:text-sm lg:text-lg text-slate-500">Focus</span>
                         </p>
                     </div>
                     <div>
                         <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold text-slate-900">
                         {formattedDate}
-                            <span className="font-normal text-xs md:text-sm lg:text-lg text-slate-300">Date</span>
+                            <span className="font-normal text-xs md:text-sm lg:text-lg text-slate-500">Date</span>
                         </p>
                     </div>
                     <div>
                         <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold text-slate-900">
                         {post.duration} min.
-                            <span className="font-normal text-xs md:text-sm lg:text-lg text-gray-300">Duration</span>
+                            <span className="font-normal text-xs md:text-sm lg:text-lg text-gray-500">Duration</span>
                         </p>
                     </div>
                 </div>
@@ -63,12 +63,12 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                     <table className="table table-xs table-auto">
                         <thead>
                             <tr className="text-center border-neutral text-xs md:text-sm lg:text-base text-slate-500">
-                                <th></th>
-                                <th>Sets</th>
-                                <th>Lbs</th>
-                                <th>R 1</th>
-                                <th>R 2</th>
-                                <th>R 3</th>
+                                <th className="text-left font-bold uppercase text-[11px] tracking-wide">Exercise</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Sets</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Lbs</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">R 1</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">R 2</th>
+                                <th className="font-bold uppercase text-[11px] tracking-wide">R 3</th>
                                 {/* <th>Load</th> */}
                             </tr>
                         </thead>
@@ -114,12 +114,3 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 }
 
 export default WorkoutCard
-
-
-
-    // const formattedDate = new Date(post.date).toLocaleDateString('en-US', {
-    //     weekday: 'short',
-    //     month: 'short',
-    //     day: 'numeric',
-    //     year: 'numeric',
-    // });

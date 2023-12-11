@@ -7,7 +7,7 @@ import { FaHeartbeat } from "react-icons/fa";
 
 
 
-const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite }) => {
+const CardioCard = ({ post, handleEdit, handleDelete }) => {
 
     const { data: session } = useSession();
     const pathName = usePathname();
@@ -35,16 +35,16 @@ const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite 
                     <div className="flex items-center">
                         <p className="flex flex-col text-sm md:text-sm lg:text-xl font-bold text-slate-900">
                         {post.workoutName}
-                        <span className="text-slate-300 font-normal text-xs md:text-sm lg:text-lg">Activity</span>
+                        <span className="text-slate-500 font-normal text-xs md:text-sm lg:text-lg">Activity</span>
                         </p>
                     </div>
                     <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold text-slate-900">
                     {formattedDate}
-                        <span className="font-normal text-slate-300 text-xs md:text-sm lg:text-lg">Date</span>
+                        <span className="font-normal text-slate-500 text-xs md:text-sm lg:text-lg">Date</span>
                     </p>
                     <p className="flex flex-col text-sm md:text-base lg:text-xl font-bold text-slate-900">
                     {post.duration} min.
-                        <span className="font-normal text-slate-300 text-xs md:text-sm lg:text-lg">Duration</span>
+                        <span className="font-normal text-slate-500 text-xs md:text-sm lg:text-lg">Duration</span>
                     </p>
 
                 </div>
@@ -53,10 +53,10 @@ const CardioCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite 
                 <table className="table table-xs table-auto md:table-sm">
                     <thead>
                         <tr className="text-center border-neutral text-slate-500 text-xs md:text-sm lg:text-base">
-                            <th># of Intervals</th>
-                            <th>Speed High</th>
-                            <th>Speed Low</th>
-                            <th>Incline</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide"># of Intervals</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Speed High</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Speed Low</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Incline</th>
                         </tr>
                     </thead>
                     <tbody>

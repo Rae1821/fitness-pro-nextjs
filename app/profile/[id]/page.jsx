@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from "next/navigation";
 
 import Profile from '@components/profile/Profile'
-import BarChart from '@components/profile/BarChart';
+//import BarChart from '@components/profile/BarChart';
 
 const UserProfile = ({ params }) => {
 

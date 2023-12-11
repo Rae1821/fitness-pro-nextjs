@@ -7,7 +7,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 
 
-const ClassCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite }) => {
+const ClassCard = ({ post, handleEdit, handleDelete }) => {
 
     const { data: session } = useSession();
     const pathName = usePathname();
@@ -50,16 +50,16 @@ const ClassCard = ({ post, handleEdit, handleDelete, handleLikeClick, favorite }
                 <table className="table table-sm table-auto">
                     <thead>
                         <tr className="text-center border-neutral text-slate-500 text-sm">
-                            <th>Time</th>
-                            <th>Class Focus</th>
-                            <th>Instructor</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Time</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Class Focus</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Instructor</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="hover:bg-neutral border-neutral text-center text-slate-900 font-bold">
-                            <td>{post.time}</td>
-                            <td>{post.workoutFocus}</td>
-                            <td>{post.instructor}</td>
+                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.time}</td>
+                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.workoutFocus}</td>
+                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.instructor}</td>
                         </tr>
                     </tbody>
                 </table>

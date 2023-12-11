@@ -23,23 +23,17 @@ const BarChart = ({ data }) => {
 
     //extract the months from each workout
     const monthsData = data.map((post) => new Date(post.date).getMonth());
-    console.log(monthsData)
+    //console.log(monthsData)
 
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     const monthCount = monthsData.map((month) => month)
-console.log(monthCount)
+    //console.log(monthCount)
 
-    //count the occurences of each month
-    // const workoutCountByMonth = monthsData.reduce((acc, month) => {
 
-    //     acc[month] = (acc[month] || 0) + 1;
-    //     return acc;
-    // }, {})
-    // console.log(workoutCountByMonth)
     const workoutCountsByMonth = monthsData.map((month) => {
         let monthTotal = 0
-        console.log(months[month])
+        //console.log(months[month])
         if(months[month] === month) {
             monthTotal += 1
         }
@@ -47,7 +41,7 @@ console.log(monthCount)
     })
 
     const workoutCounts = monthsData.filter((item) => months[item])
-    console.log(workoutCountsByMonth)
+    //console.log(workoutCountsByMonth)
     // ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
     const chartData = {
