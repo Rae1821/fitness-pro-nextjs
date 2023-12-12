@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { signOut, useSession, getProviders } from 'next-auth/react';
+import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 
 const Navbar = () => {
@@ -81,7 +81,7 @@ const Navbar = () => {
             ) : (
 
                 <div className="navbar-end">
-                    {/* {providers &&
+                    {providers &&
                         Object.values(providers).map((provider) => (
                             <button
                                 type="button"
@@ -91,7 +91,7 @@ const Navbar = () => {
                             >
                                 Sign In
                             </button>
-                    ))} */}
+                    ))}
                 </div>
 
         )}

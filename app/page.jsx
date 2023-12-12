@@ -53,8 +53,8 @@ const Home = ({ params }) => {
           <div className="max-w-md">
 
           {!session?.user ?
-            <div>
-              <h1 className="mb-5 text-6xl font-bold">Welcome Back</h1>
+            <div className="place-items-start">
+              <h1 className="mb-5 text-5xl lg:text-6xl font-bold">Welcome Back</h1>
 
               {providers &&
                   Object.values(providers).map((provider) => (
@@ -70,8 +70,8 @@ const Home = ({ params }) => {
             </div>
                 : <>
                   <div className="mb-8">
-                    <h1 className="text-6xl font-display font-bold mb-4 text-gray-200">Let&apos;s work out</h1>
-                    <p className=" text-gray-300 max-w-sm">"{randomQuote.quote}"
+                    <h1 className="text-5xl lg:text-6xl font-display font-bold mb-4 text-gray-100">Let&apos;s work out</h1>
+                    <p className=" text-gray-200 max-w-xs text-sm">"{randomQuote.quote}"
                     <br />
                     <span className="text-xs">- {randomQuote.author}</span></p>
                   </div>

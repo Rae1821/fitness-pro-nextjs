@@ -17,7 +17,13 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
     const [selectedTag, setSelectedTag] = useState('all')
 
 
+    const [totalPosts, setTotalPosts] = useState([]);
+    const [exerciseObjData, setExerciseObjData] = useState('');
 
+    setTotalPosts(data);
+      setExerciseObjData(data.map((post) => {
+      return post.workoutName
+    }));
 
 
    const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));

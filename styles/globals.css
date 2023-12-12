@@ -2,38 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-
-/* Colors I like */
-/* blue - cyan-500 */
-/* orange - amber-500 */
-/* green - emerald-400 */
-
-/* Tailwind Styles */
-
-/* hsl(185, 68%, 51%) */
-/* rgb(47, 201, 215 */
-.blueColor {
-    color: #2fc9d7;
-}
-
-/* hsl(14, 94, 73)*/
-/* rgb(251, 150, 120 */
-.peachColor {
-    color: #fb9678;
-}
-
-.greenColor {
-    color: #00c292;
-}
-
-.yellowColor {
-    color: #fec90d;
-}
-
-.blue_gradient {
-    @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
-}
-
-.orange_gradient {
-    @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
-}

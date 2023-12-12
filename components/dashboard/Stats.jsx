@@ -8,24 +8,21 @@ const Stats = ({ data }) => {
 
     const [userData, setUserData] = useState([])
 
-    const [userStats, setUserStats] = useState({
-        currentMonth: [],
-        lastMonth: [],
-    })
 
-    const [currentMonth, setCurrentMonth] = useState(0)
-    const [lastMonth, setLastMonth] = useState(0)
+    // const [currentMonth, setCurrentMonth] = useState(0)
+    // const [lastMonth, setLastMonth] = useState(0)
 
+    setUserData(data)
 
-    useEffect(() => {
-        const fetchPosts = async () => {
-          const response = await fetch('/api/workout');
-          const data = await response.json();
-          setUserData(data);
-        }
+    // useEffect(() => {
+    //     const fetchPosts = async () => {
+    //       const response = await fetch('/api/workout');
+    //       const data = await response.json();
+    //       setUserData(data);
+    //     }
 
-        fetchPosts();
-      }, [])
+    //     fetchPosts();
+    //   }, [])
 
       //console.log(userData)
 
@@ -57,9 +54,9 @@ const Stats = ({ data }) => {
 
 
       // Display the counts
-      console.log('Current Month Workouts:', workoutCounts.currentMonth);
-      console.log('Previous Month Workouts:', workoutCounts.previousMonth);
-      console.log('Month before last workouts:', workoutCounts.monthBeforeLast)
+      // console.log('Current Month Workouts:', workoutCounts.currentMonth);
+      // console.log('Previous Month Workouts:', workoutCounts.previousMonth);
+      // console.log('Month before last workouts:', workoutCounts.monthBeforeLast)
 
 
 
