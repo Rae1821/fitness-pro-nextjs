@@ -18,7 +18,6 @@ const EditWorkout = () => {
 
     const [submitting, setSubmitting] = useState(false);
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const [post, setPost] = useState(
       {
@@ -66,10 +65,10 @@ const EditWorkout = () => {
       const getWorkoutDetails = async () => {
         const response = await fetch(`/api/workout/${workoutId}`);
         const data = await response.json();
-        setSelectedDate(data.selectedDate)
         setPost({
           workoutName: data.workoutName,
           workoutFocus: data.workoutFocus,
+          selectedDate: data.date,
           tag: data.tag,
           instructor: data.instructor,
           time: data.time,
@@ -80,6 +79,7 @@ const EditWorkout = () => {
           duration: data.duration,
           exerciseObj: data.exerciseObj,
         })
+
 
       };
 
@@ -122,6 +122,7 @@ const EditWorkout = () => {
         }
     }
 
+    const [selectedDate, setSelectedDate] = useState(post.selectedDate || new Date());
 
     return (
       <div>

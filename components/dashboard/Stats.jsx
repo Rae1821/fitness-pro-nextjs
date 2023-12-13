@@ -1,37 +1,9 @@
 
-'use client'
-
-import { useEffect, useState } from 'react'
-
 
 const Stats = ({ data }) => {
 
-    const [userData, setUserData] = useState([])
 
-
-    // const [currentMonth, setCurrentMonth] = useState(0)
-    // const [lastMonth, setLastMonth] = useState(0)
-
-    setUserData(data)
-
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //       const response = await fetch('/api/workout');
-    //       const data = await response.json();
-    //       setUserData(data);
-    //     }
-
-    //     fetchPosts();
-    //   }, [])
-
-      //console.log(userData)
-
-      const [monthlyCount, setMonthlyCount] = useState({
-        currentMonth: [],
-        lastMonth: [],
-      })
-
-      const monthlyWorkouts = userData.filter((workout) => {
+      const monthlyWorkouts = data.filter((workout) => {
         const workoutDate = new Date(workout.date);
         const currentMonth = new Date().getMonth() + 1;
         const workoutMonth = workoutDate.getMonth() + 1;
@@ -68,7 +40,7 @@ const Stats = ({ data }) => {
 
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>
-        <div className="stat-value text-center">{userData.length}</div>
+        <div className="stat-value text-center">{data.length}</div>
         <div className="stat-desc">Total To Date</div>
     </div>
 

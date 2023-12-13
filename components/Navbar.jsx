@@ -3,11 +3,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 
 const Navbar = () => {
+    const router = useRouter();
     const { data: session } = useSession();
+    const pathName = usePathname();
 
     const [providers, setProviders] = useState(null);
 
@@ -78,7 +81,9 @@ const Navbar = () => {
                 </Link>
                 </div>
 
-            ) : (
+
+
+            ) : !session?.user && pathName === '/dashboard' ? (
 
                 <div className="navbar-end">
                     {providers &&
@@ -93,8 +98,7 @@ const Navbar = () => {
                             </button>
                     ))}
                 </div>
-
-        )}
+        ) : ''}
     </div>
 
 )};

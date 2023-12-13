@@ -13,8 +13,8 @@ const MyDashboard = () => {
   const router = useRouter();
   const { data: session } = useSession();
 
-  // const [totalPosts, setTotalPosts] = useState([]);
-  // const [exerciseObjData, setExerciseObjData] = useState('');
+  const [totalPosts, setTotalPosts] = useState([]);
+  const [exerciseObjData, setExerciseObjData] = useState('');
 
 
   //fetch posts and save to total posts state
@@ -23,10 +23,10 @@ const MyDashboard = () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
 
-    //   setTotalPosts(data);
-    //   setExerciseObjData(data.map((post) => {
-    //   return post.workoutName
-    // }));
+      setTotalPosts(data);
+      setExerciseObjData(data.map((post) => {
+      return post.workoutName
+    }));
     }
     if(session?.user.id) fetchPosts();
   }, [session?.user.id])
@@ -66,9 +66,12 @@ const MyDashboard = () => {
 
     <div className="flex flex-col items-center justify-center max-w-screen lg:max-w-4xl mx-auto">
       <div className="mt-20 mb-10">
+
         <Stats
-          data={data}
+          data={totalPosts}
         />
+
+
       </div>
       <div className="w-full">
           <CompletedWorkouts

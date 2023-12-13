@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation';
+
 import { useState } from 'react'
 import CardioCard from "../cardio/CardioCard"
 import ClassCard from "../class/ClassCard"
@@ -11,19 +11,8 @@ import WorkoutCard from "../strength/WorkoutCard"
 
 const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 
-    const pathName = usePathname();
-    const router = useRouter();
 
     const [selectedTag, setSelectedTag] = useState('all')
-
-
-    const [totalPosts, setTotalPosts] = useState([]);
-    const [exerciseObjData, setExerciseObjData] = useState('');
-
-    setTotalPosts(data);
-      setExerciseObjData(data.map((post) => {
-      return post.workoutName
-    }));
 
 
    const sortedData = data.sort((a,b) => new Date(b.date) - new Date(a.date));
@@ -71,7 +60,6 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
         <div className="w-full">
             {sortedData.map((post) => (
                 selectedTag === "cardio" && post.tag === "cardio" ?
-                <ul>
                 <CardioCard
                     key={post._id}
                     post={post}
@@ -79,7 +67,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                     handleEdit={() => handleEdit && handleEdit(post)}
                     handleDelete={() => handleDelete && handleDelete(post)}
                 />
-                </ul>
+
 
                 : selectedTag === "class" && post.tag === "class" ?
                 <ClassCard
@@ -149,7 +137,9 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                         : <div></div>
                         }
                     </div>
-                : <div></div>
+                : <div>
+                    <h2>Nothing to see yet...</h2>
+                </div>
             ))}
         </div>
     </div>
@@ -158,17 +148,3 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
 
 export default CompletedWorkouts
 
-
-// const handleLikeClick = (post) => {
-//     setFavorite((prevFavorite) => {
-//         const isFavorite = prevFavorite.includes(post._id);
-//         //console.log(post._id)
-//         if(isFavorite) {
-//             //remove from favorites
-//             return prevFavorite.filter((postId) => postId !== post._id)
-//         } else {
-//             //add to favorites
-//             return [...prevFavorite, post._id]
-//         }
-//     });
-// };

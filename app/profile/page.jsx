@@ -2,15 +2,15 @@
 import { connectToDB } from '@utils/database';
 
 import Profile from '@components/profile/Profile'
-import ProfileForm from '@components/profile/ProfileForm';
-import UserInfo from '@models/profile';
+// import ProfileForm from '@components/profile/ProfileForm';
+// import UserInfo from '@models/userInfo';
+// import { userInfoList } from '@actions/actions.js';
 
 
-const MyProfile = async ({ params }) => {
+const MyProfile = async () => {
 
-    await connectToDB();
 
-    const userInfo = await UserInfo.findById(params.id).populate('creator');
+    const { userInfoList } = await userInfoList();
 
 
 
@@ -23,8 +23,14 @@ const MyProfile = async ({ params }) => {
         desc="Welcome to your personalized profile page"
       /> */}
 
-      <ProfileForm />
+      {/* <ProfileForm /> */}
 
+      <div>
+        <h1>My Current Personal Info</h1>
+        {/* <div className="mb-4">
+          {userInfoList ? <Table userInfoList={userInfoList} /> : "null" }
+        </div> */}
+      </div>
       {/* <div>
         {userInfo.map((info) => (
           <p key={info.id}>{info.weight}</p>

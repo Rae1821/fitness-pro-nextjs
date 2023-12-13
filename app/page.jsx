@@ -4,15 +4,13 @@ import { useState, useEffect } from 'react';
 import { signIn, useSession, getProviders } from 'next-auth/react';
 import Link from 'next/link';
 import { quoteData } from '@utils/quoteData'
-import { useSearchParams } from "next/navigation";
 
 
-const Home = ({ params }) => {
+
+const Home = () => {
 
   const { data: session } = useSession();
 
-  const searchParams = useSearchParams();
-  const userName = searchParams.get("name");
 
     const [providers, setProviders] = useState(null);
 
