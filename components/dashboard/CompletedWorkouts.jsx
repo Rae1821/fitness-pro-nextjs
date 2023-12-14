@@ -137,9 +137,7 @@ const CompletedWorkouts = ({ data, handleEdit, handleDelete }) => {
                         : <div></div>
                         }
                     </div>
-                : <div>
-                    <h2>Nothing to see yet...</h2>
-                </div>
+                : <div></div>
             ))}
         </div>
     </div>

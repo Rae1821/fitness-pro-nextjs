@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import CompletedWorkouts from "@components/dashboard/CompletedWorkouts";
 import Stats from '@components/dashboard/Stats';
 //import BarChart from '@components/dashboard/BarChart';
+import { CardsSkeleton } from "@components/skeletons";
+import { Suspense } from 'react';
 
 
 const MyDashboard = () => {
@@ -66,11 +68,11 @@ const MyDashboard = () => {
 
     <div className="flex flex-col items-center justify-center max-w-screen lg:max-w-4xl mx-auto">
       <div className="mt-20 mb-10">
-
+      <Suspense fallback={<CardsSkeleton />}>
         <Stats
-          data={totalPosts}
-        />
-
+            data={totalPosts}
+          />
+      </Suspense>
 
       </div>
       <div className="w-full">

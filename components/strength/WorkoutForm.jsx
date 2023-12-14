@@ -168,7 +168,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
             <div className="w-full flex justify-end items-center my-8 gap-4">
                 <button
                     disabled={submitting}
-                    className="px-5 py-1.5 text-bold btn btn-accent btn-sm"
+                    className="px-5 py-1.5 text-bold btn btn-success btn-sm"
 
                 >
                     {submitting ? `${type}...` : type}
@@ -185,40 +185,3 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
 }
 
 export default WorkoutForm;
-
-
- {/* <div className="form-top ">
-                    <div className="form-control grid grid-cols-3 gap-4 mb-4">
-                        <label>
-                            <span className="flex flex-col font-semibold justify-center items-center">Workout Name</span>
-                            <input
-                                type="text"
-                                value={post.name}
-                                onChange={(e) => setPost({ ...post, name: e.target.value })}
-                                placeholder="Arms"
-                                required
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                        </label>
-                        <label>
-                            <span className="flex flex-col font-semibold justify-center items-center">Date Completed</span>
-                            <input
-                                type="text"
-                                value={post.date}
-                                onChange={(e) => setPost({ ...post, date: e.target.value })}
-                                placeholder="MM/DD/YYYY"
-                                required
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0 col-span-2"
-                            />
-                        </label>
-                        <label>
-                            <span className="flex flex-col font-semibold justify-center items-center">Duration</span>
-                            <input
-                                value={post.duration}
-                                onChange={(e) => setPost({...post, duration: e.target.value })}
-                                placeholder="30 minutes"
-                                className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0"
-                            />
-                        </label>
-                    </div>
-                </div> */}

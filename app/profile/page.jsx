@@ -10,7 +10,7 @@ import Profile from '@components/profile/Profile'
 const MyProfile = async () => {
 
 
-    const { userInfoList } = await userInfoList();
+    // const { userInfoList } = await userInfoList();
 
 
 
@@ -25,8 +25,8 @@ const MyProfile = async () => {
 
       {/* <ProfileForm /> */}
 
-      <div>
-        <h1>My Current Personal Info</h1>
+      <div className="text-center mt-24">
+        <h1 className="text-xl">Coming soon...</h1>
         {/* <div className="mb-4">
           {userInfoList ? <Table userInfoList={userInfoList} /> : "null" }
         </div> */}

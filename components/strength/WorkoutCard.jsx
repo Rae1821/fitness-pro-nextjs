@@ -69,7 +69,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                                 <th className="font-bold uppercase text-[11px] tracking-wide">R 1</th>
                                 <th className="font-bold uppercase text-[11px] tracking-wide">R 2</th>
                                 <th className="font-bold uppercase text-[11px] tracking-wide">R 3</th>
-                                {/* <th>Load</th> */}
+                                <th className="font-bold uppercase text-[11px] tracking-wide">Load</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -82,8 +82,8 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                                 <td className="text-sm md:text-base lg:text-lg font-bold">{exer.rep1}</td>
                                 <td className="text-sm md:text-base lg:text-lg font-bold">{exer.rep2}</td>
                                 <td className="text-sm md:text-base lg:text-lg font-bold">{exer.rep3}</td>
-                                {/* <td>{(exer.weight1 + exer.weight2 + exer.weight3) * exer.reps}</td> */}
-                                <td></td>
+                                <td className="text-sm md:text-base lg:text-lg font-bold">{(exer.rep1 + exer.rep2 + exer.rep3) * exer.weight}</td>
+
                             </tr>
                         ))}
 

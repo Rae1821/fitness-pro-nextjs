@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react';
 import { signIn, useSession, getProviders } from 'next-auth/react';
 import Link from 'next/link';
 import { quoteData } from '@utils/quoteData'
+import { unstable_noStore as noStore } from 'next/cache';
 
 
 
 const Home = () => {
+
+  noStore();
 
   const { data: session } = useSession();
 
@@ -69,7 +72,7 @@ const Home = () => {
                 : <>
                   <div className="mb-8">
                     <h1 className="text-5xl lg:text-6xl font-display font-bold mb-4 text-gray-100">Let&apos;s work out</h1>
-                    <p className=" text-gray-200 max-w-xs text-sm">"{randomQuote.quote}"
+                    <p className=" text-gray-200 max-w-xs text-sm lg:max-w-lg lg:text-base">"{randomQuote.quote}"
                     <br />
                     <span className="text-xs">- {randomQuote.author}</span></p>
                   </div>
