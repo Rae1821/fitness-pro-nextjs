@@ -5,14 +5,14 @@ import Link from 'next/link'
 
 
 
-const CardioForm = ({ type, post, setPost, workoutType, selectedDate, setSelectedDate, submitting, handleSubmit }) => {
+const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitting, handleSubmit }) => {
 
 
 
 
   return (
 
-    <section className="w-full max-w-full flex-col px-6 py-8">
+    <section className="w-full max-w-full flex-col px-12 py-8">
         <div className="flex flex-col items-center md:items-start">
             <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-red-600 via-rose-500 to-pink-400 inline-block text-transparent bg-clip-text pb-1">
              Cardio Workout

@@ -9,11 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@tailwindcss/typography": "github:tailwindcss/typography",
     "@vercel/speed-insights": "^1.0.1",
     "bcrypt": "^5.1.1",
     "chart.js": "^4.4.0",
+    "classnames": "^2.3.2",
     "eslint-config-next": "^14.0.4",
     "mongodb": "^6.1.0",
     "mongoose": "^7.5.3",

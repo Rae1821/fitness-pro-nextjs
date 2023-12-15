@@ -6,16 +6,14 @@ import 'react-datepicker/dist/react-datepicker.css'
 const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitting, handleSubmit, handleClick }) => {
 
 
-
   return (
-    <section className="w-full max-w-full flex-start flex-col px-6 py-8">
+    <section className="w-full max-w-full px-12 py-8">
         <div className="flex flex-col items-center md:items-start">
-            <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.15] text-left bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 inline-block text-transparent bg-clip-text pb-1">
+            <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] text-left bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 inline-block text-transparent bg-clip-text pb-1">
                 Strength Workout
             </h1>
             <p className="text-sm md:text-base lg:text-left">{type} and record your strength workout</p>
         </div>
-
 
         <form
             onSubmit={handleSubmit}
@@ -29,7 +27,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                         <DatePicker
                             selected={selectedDate}
                             onChange={(date)=> setSelectedDate(date)}
-                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
+                            className="input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
                         />
                     </div>
                 </label>
@@ -66,7 +64,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
 
             {post.exerciseObj.map((exer, index) => {
             return (
-                <div key={index} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-4 border-b border-slate-300 pb-4 ">
+                <div key={index} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-4 border-b border-slate-300 pb-4 items-center">
 
                     <label>
                         Exercise:
@@ -95,7 +93,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].sets = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-smoutline-0 col-span-2"
+                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -109,7 +107,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].weight = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -123,7 +121,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].rep1 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -137,7 +135,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].rep2 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                     <label>
@@ -151,7 +149,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].rep3 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
                         />
                     </label>
                 </div>

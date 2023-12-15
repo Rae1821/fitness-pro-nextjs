@@ -1,15 +1,15 @@
-import React from 'react'
-import { useFormStatus } from 'react-dom';
+import classnames from 'classnames';
 
-const SubmitButton = () => {
-    const { pending } = useFormStatus();
 
+export const Button = ({ children, className, size, variant, ...rest }) => {
+
+  let variantClass = variant && `btn-${variant}`
+  let sizeClass = size && `btn-${size}`
+  const allClasses = classnames(sizeClass, variantClass, className)
 
   return (
-    <button type="submit" aria-disabled={pending} className="bg-blue-500 rounded px-4 py-2 text-white font-semibold">
-        {pending ? "Adding user info..." : "Add Info"}
+    <button className={allClasses} {...rest}>
+      {children}
     </button>
   )
 }
-
-export default SubmitButton

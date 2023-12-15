@@ -47,7 +47,7 @@ const Navbar = () => {
                     </li>
                     <li>
                         <Link href="/create-workout">
-                            Create Workout
+                            Record Workout
                         </Link>
                     </li>
                 </ul>

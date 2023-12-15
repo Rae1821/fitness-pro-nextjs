@@ -1,25 +1,16 @@
-'use client'
-
-import { useState } from 'react';
-import Image from 'next/image';
-import { useSession } from 'next-auth/react';
-import { usePathname, useRouter } from 'next/navigation';
 import { FaDumbbell } from "react-icons/fa";
+import { Button } from '@components/Button';
 
 
 const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
 
-    const { data: session } = useSession();
-    const pathName = usePathname();
-    const router = useRouter();
 
+const formattedDate = new Date(post.date).toLocaleDateString();
 
-    const formattedDate = new Date(post.date).toLocaleDateString();
-
-    const totalLoad = post.exerciseObj.reduce((acc, exer) => {
-         const totalWeight = (exer.weight1 + exer.weight2 + exer.weight3) * exer.reps
-         return acc + totalWeight
-})
+//     const totalLoad = post.exerciseObj.reduce((acc, exer) => {
+//          const totalWeight = (exer.weight1 + exer.weight2 + exer.weight3) * exer.reps
+//          return acc + totalWeight
+// })
 
 
   return (
@@ -90,7 +81,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                         </tbody>
                     </table>
 
-                    {session?.user.id === post.creator._id
+                    {/* {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                             <p
@@ -105,8 +96,23 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                             >
                                 Delete
                             </p>
+
                         </div>
-                    )}
+                    )} */}
+                <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3 text-sm cursor-pointer">
+                    <Button
+                        variant="error"
+                        className="btn btn-sm"
+                        onClick={handleEdit}>
+                        Edit
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        className="btn btn-sm"
+                        onClick={handleDelete}>
+                        Delete
+                    </Button>
+                </div>
             </div>
         </div>
     </div>

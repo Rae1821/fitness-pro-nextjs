@@ -1,4 +1,4 @@
-'use client'
+'use client' //make this the main client component and store state here
 
 
 import { useState } from 'react'

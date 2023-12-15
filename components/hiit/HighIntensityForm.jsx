@@ -11,14 +11,13 @@ const HighIntensityForm = ({ type, post, setPost, selectedDate, setSelectedDate,
 
   return (
 
-    <section className="w-full max-w-full flex-col px-6 py-8">
+    <section className="w-full max-w-full flex-col px-12 py-8">
         <div className="flex flex-col items-center md:items-start">
             <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-400 inline-block text-transparent bg-clip-text pb-1">
                 HIIT Workout
             </h1>
                 <p className="text-left text-sm md:text-base">{type} and record your HIIT workout</p>
         </div>
-
 
         <form
             onSubmit={handleSubmit}

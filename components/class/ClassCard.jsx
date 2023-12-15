@@ -1,18 +1,11 @@
-'use client'
-
-
-import { useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
 import { FaPeopleGroup } from "react-icons/fa6";
-
+import { Button } from "@components/Button";
 
 
 const ClassCard = ({ post, handleEdit, handleDelete }) => {
 
-    const { data: session } = useSession();
-    const pathName = usePathname();
 
-    const formattedDate = new Date(post.date).toLocaleDateString();
+const formattedDate = new Date(post.date).toLocaleDateString();
 
 
   return (
@@ -64,7 +57,7 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
                     </tbody>
                 </table>
 
-                {session?.user.id === post.creator._id
+                {/* {session?.user.id === post.creator._id
                         && pathName === '/dashboard' && (
                         <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
                             <p
@@ -80,7 +73,21 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
                                 Delete
                             </p>
                         </div>
-                    )}
+                    )} */}
+                    <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3 text-sm cursor-pointer">
+                        <Button
+                            variant="error"
+                            className="btn btn-sm"
+                            onClick={handleEdit}>
+                            Edit
+                        </Button>
+                        <Button
+                            variant="ghost"
+                            className="btn btn-sm"
+                            onClick={handleDelete}>
+                            Delete
+                        </Button>
+                    </div>
             </div>
         </div>
     </div>

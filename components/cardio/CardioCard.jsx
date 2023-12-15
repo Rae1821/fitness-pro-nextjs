@@ -1,19 +1,11 @@
-'use client'
-
-
-import { useSession } from 'next-auth/react';
-import { usePathname, useRouter } from 'next/navigation';
 import { FaHeartbeat } from "react-icons/fa";
-
+import { Button } from "@components/Button";
 
 
 const CardioCard = ({ post, handleEdit, handleDelete }) => {
 
-    const { data: session } = useSession();
-    const pathName = usePathname();
-    const router = useRouter();
 
-    const formattedDate = new Date(post.date).toLocaleDateString();
+const formattedDate = new Date(post.date).toLocaleDateString();
 
 
   return (
@@ -69,25 +61,21 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
                     </tbody>
                 </table>
 
-                {session?.user.id === post.creator._id
-                        && pathName === '/dashboard' && (
-                        <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3">
-                            <p
-                                className="font-inter text-sm cursor-pointer btn btn-sm btn-error"
-                                onClick={handleEdit}
-                            >
-                                Edit
-                            </p>
-                            <p
-                                className="font-inter text-sm cursor-pointer btn btn-ghost btn-sm"
-                                onClick={handleDelete}
-                            >
-                                Delete
-                            </p>
-                        </div>
-                    )}
+                <div className="mt-5 flex items-center justify-center md:justify-end gap-4 pt-3 text-sm cursor-pointer">
+                    <Button
+                        variant="error"
+                        className="btn btn-sm"
+                        onClick={handleEdit}>
+                        Edit
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        className="btn btn-sm"
+                        onClick={handleDelete}>
+                        Delete
+                    </Button>
+                </div>
             </div>
-
         </div>
     </div>
   )
