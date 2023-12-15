@@ -5,16 +5,16 @@ import Link from 'next/link'
 
 
 
-const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitting, handleSubmit }) => {
+const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit }) => {
 
 
 
 
   return (
 
-    <section className="w-full max-w-full flex-col px-12 py-8">
+    <section className="w-full max-w-full flex-col px-6 py-8">
         <div className="flex flex-col items-center md:items-start">
-            <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-red-600 via-rose-500 to-pink-400 inline-block text-transparent bg-clip-text pb-1">
+            <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-red-600 via-rose-500 to-pink-400 inline-block text-transparent bg-clip-text pb-1">
              Cardio Workout
             </h1>
             <p className="text-left text-sm md:text-base">{type} and record your cardio workout</p>
@@ -26,14 +26,14 @@ const CardioForm = ({ type, post, setPost, selectedDate, setSelectedDate, submit
             onSubmit={handleSubmit}
             className="mt-10 mx-auto w-full">
             {/* Top of Form */}
-            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 mb-4 border-b border-slate-300">
+            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 px-8 mb-4 border-b border-slate-300">
                 <label>
                     <span className="flex flex-col font-semibold items-center mb-2">Date Completed</span>
                     <div className="flex justify-center w-full relative">
                         <DatePicker
-                            selected={selectedDate}
-                            onChange={(date)=> setSelectedDate(date)}
-                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm w-80 sm:w-96 lg:w-72"
+                            selected={date}
+                            onChange={(date)=> setDate(date)}
+                            className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-gray-500 text-sm"
                         />
                     </div>
                 </label>

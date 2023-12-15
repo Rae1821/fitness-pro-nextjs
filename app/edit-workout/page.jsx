@@ -18,6 +18,8 @@ const EditWorkout = () => {
 
     const [submitting, setSubmitting] = useState(false);
 
+    const [date, setDate] = useState(new Date())
+
 
     const [post, setPost] = useState(
       {
@@ -47,6 +49,7 @@ const EditWorkout = () => {
 
     const handleClick = (e) => {
       e.preventDefault();
+      setDate(date)
       setPost({
           ...post,
           exerciseObj: [...post.exerciseObj, {
@@ -68,7 +71,7 @@ const EditWorkout = () => {
         setPost({
           workoutName: data.workoutName,
           workoutFocus: data.workoutFocus,
-          selectedDate: data.date,
+          date: data.date,
           tag: data.tag,
           instructor: data.instructor,
           time: data.time,
@@ -97,7 +100,7 @@ const EditWorkout = () => {
             method: 'PATCH',
             body: JSON.stringify({
               userId: session?.user.id,
-              date: selectedDate,
+              date: date,
               workoutName: post.workoutName,
               workoutFocus: post.workoutFocus,
               tag: post.tag.toLowerCase(),
@@ -122,7 +125,6 @@ const EditWorkout = () => {
         }
     }
 
-    const [selectedDate, setSelectedDate] = useState(post.selectedDate || new Date());
 
     return (
       <div>
@@ -135,8 +137,10 @@ const EditWorkout = () => {
             handleClick={handleClick}
             post={post}
             setPost={setPost}
-            selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
+            date={date}
+            setDate={setDate}
+            // selectedDate={selectedDate}
+            // setSelectedDate={setSelectedDate}
           />
         ) : post.tag === "class" ? (
           <ClassForm
@@ -145,8 +149,10 @@ const EditWorkout = () => {
               handleSubmit={updateWorkout}
               post={post}
               setPost={setPost}
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
+              date={date}
+              setDate={setDate}
+              // selectedDate={selectedDate}
+              // setSelectedDate={setSelectedDate}
             />
         ) : post.tag === "cardio" ? (
             <CardioForm
@@ -155,8 +161,10 @@ const EditWorkout = () => {
                 handleSubmit={updateWorkout}
                 post={post}
                 setPost={setPost}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                date={date}
+                setDate={setDate}
+                // selectedDate={selectedDate}
+                // setSelectedDate={setSelectedDate}
             />
         ) : post.tag === "hiit" ? (
             <HighIntensityForm
@@ -165,8 +173,10 @@ const EditWorkout = () => {
                 handleSubmit={updateWorkout}
                 post={post}
                 setPost={setPost}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                date={date}
+                setDate={setDate}
+                // selectedDate={selectedDate}
+                // setSelectedDate={setSelectedDate}
             />
         ) : null
         }

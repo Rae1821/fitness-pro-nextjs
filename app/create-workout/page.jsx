@@ -16,7 +16,7 @@ const createNewWorkout = () => {
 
     const [submitting, setSubmitting] = useState(false);
 
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [date, setDate] = useState(new Date());
 
     const [workoutType, setWorkoutType] = useState('')
 
@@ -47,7 +47,7 @@ const createNewWorkout = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        setSelectedDate(selectedDate);
+        setDate(date);
         setPost({
             ...post,
             exerciseObj: [...post.exerciseObj, {
@@ -91,7 +91,7 @@ const createNewWorkout = () => {
                 },
                 body: JSON.stringify({
                     userId: session?.user.id,
-                    date: selectedDate,
+                    date: date,
                     workoutName: post.workoutName,
                     workoutFocus: post.workoutFocus,
                     tag: post.tag.toLowerCase(),
@@ -145,8 +145,8 @@ const createNewWorkout = () => {
                 handleClick={handleClick}
                 post={post}
                 setPost={setPost}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                date={date}
+                setDate={setDate}
             />
 
 
@@ -157,8 +157,8 @@ const createNewWorkout = () => {
                 handleSubmit={createWorkout}
                 post={post}
                 setPost={setPost}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                date={date}
+                setDate={setDate}
             />
 
         : post.tag === 'Cardio' ?
@@ -168,8 +168,10 @@ const createNewWorkout = () => {
                 handleSubmit={createWorkout}
                 post={post}
                 setPost={setPost}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                date={date}
+                setDate={setDate}
+                // selectedDate={selectedDate}
+                // setSelectedDate={setSelectedDate}
             />
 
         :  post.tag === 'HIIT' ?
@@ -179,8 +181,10 @@ const createNewWorkout = () => {
                 handleSubmit={createWorkout}
                 post={post}
                 setPost={setPost}
-                selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                date={date}
+                setDate={setDate}
+                // selectedDate={selectedDate}
+                // setSelectedDate={setSelectedDate}
             />
 
         : <div></div>

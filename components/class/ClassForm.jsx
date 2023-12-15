@@ -3,15 +3,15 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Link from 'next/link'
 
 
-const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitting, handleSubmit }) => {
+const ClassForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit }) => {
 
 
 
   return (
 
-    <section className="w-full max-w-full flex-col px-12 py-8">
+    <section className="w-full max-w-full flex-col px-6 py-8">
         <div className="flex flex-col justify-center items-center md:items-start">
-            <h1 className="mt-8 text-5xl lg:text-6xl font-extrabold leading-[1.5] bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 inline-block text-transparent bg-clip-text pb-1">
+            <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] bg-gradient-to-r from-green-600 via-emerald-500 to-teal-400 inline-block text-transparent bg-clip-text pb-1">
                 Class Workout
             </h1>
                 <p className="text-sm md:text-base">{type} and record your class workout</p>
@@ -21,14 +21,14 @@ const ClassForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitt
             onSubmit={handleSubmit}
             className="mt-10 mx-auto w-full">
             {/* Top of Form */}
-            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 mb-4 border-b border-slate-300">
+            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 px-10 mb-4 border-b border-slate-300">
                 <label>
                     <span className="flex flex-col font-semibold items-center mb-2">Date Completed</span>
                     <div className="flex justify-center w-full">
                         <DatePicker
-                            selected={selectedDate}
-                            onChange={(date)=> setSelectedDate(date)}
-                            className="input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
+                            selected={date}
+                            onChange={(date)=> setDate(date)}
+                            className="input input-bordered outline-0 text-sm"
                         />
                     </div>
                 </label>

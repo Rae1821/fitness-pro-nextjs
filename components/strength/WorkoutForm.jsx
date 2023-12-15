@@ -3,11 +3,11 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 
 
-const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submitting, handleSubmit, handleClick }) => {
+const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit, handleClick }) => {
 
 
   return (
-    <section className="w-full max-w-full px-12 py-8">
+    <section className="w-full max-w-full px-6 py-8">
         <div className="flex flex-col items-center md:items-start">
             <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.15] text-left bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 inline-block text-transparent bg-clip-text pb-1">
                 Strength Workout
@@ -19,15 +19,15 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
             onSubmit={handleSubmit}
             className="mt-10 mx-auto w-full">
             {/* Top of Form */}
-            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 mb-4 border-b border-slate-300">
+            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 px-10 mb-4 border-b border-slate-300">
             {/* Date Completed Input */}
                 <label>
                     <span className="flex flex-col font-semibold items-center mb-2">Date Completed</span>
                     <div className="flex justify-center w-full">
                         <DatePicker
-                            selected={selectedDate}
-                            onChange={(date)=> setSelectedDate(date)}
-                            className="input input-bordered outline-0 text-sm w-80 sm:w-96 lg:w-72"
+                            selected={date}
+                            onChange={(date)=> setDate(date)}
+                            className="input input-bordered outline-0 text-sm"
                         />
                     </div>
                 </label>
@@ -64,9 +64,9 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
 
             {post.exerciseObj.map((exer, index) => {
             return (
-                <div key={index} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-4 border-b border-slate-300 pb-4 items-center">
+                <div key={index} className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 mt-4 border-b border-slate-300 pb-4 items-center">
 
-                    <label>
+                    <label className="w-full row-start-1 col-span-4 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
                         Exercise:
                         <input
                             type="text"
@@ -78,11 +78,11 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].exercise = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 shadow-sm"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 shadow-sm font-normal"
                         />
                     </label>
 
-                    <label>
+                    <label className="row-start-2 col-span-auto lg:row-start-1 lg:col-span-1 font-semibold mb-2">
                         Sets:
                         <input
                             type="text"
@@ -93,10 +93,10 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].sets = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 font-normal"
                         />
                     </label>
-                    <label>
+                    <label className="row-start-2 col-span-2 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
                         Weight:
                         <input
                             type="text"
@@ -107,10 +107,10 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].weight = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 font-normal"
                         />
                     </label>
-                    <label>
+                    <label className="row-start-3 col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
                         Rep 1
                         <input
                             type="text"
@@ -121,10 +121,10 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].rep1 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 font-normal"
                         />
                     </label>
-                    <label>
+                    <label className="row-start-3 col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
                         Rep 2
                         <input
                             type="text"
@@ -135,10 +135,10 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].rep2 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 font-normal"
                         />
                     </label>
-                    <label>
+                    <label className="row-start-3 col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
                         Rep 3
                         <input
                             type="text"
@@ -149,7 +149,7 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
                                 updatedExerciseObj[index].rep3 = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-1/2 flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 font-normal"
                         />
                     </label>
                 </div>
@@ -157,16 +157,16 @@ const WorkoutForm = ({ type, post, setPost, selectedDate, setSelectedDate, submi
             })}
 
             <button
-            className="btn btn-info btn-sm btn-outline py-1 px-3 mt-4"
+            className="btn btn-info btn-xs btn-outline mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise
             </button>
 
-            <div className="w-full flex justify-end items-center my-8 gap-4">
+            <div className="w-full flex justify-center md:justify-end items-center mt-12 gap-4">
                 <button
                     disabled={submitting}
-                    className="px-5 py-1.5 text-bold btn btn-success btn-sm"
+                    className="text-bold btn btn-success btn-sm"
 
                 >
                     {submitting ? `${type}...` : type}
