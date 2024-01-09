@@ -1,8 +1,8 @@
 import '@styles/globals.css';
 import Navbar from '@components/Navbar';
-import Provider from '@/components/Provider';
+import { ClerkProvider } from '@clerk/nextjs';
 //import SwapToggle from '@components/SwapToggle';
-import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 export const metadata = {
     title: "Fitness Pro",
@@ -13,15 +13,15 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en" data-theme="mytheme">
       <body suppressHydrationWarning={true}>
-        <Provider>
+        <ClerkProvider>
             <div className="main">
               <main>
-                <Navbar />
+                {/* <Navbar /> */}
                 {children}
                 {/* <SwapToggle /> */}
               </main>
             </div>
-        </Provider>
+        </ClerkProvider>
       </body>
     </html>
   )

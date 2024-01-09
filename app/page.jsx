@@ -5,6 +5,9 @@ import { signIn, useSession, getProviders } from 'next-auth/react';
 import Link from 'next/link';
 import { quoteData } from '@utils/quoteData'
 import { unstable_noStore as noStore } from 'next/cache';
+import { UserButton } from '@clerk/nextjs';
+import { SignedIn } from '@clerk/nextjs';
+import Welcome from '@components/Welcome';
 
 
 
@@ -12,7 +15,7 @@ const Home = () => {
 
   noStore();
 
-  const { data: session } = useSession();
+  //const { data: session } = useSession();
 
 
     const [providers, setProviders] = useState(null);
@@ -53,7 +56,12 @@ const Home = () => {
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
 
-          {!session?.user ?
+          <UserButton afterSignOutUrl='/'/>
+          <SignedIn>
+            <Welcome />
+          </SignedIn>
+
+          {/* {!session?.user ?
             <div className="place-items-start">
               <h1 className="mb-5 text-5xl lg:text-6xl font-bold">Welcome Back</h1>
 
@@ -81,7 +89,7 @@ const Home = () => {
                     <Link href="/create-workout" className="btn btn-sm btn-accent">Record Workout</Link>
                     <Link href="/dashboard" className="btn btn-sm btn-accent btn-outline">My Dashboard</Link>
                   </div>
-                </> }
+                </> } */}
         </div>
     </div>
 </div>

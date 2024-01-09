@@ -9,11 +9,12 @@ import Stats from '@components/dashboard/Stats';
 //import BarChart from '@components/dashboard/BarChart';
 import { CardsSkeleton } from "@components/skeletons";
 import { Suspense } from 'react';
+import { SignedIn } from '@clerk/nextjs';
 
 
 const MyDashboard = () => {
   const router = useRouter();
-  const { data: session } = useSession();
+  //const { data: session } = useSession();
 
   const [totalPosts, setTotalPosts] = useState([]);
   const [exerciseObjData, setExerciseObjData] = useState('');
@@ -67,6 +68,7 @@ const MyDashboard = () => {
   return (
 
     <div className="flex flex-col items-center justify-center max-w-screen lg:max-w-4xl mx-auto">
+    <SignedIn>
       <div className="mt-20 mb-10">
       <Suspense fallback={<CardsSkeleton />}>
         <Stats
@@ -82,6 +84,7 @@ const MyDashboard = () => {
             handleDelete={handleDelete}
           />
       </div>
+      </SignedIn>
     </div>
 
   )
