@@ -7,10 +7,29 @@ const Stats = ({ data }) => {
         const workoutDate = new Date(workout.date);
         const currentMonth = new Date().getMonth() + 1;
         const workoutMonth = workoutDate.getMonth() + 1;
-
         //check if the workout is from the current month or the previous month
         return workoutMonth === currentMonth || workoutMonth === currentMonth - 1 || workoutMonth === currentMonth - 2;
       });
+
+      const yearlyWorkouts = data.filter((workout) => {
+        const workoutDate = new Date(workout.date);
+        const currentYear = new Date().getFullYear();
+        const workoutYear = workoutDate.getFullYear();
+        //check if the workout is from the current year or the previous year
+        return workoutYear === currentYear || workoutYear === currentYear - 1 || workoutYear === currentYear - 2;
+      })
+
+
+    //count the workouts for the current year/previous year with reduce
+     const yearlyWorkoutCounts = yearlyWorkouts.reduce((counts, workout) => {
+      const workoutYear = new Date(workout.date).getFullYear();
+      const currentYear = new Date().getFullYear();
+
+    //increment the count for the corresponding year
+      counts[workoutYear === currentYear ? 'currentYear' : workoutYear === currentYear - 2 ? 'yearBeforeLast' : 'previousYear'] += 1;
+
+      return counts;
+     }, { currentYear: 0, previousYear: 0, yearBeforeLast: 0 });
 
       //Count the workouts for the current month or the previous month using reduce
       const workoutCounts = monthlyWorkouts.reduce((counts, workout) => {
@@ -25,23 +44,19 @@ const Stats = ({ data }) => {
       }, { currentMonth: 0, previousMonth: 0, monthBeforeLast: 0 });
 
 
-      // Display the counts
-      // console.log('Current Month Workouts:', workoutCounts.currentMonth);
-      // console.log('Previous Month Workouts:', workoutCounts.previousMonth);
-      // console.log('Month before last workouts:', workoutCounts.monthBeforeLast)
-
-
-
-
-
   return (
 <>
-    <div className="stats stats-horizontal justify-center md:stats-horizontal shadow text-center">
+    <div className="stats stats-vertical justify-center md:stats-horizontal shadow text-center">
 
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>
         <div className="stat-value text-center">{data.length}</div>
         <div className="stat-desc">Total To Date</div>
+    </div>
+    <div className="stat bg-neutral shadow-md">
+        <div className="stat-title">Workouts</div>
+        <div className="stat-value text-center">{yearlyWorkoutCounts.currentYear}</div>
+        <div className="stat-desc">Total This Year</div>
     </div>
 
     <div className="stat bg-neutral shadow-md">

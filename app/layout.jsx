@@ -1,8 +1,6 @@
 import '@styles/globals.css';
 import Navbar from '@components/Navbar';
-import { ClerkProvider } from '@clerk/nextjs';
-//import SwapToggle from '@components/SwapToggle';
-
+import Provider from '@components/Provider'
 
 export const metadata = {
     title: "Fitness Pro",
@@ -11,19 +9,20 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en" data-theme="mytheme">
-      <body suppressHydrationWarning={true}>
-        <ClerkProvider>
-            <div className="main">
-              <main>
-                {/* <Navbar /> */}
-                {children}
-                {/* <SwapToggle /> */}
-              </main>
-            </div>
-        </ClerkProvider>
-      </body>
-    </html>
+    <Provider>
+      <html lang="en" data-theme="mytheme">
+        <body suppressHydrationWarning={true}>
+
+              <div className="main">
+                <main>
+                  <Navbar />
+                  {children}
+                </main>
+              </div>
+
+        </body>
+      </html>
+    </Provider>
   )
 }
 
