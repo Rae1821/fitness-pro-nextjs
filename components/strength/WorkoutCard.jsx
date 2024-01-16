@@ -17,7 +17,7 @@ const formattedDate = new Date(post.date).toLocaleDateString();
 
     <div>
     {/* Daisy UI Collapse */}
-        <div className="collapse collapse-plus border-b border-b-neutral mb-4 font-display mx-auto md:px-2 w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl bg-base-100 hover:bg-primary rounded-md items-center">
+        <div className="collapse collapse-plus border-b border-b-neutral mb-4 font-display mx-auto md:px-2 w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl bg-base-100 hover:bg-primary rounded-tr-2xl rounded-tl-2xl items-center pt-2">
 
             <input type="checkbox" className="peer" />
 
@@ -49,7 +49,7 @@ const formattedDate = new Date(post.date).toLocaleDateString();
                 </div>
             </div>
 
-            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-br-md rounded-bl-md border-b-8 border-l-8 border-r-8 border-primary">
+            <div className="collapse-content bg-base-100 px-0 md:px-4 pt-2 rounded-br-md rounded-bl-md border-b-8 border-l-8 border-r-8 border-primary text-slate-800">
 
                     <table className="table table-xs table-auto">
                         <thead>

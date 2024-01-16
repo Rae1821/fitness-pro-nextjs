@@ -35,11 +35,11 @@ const Navbar = () => {
                 </label>
 
                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
+                    {/* <li>
                         <Link href="/profile">
                             My Profile
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link href="/dashboard">
                             My Dashboard
@@ -52,12 +52,29 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
-        </div>
-
-        <div className="navbar-center">
             <Link href="/" className="btn btn-ghost normal-case text-xl">
                 Fitness Pro
             </Link>
+        </div>
+
+        <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+                {/* <li>
+                    <Link href="/profile">
+                        My Profile
+                    </Link>
+                </li> */}
+                <li>
+                    <Link href="/dashboard">
+                        My Dashboard
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/create-workout">
+                        Record Workout
+                    </Link>
+                </li>
+            </ul>
         </div>
 
             {session?.user ? (

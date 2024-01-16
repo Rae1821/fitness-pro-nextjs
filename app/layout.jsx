@@ -12,14 +12,12 @@ const RootLayout = ({ children }) => {
     <Provider>
       <html lang="en" data-theme="mytheme">
         <body suppressHydrationWarning={true}>
-
               <div className="main">
                 <main>
                   <Navbar />
                   {children}
                 </main>
               </div>
-
         </body>
       </html>
     </Provider>

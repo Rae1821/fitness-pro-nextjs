@@ -3,21 +3,17 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Link from 'next/link'
 
 
-
-
-const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit }) => {
-
-
+const AppForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit }) => {
 
 
   return (
 
     <section className="w-full max-w-full flex-col px-6 py-8">
         <div className="flex flex-col items-center md:items-start">
-            <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-red-600 via-rose-500 to-pink-400 inline-block text-transparent bg-clip-text pb-1">
-             Cardio Workout
+            <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.5] text-left bg-gradient-to-r from-purple-600 via-violet-500 to-indigo-400 inline-block text-transparent bg-clip-text pb-1">
+             App Workout
             </h1>
-            <p className="text-left text-sm md:text-base">{type} and record your cardio workout</p>
+            <p className="text-left text-sm md:text-base">{type} and record your app workout</p>
         </div>
 
 
@@ -38,11 +34,11 @@ const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubm
                     </div>
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Activity Type</span>
+                    <span className="flex flex-col font-semibold justify-center items-center">App Name</span>
                     <input
                         type="text"
                         name="workoutName"
-                        placeholder="Treadmill Run"
+                        placeholder="FitOn"
                         value={post.workoutName}
                         onChange={(e) => setPost({ ...post, workoutName: e.target.value })}
                         className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
@@ -64,51 +60,16 @@ const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubm
                     />
                 </label>
                 <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Intervals</span>
+                    <span className="flex flex-col font-semibold justify-center items-center">Workout Focus</span>
                     <input
                         type="text"
-                        name="intervals"
-                        placeholder="10"
-                        value={post.intervals}
-                        onChange={(e) => setPost({ ...post, intervals: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
-                    />
-                </label>
-                <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Speed High</span>
-                    <input
-                        type="text"
-                        name="speedHigh"
-                        placeholder="6.0"
-                        value={post.speedHigh}
-                        onChange={(e) => setPost({ ...post, speedHigh: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
-                    />
-                </label>
-                <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Speed Low</span>
-                    <input
-                        type="text"
-                        name="speedLow"
-                        placeholder="3.0"
-                        value={post.speedLow}
-                        onChange={(e) => setPost({ ...post, speedLow: e.target.value })}
+                        name="workoutFocus"
+                        placeholder="Abs"
+                        value={post.workoutFocus}
+                        onChange={(e) => setPost({ ...post, workoutFocus: e.target.value })}
                         className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>
-                <label>
-                    <span className="flex flex-col font-semibold justify-center items-center">Incline</span>
-                    <input
-                        type="text"
-                        name="incline"
-                        placeholder="5"
-                        value={post.incline}
-                        onChange={(e) => setPost({ ...post, incline: e.target.value })}
-                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
-                    />
-                </label>
-
-
             </div>
             <div className="w-full flex justify-end items-center my-8 gap-4">
                         <button
@@ -130,4 +91,4 @@ const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubm
   )
 }
 
-export default CardioForm
+export default AppForm

@@ -46,7 +46,7 @@ const Stats = ({ data }) => {
 
   return (
 <>
-    <div className="stats stats-vertical justify-center md:stats-horizontal shadow text-center">
+    <div className="stats stats-vertical items-center justify-center md:stats-horizontal shadow text-center">
 
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>

@@ -79,7 +79,7 @@ const ClassForm = ({ type, post, setPost, date, setDate, submitting, handleSubmi
                     <span className="flex flex-col font-semibold justify-center items-center">Class Focus</span>
                     <input
                         type="text"
-                        name="classType"
+                        name="workoutFocus"
                         placeholder="Abs"
                         value={post.workoutFocus}
                         onChange={(e) => setPost({ ...post, workoutFocus: e.target.value })}
@@ -107,7 +107,7 @@ const ClassForm = ({ type, post, setPost, date, setDate, submitting, handleSubmi
                     {submitting ? `${type}...` : type}
                 </button>
 
-                <Link href="/" className="text-sm">
+                <Link href="/dashboard" className="text-sm">
                     Cancel
                 </Link>
             </div>

@@ -3,8 +3,6 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Link from 'next/link'
 
 
-
-
 const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit, handleClick }) => {
 
 
@@ -173,7 +171,7 @@ const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, han
 
 
             <button
-            className="btn btn-warning btn-xs btn-outline py-1 px-3 mt-4"
+            className="btn btn-warning w-full mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise
@@ -190,7 +188,7 @@ const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, han
                 </button>
 
 
-                <Link href="/profile" className="text-gray-500 text-sm">
+                <Link href="/dashboard" className="text-gray-500 text-sm">
                     Cancel
                 </Link>
             </div>

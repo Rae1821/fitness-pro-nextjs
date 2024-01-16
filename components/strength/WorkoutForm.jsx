@@ -157,7 +157,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
             })}
 
             <button
-            className="btn btn-info btn-xs btn-outline mt-4"
+            className="btn btn-info w-full mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise
@@ -173,7 +173,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
                 </button>
 
 
-                <Link href="/" className="text-gray-500 text-sm">
+                <Link href="/dashboard" className="text-gray-500 text-sm">
                     Cancel
                 </Link>
             </div>
