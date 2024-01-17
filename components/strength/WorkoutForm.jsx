@@ -157,7 +157,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
             })}
 
             <button
-            className="btn btn-info w-full mt-4"
+            className="btn btn-info w-full lg:w-1/4 mt-4 hover:bg-opacity-70"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise

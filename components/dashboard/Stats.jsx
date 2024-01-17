@@ -43,6 +43,7 @@ const Stats = ({ data }) => {
 
       }, { currentMonth: 0, previousMonth: 0, monthBeforeLast: 0 });
 
+      const currentYear = new Date().getFullYear();
 
   return (
 <>
@@ -56,7 +57,7 @@ const Stats = ({ data }) => {
     <div className="stat bg-neutral shadow-md">
         <div className="stat-title">Workouts</div>
         <div className="stat-value text-center">{yearlyWorkoutCounts.currentYear}</div>
-        <div className="stat-desc">Total This Year</div>
+        <div className="stat-desc">Total {currentYear}</div>
     </div>
 
     <div className="stat bg-neutral shadow-md">

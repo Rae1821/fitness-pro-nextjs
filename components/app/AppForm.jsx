@@ -16,8 +16,6 @@ const AppForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit 
             <p className="text-left text-sm md:text-base">{type} and record your app workout</p>
         </div>
 
-
-
         <form
             onSubmit={handleSubmit}
             className="mt-10 mx-auto w-full">

@@ -171,7 +171,7 @@ const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, han
 
 
             <button
-            className="btn btn-warning w-full mt-4"
+            className="btn btn-warning w-full lg:w-1/4 mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise

@@ -118,7 +118,7 @@ const NewWorkout = () => {
     }
 
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen">
     <div>
         <h2 className="mt-10 mb-4 text-center">Choose your workout type</h2>
         <div className="form-control w-full max-w-xs mx-auto">

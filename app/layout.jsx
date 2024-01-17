@@ -11,7 +11,7 @@ const RootLayout = ({ children }) => {
   return (
     <Provider>
       <html lang="en" data-theme="mytheme">
-        <body suppressHydrationWarning={true}>
+        <body suppressHydrationWarning={true} className="bgPattern">
               <div className="main">
                 <main>
                   <Navbar />
