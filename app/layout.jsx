@@ -1,5 +1,5 @@
 import '@styles/globals.css';
-import Navbar from '@components/Navbar';
+// import Navbar from '@components/Navbar';
 import Provider from '@components/Provider'
 
 export const metadata = {
@@ -11,13 +11,14 @@ const RootLayout = ({ children }) => {
   return (
     <Provider>
       <html lang="en" data-theme="mytheme">
-        <body suppressHydrationWarning={true} className="bgPattern">
-              <div className="main">
+        <body suppressHydrationWarning={true}>
+
+              {/* <div className="main">
                 <main>
-                  <Navbar />
+                  {/* <Navbar /> */}
                   {children}
-                </main>
-              </div>
+                {/* </main>
+              </div> */}
         </body>
       </html>
     </Provider>
