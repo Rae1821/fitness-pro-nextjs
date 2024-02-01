@@ -65,16 +65,20 @@ const WorkoutSchema = new Schema({
         required: [false, "SpeedHigh is not required"],
     },
     speedLow: {
-        type: String,
+        type: Number,
         required: [false, "SpeedLow is not required"],
     },
-    incline: {
-        type: String,
-        required: [false, "Incline is not required"],
+    distance: {
+        type: Number,
+        required: [false, "Distance is not required"],
     },
     duration: {
         type: Number,
         required: [true, "Duration is required"],
+    },
+    incline: {
+        type: Number,
+        required: [false, "Incline is not required"],
     },
     exerciseObj: [ExerciseSchema], //Define exercises as an array of exercise schema
 });

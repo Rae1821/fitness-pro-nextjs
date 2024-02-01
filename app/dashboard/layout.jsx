@@ -5,10 +5,10 @@ import '@styles/globals.css';
 const RootLayout = ({ children }) => {
   return (
 
-    <div className="bgPattern">
+    <div>
         <main>
-        <Navbar />
-        {children}
+          <Navbar />
+            {children}
         </main>
     </div>
 

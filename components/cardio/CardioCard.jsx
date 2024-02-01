@@ -48,17 +48,19 @@ const formattedDate = new Date(post.date).toLocaleDateString();
                 <table className="table table-xs table-auto">
                     <thead>
                         <tr className="text-center border-neutral text-slate-500 text-xs md:text-sm lg:text-base">
-                            <th className="font-bold uppercase text-[11px] tracking-wide"># of Intervals</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Distance</th>
                             <th className="font-bold uppercase text-[11px] tracking-wide">Speed High</th>
                             <th className="font-bold uppercase text-[11px] tracking-wide">Speed Low</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide"># of Intervals</th>
                             <th className="font-bold uppercase text-[11px] tracking-wide">Incline</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr className="text-center hover:bg-neutral border-neutral text-slate-800">
-                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.intervals}</td>
+                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.distance} mile(s)</td>
                             <td className="text-sm md:text-base lg:text-lg font-bold">{post.speedHigh}</td>
                             <td className="text-sm md:text-base lg:text-lg font-bold">{post.speedLow}</td>
+                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.intervals}</td>
                             <td className="text-sm md:text-base lg:text-lg font-bold">{post.incline}</td>
                         </tr>
                     </tbody>

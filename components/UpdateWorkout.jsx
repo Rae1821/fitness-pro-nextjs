@@ -32,8 +32,9 @@ const UpdateWorkout = () => {
           intervals: 0,
           speedHigh: 0,
           speedLow: 0,
-          incline: 0,
+          distance: 0,
           duration: 0,
+          incline: 0,
           exerciseObj: [
               {
                   exercise: '',
@@ -79,8 +80,9 @@ const UpdateWorkout = () => {
           intervals: data.intervals,
           speedHigh: data.speedHigh,
           speedLow: data.speedLow,
-          incline: data.incline,
+          distance: data.distance,
           duration: data.duration,
+          incline: data.incline,
           exerciseObj: data.exerciseObj,
         })
 
@@ -110,8 +112,9 @@ const UpdateWorkout = () => {
               intervals: post.intervals,
               speedHigh: post.speedHigh,
               speedLow: post.speedLow,
-              incline: post.incline,
+              distance: post.distance,
               duration: post.duration,
+              incline: post.incline,
               exerciseObj: post.exerciseObj
               })
           });
@@ -137,8 +140,6 @@ const UpdateWorkout = () => {
             setPost={setPost}
             date={date}
             setDate={setDate}
-            // selectedDate={selectedDate}
-            // setSelectedDate={setSelectedDate}
           />
         ) : post.tag === "class" ? (
           <ClassForm
@@ -149,8 +150,6 @@ const UpdateWorkout = () => {
               setPost={setPost}
               date={date}
               setDate={setDate}
-              // selectedDate={selectedDate}
-              // setSelectedDate={setSelectedDate}
             />
         ) : post.tag === "cardio" ? (
             <CardioForm
@@ -161,8 +160,6 @@ const UpdateWorkout = () => {
                 setPost={setPost}
                 date={date}
                 setDate={setDate}
-                // selectedDate={selectedDate}
-                // setSelectedDate={setSelectedDate}
             />
         ) : post.tag === "hiit" ? (
             <HighIntensityForm
@@ -174,8 +171,6 @@ const UpdateWorkout = () => {
                 setPost={setPost}
                 date={date}
                 setDate={setDate}
-                // selectedDate={selectedDate}
-                // setSelectedDate={setSelectedDate}
             />
         ) : null
         }

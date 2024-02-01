@@ -97,11 +97,22 @@ const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubm
                     />
                 </label>
                 <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Distance</span>
+                    <input
+                        type="text"
+                        name="distance"
+                        placeholder=".25"
+                        value={post.distance}
+                        onChange={(e) => setPost({ ...post, distance: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
+                    />
+                </label>
+                <label>
                     <span className="flex flex-col font-semibold justify-center items-center">Incline</span>
                     <input
                         type="text"
                         name="incline"
-                        placeholder="5"
+                        placeholder=".25"
                         value={post.incline}
                         onChange={(e) => setPost({ ...post, incline: e.target.value })}
                         className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"

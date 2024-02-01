@@ -44,11 +44,14 @@ const formattedDate = new Date(post.date).toLocaleDateString();
                     <thead>
                         <tr className="border-neutral text-slate-500 text-sm">
                             <th className="font-bold uppercase text-[11px] tracking-wide">Class Focus</th>
+                            <th className="font-bold uppercase text-[11px] tracking-wide">Instructor</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         <tr className="hover:bg-neutral border-neutral text-slate-900 font-bold">
                             <td className="text-sm md:text-base lg:text-lg font-bold">{post.workoutFocus}</td>
+                            <td className="text-sm md:text-base lg:text-lg font-bold">{post.instructor}</td>
                         </tr>
                     </tbody>
                 </table>

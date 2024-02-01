@@ -20,7 +20,7 @@ const AppForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit 
             onSubmit={handleSubmit}
             className="mt-10 mx-auto w-full">
             {/* Top of Form */}
-            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 px-8 mb-4 border-b border-slate-300">
+            <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4 px-8 mb-4 border-b border-slate-300">
                 <label>
                     <span className="flex flex-col font-semibold items-center mb-2">Date Completed</span>
                     <div className="flex justify-center w-full relative">
@@ -65,6 +65,17 @@ const AppForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit 
                         placeholder="Abs"
                         value={post.workoutFocus}
                         onChange={(e) => setPost({ ...post, workoutFocus: e.target.value })}
+                        className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
+                    />
+                </label>
+                <label>
+                    <span className="flex flex-col font-semibold justify-center items-center">Instructor</span>
+                    <input
+                        type="text"
+                        name="workoutFocus"
+                        placeholder="Instructor"
+                        value={post.instructor}
+                        onChange={(e) => setPost({ ...post, instructor: e.target.value })}
                         className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0"
                     />
                 </label>

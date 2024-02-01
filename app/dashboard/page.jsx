@@ -6,7 +6,7 @@ const MyDashboard = () => {
 
   return (
 
-    <div className="max-w-screen lg:max-w-4xl mx-auto">
+    <div className="max-w-screen lg:max-w-4xl mx-auto bgPattern">
 
       <div className="w-full">
           <CompletedWorkouts />

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
-import AppForm from './app/AppForm';
+import AppForm from './appWorkout/AppForm';
 import WorkoutForm from '@components/strength/WorkoutForm';
 import ClassForm from '@components/class/ClassForm';
 import CardioForm from '@components/cardio/CardioForm';
@@ -31,8 +31,9 @@ const NewWorkout = () => {
             intervals: 0,
             speedHigh: 0,
             speedLow: 0,
-            incline: 0,
+            distance: 0,
             duration: 0,
+            incline: 0,
             exerciseObj: [
                 {
                     exercise: '',
@@ -101,8 +102,9 @@ const NewWorkout = () => {
                     intervals: post.intervals,
                     speedHigh: post.speedHigh,
                     speedLow: post.speedLow,
-                    incline: post.incline,
+                    distance: post.distance,
                     duration: post.duration,
+                    incline: post.incline,
                     exerciseObj: post.exerciseObj,
 
                 }),
@@ -180,8 +182,6 @@ const NewWorkout = () => {
             setPost={setPost}
             date={date}
             setDate={setDate}
-            // selectedDate={selectedDate}
-            // setSelectedDate={setSelectedDate}
         />
 
     :  post.tag === 'HIIT' ?
@@ -194,8 +194,6 @@ const NewWorkout = () => {
             setPost={setPost}
             date={date}
             setDate={setDate}
-            // selectedDate={selectedDate}
-            // setSelectedDate={setSelectedDate}
         />
 
     : <div></div>

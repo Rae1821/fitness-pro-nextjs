@@ -35,11 +35,7 @@ const Navbar = () => {
                 </label>
 
                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                    {/* <li>
-                        <Link href="/profile">
-                            My Profile
-                        </Link>
-                    </li> */}
+
                     <li>
                         <Link href="/dashboard">
                             My Dashboard
@@ -57,26 +53,6 @@ const Navbar = () => {
             </Link>
         </div>
 
-        <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">
-                {/* <li>
-                    <Link href="/profile">
-                        My Profile
-                    </Link>
-                </li> */}
-                <li>
-                    <Link href="/dashboard">
-                        My Dashboard
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/create-workout">
-                        Record Workout
-                    </Link>
-                </li>
-            </ul>
-        </div>
-
             {session?.user ? (
 
                 <div className="navbar-end">
@@ -87,7 +63,6 @@ const Navbar = () => {
                 >
                     Sign Out
                 </button>
-                <Link href="/profile">
                     <Image
                         src={session?.user.image}
                         width={37}
@@ -95,9 +70,7 @@ const Navbar = () => {
                         alt="profile"
                         className="rounded-full ml-4"
                     />
-                </Link>
                 </div>
-
 
 
             ) : !session?.user && pathName === '/dashboard' ? (

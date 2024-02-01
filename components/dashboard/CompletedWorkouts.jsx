@@ -1,6 +1,6 @@
 'use client' //make this the main client component and store state here
 
-import AppCard from "@components/app/AppCard"
+import AppCard from "@components/appWorkout/AppCard"
 import CardioCard from "../cardio/CardioCard"
 import ClassCard from "../class/ClassCard"
 import HighIntensityCard from "../hiit/HighIntensityCard"
