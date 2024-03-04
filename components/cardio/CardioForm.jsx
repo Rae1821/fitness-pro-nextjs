@@ -7,9 +7,6 @@ import Link from 'next/link'
 
 const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubmit }) => {
 
-
-
-
   return (
 
     <section className="w-full max-w-full flex-col px-6 py-8">
@@ -121,7 +118,7 @@ const CardioForm = ({ type, post, setPost, date, setDate, submitting, handleSubm
 
 
             </div>
-            <div className="w-full flex justify-end items-center my-8 gap-4">
+            <div className="w-full flex justify-center md:justify-end items-center my-8 gap-4">
                         <button
                             disabled={submitting}
                             className="px-5 py-1.5 text-bold btn btn-success btn-sm"

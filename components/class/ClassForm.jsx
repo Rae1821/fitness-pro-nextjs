@@ -99,7 +99,7 @@ const ClassForm = ({ type, post, setPost, date, setDate, submitting, handleSubmi
                     />
                 </label>
             </div>
-            <div className="w-full flex justify-end items-center my-8 gap-4">
+            <div className="w-full flex justify-center md:justify-end items-center my-8 gap-4">
                 <button
                     disabled={submitting}
                     className="px-5 py-1.5 text-bold btn btn-success btn-sm"

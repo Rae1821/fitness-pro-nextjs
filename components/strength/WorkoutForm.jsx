@@ -64,9 +64,9 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
 
             {post.exerciseObj.map((exer, index) => {
             return (
-                <div key={index} className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 mt-4 border-b border-slate-300 pb-4 items-center">
+                <div key={index} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-2 mt-4 border-b border-slate-300 pb-4 items-center px-10">
 
-                    <label className="w-full row-start-1 col-span-4 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
+                    <label className="w-full md:row-start-1 md:col-span-4 lg:row-start-1 lg:col-span-1 font-semibold mb-2 text-center">
                         Exercise:
                         <input
                             type="text"
@@ -82,7 +82,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
                         />
                     </label>
 
-                    <label className="row-start-2 col-span-auto lg:row-start-1 lg:col-span-1 font-semibold mb-2">
+                    <label className="md:row-start-2 md:col-span-auto lg:row-start-1 lg:col-span-1 font-semibold mb-2 text-center">
                         Sets:
                         <input
                             type="text"
@@ -96,7 +96,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 font-normal"
                         />
                     </label>
-                    <label className="row-start-2 col-span-2 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
+                    <label className="md:row-start-2 md:col-span-2 lg:row-start-1 lg:col-span-1 font-semibold mb-2 text-center">
                         Weight:
                         <input
                             type="text"
@@ -110,7 +110,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 font-normal"
                         />
                     </label>
-                    <label className="row-start-3 col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
+                    <label className="md:row-start-3 md:col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2 text-center">
                         Rep 1
                         <input
                             type="text"
@@ -124,7 +124,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 font-normal"
                         />
                     </label>
-                    <label className="row-start-3 col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
+                    <label className="md:row-start-3 md:col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2 text-center">
                         Rep 2
                         <input
                             type="text"
@@ -138,7 +138,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
                             className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 font-normal"
                         />
                     </label>
-                    <label className="row-start-3 col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2">
+                    <label className="md:row-start-3 md:col-span-1 lg:row-start-1 lg:col-span-1 font-semibold mb-2 text-center">
                         Rep 3
                         <input
                             type="text"
@@ -157,7 +157,7 @@ const WorkoutForm = ({ type, post, setPost, date, setDate, submitting, handleSub
             })}
 
             <button
-            className="btn btn-info w-full lg:w-1/4 mt-4 hover:bg-opacity-70"
+            className="btn btn-info btn-outline mx-auto w-3/4 lg:w-1/4 mt-4"
             onClick={(e) => handleClick(e)}
             >
                 Add Exercise

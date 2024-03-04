@@ -66,7 +66,7 @@ const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, han
 
             {post.exerciseObj.map((exer, index) => {
                 return (
-                <div key={index} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-4 border-b border-slate-300 pb-4 ">
+                <div key={index} className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-4 border-b border-slate-300 px-10 pb-4 mx-auto text-center">
 
                     <label>
                         <span className="font-semibold">
@@ -98,7 +98,7 @@ const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, han
                                 updatedExerciseObj[index].sets = e.target.value;
                                 setPost({ ...post, exerciseObj: updatedExerciseObj });
                             }}
-                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                            className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 shadow-sm"
                         />
                     </label>
                     <label>
@@ -169,13 +169,15 @@ const HighIntensityForm = ({ type, post, setPost, date, setDate, submitting, han
                 )
             })}
 
+            <div className="w-full px-10 mx-auto">
+                <button
+                className="btn btn-xs btn-warning md:btn-outline w-full lg:w-1/4 mt-4"
+                onClick={(e) => handleClick(e)}
+                >
+                    Add Exercise
+                </button>
+            </div>
 
-            <button
-            className="btn btn-warning w-full lg:w-1/4 mt-4"
-            onClick={(e) => handleClick(e)}
-            >
-                Add Exercise
-            </button>
 
 
             <div className="w-full flex justify-center lg:justify-end items-center mt-12 gap-4">
