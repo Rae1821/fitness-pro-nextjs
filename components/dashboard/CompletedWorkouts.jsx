@@ -67,11 +67,11 @@ const CompletedWorkouts = () => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center container">
         <div className="mt-20 mb-10 mx-auto">
             <Stats data={totalPosts} />
         </div>
-        <div className="mt-10 mx-auto">
+        <div className="mt-10 mx-auto px-4">
             <h2 className="text-3xl text-center mb-6">Recent Workouts</h2>
 
             <div className="flex items-center justify-center mx-auto mb-16">

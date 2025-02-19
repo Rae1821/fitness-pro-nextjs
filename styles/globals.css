@@ -8,3 +8,9 @@
     background-image: radial-gradient(#00c292 0.5px, #f9f9fd 0.5px);
     background-size: 10px 10px;
 }
+
+@layer base {
+  :root {
+        --radius: 0.5rem;
+    }
+}

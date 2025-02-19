@@ -1,17 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'class',
+  darkMode: ['class', 'class'],
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        display: '"DM Sans", sans-serif',
-      },
-    },
+  	extend: {
+  		fontFamily: {
+  			display: 'DM Sans", sans-serif'
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		colors: {}
+  	}
   },
   daisyui: {
     themes: [{
@@ -33,5 +39,6 @@ module.exports = {
   },
   plugins: [
     require("daisyui"),
-  ],
+      require("tailwindcss-animate")
+],
 }
