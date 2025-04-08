@@ -1,4 +1,53 @@
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Workouts",
+    },
+  },
+};
+
+const labels = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const Stats = ({ data }) => {
   const monthlyWorkouts = data.filter((workout) => {
@@ -17,6 +66,7 @@ const Stats = ({ data }) => {
     const workoutDate = new Date(workout.date);
     const currentYear = new Date().getFullYear();
     const workoutYear = workoutDate.getFullYear();
+
     // check if the workout is from the current year or the previous year
     return (
       workoutYear === currentYear ||
@@ -45,12 +95,61 @@ const Stats = ({ data }) => {
     { currentYear: 0, previousYear: 0, yearBeforeLast: 0 }
   );
 
+  const monthlyCountsByYear = data.reduce((counts, workout) => {
+    const workoutDtae = new Date(workout.date);
+    const workoutYear = new Date(workout.date).getFullYear();
+    const workoutMonth = workoutDtae.getMonth();
+
+    // Initialize the year in the counts object if it doesn't exist
+    if (!counts[workoutYear]) {
+      counts[workoutYear] = Array(12).fill(0);
+    }
+
+    // Increment the count for the corresponding month
+    counts[workoutYear][workoutMonth]++;
+
+    return counts;
+  }, {});
+
+  // Example: Access monthly counts for a specific year
+  console.log("2023 Monthly Counts:", monthlyCountsByYear[2023] || []);
+  console.log("2024 Monthly Counts:", monthlyCountsByYear[2024] || []);
+  console.log("2025 Monthly Counts:", monthlyCountsByYear[2025] || []);
+
+  const chartData = {
+    labels,
+    datasets: [
+      {
+        label: "2025",
+        data: monthlyCountsByYear[2025] || Array(12).fill(0),
+        borderColor: "rgb(0, 194, 146)",
+        backgroundColor: "rgba(0, 194, 146, 0.76)",
+        fill: true,
+      },
+      {
+        label: "2024",
+        data: monthlyCountsByYear[2024] || Array(12).fill(0),
+        borderColor: "rgb(242, 195, 53)",
+        backgroundColor: "rgba(242, 195, 53, 0.95)",
+        fill: true,
+      },
+      {
+        label: "2023",
+        data: monthlyCountsByYear[2023] || Array(12).fill(0),
+        borderColor: "rgb(47, 201, 215)",
+        backgroundColor: "rgba(47, 201, 215, 0.84)",
+        fill: true,
+      },
+    ],
+  };
+
   // Count the workouts for the current month or the previous month using reduce
   const workoutCounts = monthlyWorkouts.reduce(
     (counts, workout) => {
       const workoutMonth = new Date(workout.date).getMonth() + 1;
       const currentMonth = new Date().getMonth() + 1;
 
+      // console.log("Workout Month:", workoutMonth);
       // Increment the count for the corresponding month
       counts[
         workoutMonth === currentMonth
@@ -68,42 +167,8 @@ const Stats = ({ data }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <>
-      <div className="flex flex-row items-center justify-center">
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-4">
-            <p className="font-medium text-slate-600">Total to Date</p>
-            <p className="text-4xl font-extrabold">{data.length}</p>
-            <p className="font-medium text-slate-600">Workouts</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-4">
-            <p className="font-medium text-slate-600">Total 2025</p>
-            <p className="text-4xl font-extrabold">
-              {" "}
-              {yearlyWorkoutCounts.currentYear}
-            </p>
-            <p className="font-medium text-slate-600">Workouts</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent className="flex flex-col items-center justify-center py-4">
-            <p className="font-medium text-slate-600">This Month</p>
-            <p className="text-4xl font-extrabold">
-              {" "}
-              {workoutCounts.currentMonth}
-            </p>
-            <p className="font-medium text-slate-600">Workouts</p>
-          </CardContent>
-        </Card>
-      </div>
-      <div className="stats stats-vertical items-center justify-center text-center shadow md:stats-horizontal">
-        <div className="stat bg-neutral shadow-md">
-          <div className="stat-title">Workouts</div>
-          <div className="stat-value text-center">{data.length}</div>
-          <div className="stat-desc">Total To Date</div>
-        </div>
+    <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+      <div className="stats stats-vertical w-full items-center justify-center px-2 text-center shadow md:stats-horizontal">
         <div className="stat bg-neutral shadow-md">
           <div className="stat-title">Workouts</div>
           <div className="stat-value text-center">
@@ -233,7 +298,10 @@ const Stats = ({ data }) => {
           </div>
         </div>
       </div>
-    </>
+      <div className="mx-auto mt-10 w-full">
+        <Line options={options} data={chartData} />
+      </div>
+    </div>
   );
 };
 
