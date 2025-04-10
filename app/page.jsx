@@ -7,7 +7,7 @@ const Home = () => {
       data-theme="dracula"
       style={{ backgroundImage: "url(/assets/images/bg-4.jpg)" }}
     >
-      <div className="hero-overlay bg-opacity-70"></div>
+      <div className="hero-overlay"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <Welcome />

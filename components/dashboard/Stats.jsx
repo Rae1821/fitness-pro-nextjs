@@ -166,7 +166,7 @@ const Stats = ({ data }) => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4 md:flex-row">
+    <div className="flex w-full flex-col items-center justify-center gap-4">
       <div className="stats stats-vertical w-full items-center justify-center px-2 text-center shadow md:stats-horizontal">
         <div className="stat bg-neutral shadow-md">
           <div className="stat-title">Workouts</div>

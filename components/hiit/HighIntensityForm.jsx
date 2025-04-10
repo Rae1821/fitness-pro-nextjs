@@ -15,7 +15,7 @@ const HighIntensityForm = ({
   return (
     <section className="w-full max-w-full flex-col px-6 py-8">
       <div className="flex flex-col items-center md:items-start">
-        <h1 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-normal text-left bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-400 inline-block text-transparent bg-clip-text pb-1">
+        <h1 className="mt-8 inline-block bg-gradient-to-r from-orange-600 via-amber-500 to-yellow-400 bg-clip-text pb-1 text-left text-4xl font-extrabold leading-normal text-transparent md:text-5xl lg:text-6xl">
           HIIT Workout
         </h1>
         <p className="text-left text-sm md:text-base">
@@ -23,25 +23,25 @@ const HighIntensityForm = ({
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="mt-10 mx-auto w-full">
+      <form onSubmit={handleSubmit} className="mx-auto mt-10 w-full">
         {/* Top of Form */}
-        <div className="form-control grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pb-4 px-10 mb-4 border-b border-slate-300">
+        <div className="form-control mb-4 grid grid-cols-1 gap-4 border-b border-slate-300 px-10 pb-4 md:grid-cols-2 lg:grid-cols-4">
           {/* Date Completed Input */}
           <label>
-            <span className="flex flex-col font-semibold items-center mb-2">
+            <span className="mb-2 flex flex-col items-center font-semibold">
               Date Completed
             </span>
-            <div className="flex justify-center w-full relative">
+            <div className="relative flex w-full justify-center">
               <DatePicker
                 selected={date}
                 onChange={(date) => setDate(date)}
-                className="dark:bg-gray-900 dark:text-white input input-bordered outline-0 text-sm"
+                className="input input-bordered text-sm outline-0 dark:bg-gray-900 dark:text-white"
               />
             </div>
           </label>
           {/* Workout Name Input */}
           <label>
-            <span className="flex flex-col font-semibold justify-center items-center">
+            <span className="flex flex-col items-center justify-center font-semibold">
               Workout Name
             </span>
             <input
@@ -52,21 +52,21 @@ const HighIntensityForm = ({
               onChange={(e) =>
                 setPost({ ...post, workoutName: e.target.value })
               }
-              className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
+              className="input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0"
             />
           </label>
           {/* pre-populated tag */}
           <label>
-            <span className="flex flex-col font-semibold items-center mb-2">
+            <span className="mb-2 flex flex-col items-center font-semibold">
               #Tag
             </span>
-            <p className="input input-bordered w-full flex mt-2 p-3 outline-0">
+            <p className="input input-bordered mt-2 flex w-full p-3 outline-0">
               {post.tag}
             </p>
           </label>
           {/* Duration Input */}
           <label>
-            <span className="flex flex-col font-semibold justify-center items-center">
+            <span className="flex flex-col items-center justify-center font-semibold">
               Duration
             </span>
             <input
@@ -75,7 +75,7 @@ const HighIntensityForm = ({
               placeholder="45"
               value={post.duration}
               onChange={(e) => setPost({ ...post, duration: e.target.value })}
-              className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0"
+              className="input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0"
             />
           </label>
         </div>
@@ -84,7 +84,7 @@ const HighIntensityForm = ({
           return (
             <div
               key={index}
-              className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-7 gap-4 mt-4 border-b border-slate-300 px-10 pb-4 mx-auto text-center"
+              className="mx-auto mt-4 grid grid-cols-1 gap-4 border-b border-slate-300 px-10 pb-4 text-center md:grid-cols-4 lg:grid-cols-7"
             >
               <label>
                 <span className="font-semibold">Exercise:</span>
@@ -98,7 +98,7 @@ const HighIntensityForm = ({
                     updatedExerciseObj[index].exercise = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0 col-span-2 shadow-sm"
+                  className="input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3  text-sm shadow-sm outline-0"
                 />
               </label>
               <label>
@@ -112,7 +112,7 @@ const HighIntensityForm = ({
                     updatedExerciseObj[index].sets = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2 shadow-sm"
+                  className="input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3 text-sm shadow-sm outline-0"
                 />
               </label>
               <label>
@@ -126,7 +126,7 @@ const HighIntensityForm = ({
                     updatedExerciseObj[index].weight = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                  className="input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3 text-sm outline-0"
                 />
               </label>
               <label>
@@ -140,7 +140,7 @@ const HighIntensityForm = ({
                     updatedExerciseObj[index].rep1 = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                  className="input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3 text-sm outline-0"
                 />
               </label>
               <label>
@@ -154,7 +154,7 @@ const HighIntensityForm = ({
                     updatedExerciseObj[index].rep2 = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm outline-0 col-span-2"
+                  className="input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3 text-sm outline-0"
                 />
               </label>
               <label>
@@ -168,28 +168,28 @@ const HighIntensityForm = ({
                     updatedExerciseObj[index].rep3 = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className="input input-bordered w-full flex rounded-lg mt-2 p-3 text-sm  outline-0 col-span-2"
+                  className="input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3  text-sm outline-0"
                 />
               </label>
             </div>
           );
         })}
 
-        <div className="w-full px-10 mx-auto">
+        <div className="mx-auto w-full px-10">
           <button
-            className="btn btn-xs btn-warning md:btn-outline w-full lg:w-1/4 mt-4"
+            className="btn btn-warning btn-xs mt-4 w-full md:btn-outline lg:w-1/4"
             onClick={(e) => handleClick(e)}
           >
             Add Exercise
           </button>
         </div>
 
-        <div className="w-full flex justify-center lg:justify-end items-center mt-12 gap-4">
+        <div className="mt-12 flex w-full items-center justify-center gap-4 lg:justify-end">
           <button disabled={submitting} className="btn btn-success btn-sm">
             {submitting ? `${type}...` : type}
           </button>
 
-          <Link href="/dashboard" className="text-gray-500 text-sm">
+          <Link href="/dashboard" className="text-sm text-gray-500">
             Cancel
           </Link>
         </div>

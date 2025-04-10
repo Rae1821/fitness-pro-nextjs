@@ -102,7 +102,7 @@ const WorkoutForm = ({
                 />
               </label>
 
-              <label className="md:auto-cols-auto mb-2 text-center font-semibold md:row-start-2 lg:col-span-1 lg:row-start-1">
+              <label className="mb-2 text-center font-semibold md:row-start-2 md:auto-cols-auto lg:col-span-1 lg:row-start-1">
                 Sets:
                 <input
                   type="text"
