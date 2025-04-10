@@ -12,11 +12,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       {/* Daisy UI Collapse */}
-<<<<<<< HEAD
       <div className="collapse collapse-arrow mx-auto mb-4 w-full items-center rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-primary sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
-=======
-      <div className="collapse collapse-plus mx-auto mb-4 w-full items-center rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-primary sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
->>>>>>> e2e29b6ed7a5396891b2248316ba61b45b628ee6
         <input type="checkbox" className="peer" />
 
         <div className="collapse-title text-xl peer-checked:bg-primary">
