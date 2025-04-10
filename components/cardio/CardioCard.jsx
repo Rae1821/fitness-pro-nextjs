@@ -7,14 +7,14 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       {/* Daisy UI Collapse */}
-      <div className="collapse collapse-arrow border-b border-b-neutral font-display md:px-2 w-full bg-base-100 mb-4 text-base-200 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto items-center hover:bg-accent rounded-tr-2xl rounded-tl-2xl pt-2">
+      <div className="collapse collapse-arrow border-b border-b-neutral font-display md:px-2 w-full bg-base-100 mb-4 text-base-200 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl mx-auto items-center hover:bg-accent rounded-t-2xl pt-2">
         <input type="checkbox" className="peer" />
 
         <div className="collapse-title text-xl peer-checked:bg-accent">
           <div className="grid grid-cols-4 lg:grid-cols-[100px_250px_250px_200px] items-center">
             <div className="w-9">
               <p className="bg-slate-200 rounded-2xl flex justify-center items-center">
-                <FaHeartbeat className="text-accent mx-2 my-2 hover:text-base-100" />
+                <FaHeartbeat className="text-accent m-2 hover:text-base-100" />
               </p>
             </div>
             <div className="flex items-center justify-start">
@@ -43,7 +43,7 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
             </div>
           </div>
         </div>
-        <div className="collapse-content bg-base-100 text-slate-800 px-0 md:px-4 pt-2 rounded-br-md rounded-bl-md border-b-8 border-l-8 border-r-8 border-accent">
+        <div className="collapse-content bg-base-100 text-slate-800 px-0 md:px-4 pt-2 rounded-br-md rounded-bl-md border-b-8 border-x-8 border-accent">
           <table className="table table-xs table-auto">
             <thead>
               <tr className="text-center border-neutral text-slate-500 text-xs md:text-sm lg:text-base">

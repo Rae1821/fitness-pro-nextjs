@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Chart as ChartJS,
   CategoryScale,

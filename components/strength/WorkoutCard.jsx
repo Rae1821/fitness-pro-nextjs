@@ -80,7 +80,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
               {post.exerciseObj.map((exer, index) => (
                 <tr
                   key={index}
-                  className=" md:text-md border-neutral text-center text-xs text-slate-800 hover:bg-neutral lg:text-lg"
+                  className=" md:text-base border-neutral text-center text-xs text-slate-800 hover:bg-neutral lg:text-lg"
                 >
                   <th className="text-left text-sm md:text-base lg:text-lg">
                     {exer.exercise}
