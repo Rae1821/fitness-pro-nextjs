@@ -61,7 +61,7 @@ const Welcome = () => {
               Let&apos;s work out
             </h1>
             <p className=" max-w-xs text-sm text-gray-200 lg:max-w-lg lg:text-base">
-              "{randomQuote.quote}"
+              &quot;{randomQuote.quote}&quot;
               <br />
               <span className="text-xs">- {randomQuote.author}</span>
             </p>
@@ -69,7 +69,7 @@ const Welcome = () => {
 
           <div className="mx-auto flex max-w-xs justify-between gap-2">
             <Link href="/create-workout" className="btn btn-accent btn-sm">
-              Create Workout
+              Record Workout
             </Link>
             <Link
               href="/dashboard"

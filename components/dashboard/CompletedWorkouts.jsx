@@ -91,6 +91,20 @@ const CompletedWorkouts = () => {
             >
               Cardio
             </button>
+            {/* <button
+              value="class"
+              onClick={(e) => setSelectedTag(e.target.value)}
+              className="btn btn-success btn-xs lg:btn-sm"
+            >
+              Class
+            </button> */}
+            <button
+              value="hiit"
+              onClick={(e) => setSelectedTag(e.target.value)}
+              className="btn btn-warning btn-xs lg:btn-sm"
+            >
+              HIIT
+            </button>
             <button
               value="strength"
               onClick={(e) => setSelectedTag(e.target.value)}
