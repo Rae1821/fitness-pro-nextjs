@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -9,11 +9,20 @@ import ClassForm from "@components/class/ClassForm";
 import CardioForm from "@components/cardio/CardioForm";
 import HighIntensityForm from "@components/hiit/HighIntensityForm";
 
-const UpdateWorkout = () => {
-  const router = useRouter();
-  const { data: session } = useSession();
+export const UpdateWorkoutWrapper = () => {
   const searchParams = useSearchParams();
   const workoutId = searchParams.get("id");
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <UpdateWorkout workoutId={workoutId} />
+    </Suspense>
+  );
+};
+
+const UpdateWorkout = ({ workoutId }) => {
+  const router = useRouter();
+  const { data: session } = useSession();
 
   const [submitting, setSubmitting] = useState(false);
 
@@ -64,26 +73,32 @@ const UpdateWorkout = () => {
 
   useEffect(() => {
     const getWorkoutDetails = async () => {
-      const response = await fetch(`/api/workout/${workoutId}`);
-      const data = await response.json();
-      setPost({
-        workoutName: data.workoutName,
-        workoutFocus: data.workoutFocus,
-        date: data.date,
-        tag: data.tag,
-        instructor: data.instructor,
-        time: data.time,
-        intervals: data.intervals,
-        speedHigh: data.speedHigh,
-        speedLow: data.speedLow,
-        distance: data.distance,
-        duration: data.duration,
-        incline: data.incline,
-        exerciseObj: data.exerciseObj,
-      });
+      if (!workoutId) return alert("Missing WorkoutId!");
+
+      try {
+        const response = await fetch(`/api/workout/${workoutId}`);
+        const data = await response.json();
+        setPost({
+          workoutName: data.workoutName,
+          workoutFocus: data.workoutFocus,
+          date: data.date,
+          tag: data.tag,
+          instructor: data.instructor,
+          time: data.time,
+          intervals: data.intervals,
+          speedHigh: data.speedHigh,
+          speedLow: data.speedLow,
+          distance: data.distance,
+          duration: data.duration,
+          incline: data.incline,
+          exerciseObj: data.exerciseObj,
+        });
+      } catch (error) {
+        console.log("Failed to fetch workout details", error);
+      }
     };
 
-    if (workoutId) getWorkoutDetails();
+    getWorkoutDetails();
   }, [workoutId]);
 
   const updateWorkout = async (e) => {

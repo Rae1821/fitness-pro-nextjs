@@ -39,7 +39,7 @@ const Welcome = () => {
   return (
     <>
       {!session?.user ? (
-        <div className="place-items-start">
+        <div className="flex flex-col items-center justify-center gap-4">
           <h1 className="mb-5 text-5xl font-bold lg:text-6xl">Welcome Back</h1>
 
           {providers &&

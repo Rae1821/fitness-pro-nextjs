@@ -12,10 +12,10 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       {/* Daisy UI Collapse */}
-      <div className="collapse collapse-arrow mx-auto mb-4 w-full items-center rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-primary sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
+      <div className="collapse collapse-arrow mx-auto mb-4 w-full items-center rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-[#2fc9d7] sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
         <input type="checkbox" className="peer" />
 
-        <div className="collapse-title text-xl peer-checked:bg-primary">
+        <div className="collapse-title text-xl peer-checked:bg-[#2fc9d7]">
           <div className="grid grid-cols-4 items-center lg:grid-cols-[100px_250px_250px_200px]">
             <div className="w-9">
               <p className="rounded-full bg-slate-200 p-2">
@@ -49,7 +49,7 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
           </div>
         </div>
 
-        <div className="collapse-content rounded-b-md border-x-8 border-b-8 border-primary bg-base-100 px-0 pt-2 text-slate-800 md:px-4">
+        <div className="collapse-content rounded-b-md border-x-8 border-b-8 border-[#2fc9d7] bg-base-100 px-0 pt-2 text-slate-800 md:px-4">
           <table className="table table-xs table-auto">
             <thead>
               <tr className="border-neutral text-center text-xs text-slate-500 md:text-sm lg:text-base">
