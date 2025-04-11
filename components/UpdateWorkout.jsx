@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
@@ -9,18 +9,10 @@ import ClassForm from "@components/class/ClassForm";
 import CardioForm from "@components/cardio/CardioForm";
 import HighIntensityForm from "@components/hiit/HighIntensityForm";
 
-export const UpdateWorkoutWrapper = () => {
+const UpdateWorkout = () => {
   const searchParams = useSearchParams();
   const workoutId = searchParams.get("id");
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <UpdateWorkout workoutId={workoutId} />
-    </Suspense>
-  );
-};
-
-const UpdateWorkout = ({ workoutId }) => {
   const router = useRouter();
   const { data: session } = useSession();
 
