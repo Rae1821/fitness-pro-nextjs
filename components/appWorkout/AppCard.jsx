@@ -10,28 +10,28 @@ const AppCard = ({ post, handleEdit, handleDelete }) => {
       <div className="collapse collapse-arrow mx-auto mb-4 w-full rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-violet-400 sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
         <input type="checkbox" className="peer" />
 
-        <div className="collapse-title text-xl font-medium peer-checked:bg-violet-400">
-          <div className="grid grid-cols-4 items-center lg:grid-cols-[75px_250px_250px_200px]">
+        <div className="collapse-title text-lg font-medium peer-checked:bg-violet-400">
+          <div className="grid grid-cols-4 items-center gap-2 lg:grid-cols-[75px_200px_250px_200px]">
             <div className="w-9">
               <p className="rounded-full bg-slate-200 p-2">
                 <MdOutlinePhoneIphone className="text-violet-400" />
               </p>
             </div>
             <div className="flex items-center">
-              <p className="flex flex-col text-sm font-bold text-slate-900 md:text-base lg:text-xl">
+              <p className="flex flex-col text-xs font-bold text-slate-900 md:text-base lg:text-xl">
                 {post.workoutName}
                 <span className="text-xs font-normal text-slate-500 md:text-sm lg:text-lg">
                   Class
                 </span>
               </p>
             </div>
-            <p className="flex flex-col text-sm font-bold text-slate-900 md:text-base lg:text-xl">
+            <p className="flex flex-col text-xs font-bold text-slate-900 md:text-base lg:text-xl">
               {formattedDate}
               <span className="text-xs font-normal text-slate-500 md:text-sm lg:text-lg">
                 Date
               </span>
             </p>
-            <p className="flex flex-col text-sm font-bold text-slate-900 md:text-base lg:text-xl">
+            <p className="flex flex-col text-xs font-bold text-slate-900 md:text-base lg:text-xl">
               {post.duration} min.
               <span className="text-xs font-normal text-slate-500 md:text-sm lg:text-lg">
                 Duration

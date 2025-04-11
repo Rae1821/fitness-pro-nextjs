@@ -12,14 +12,14 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       {/* Daisy UI Collapse */}
-      <div className="collapse collapse-arrow mx-auto mb-4 w-full items-center rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-[#2fc9d7] sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
+      <div className="collapse collapse-arrow mx-auto mb-4 w-full max-w-xl items-center rounded-t-2xl border-b border-b-neutral bg-base-100 pt-2 font-display hover:bg-[#2fc9d7] sm:max-w-2xl md:max-w-3xl md:px-2 lg:max-w-4xl">
         <input type="checkbox" className="peer" />
 
         <div className="collapse-title text-xl peer-checked:bg-[#2fc9d7]">
           <div className="grid grid-cols-4 items-center lg:grid-cols-[100px_250px_250px_200px]">
             <div className="w-9">
               <p className="rounded-full bg-slate-200 p-2">
-                <FaDumbbell className="text-primary" />
+                <FaDumbbell className="text-[#2fc9d7]" />
               </p>
             </div>
             <div className="flex items-center justify-start">
@@ -71,9 +71,6 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                 <th className="text-[11px] font-bold uppercase tracking-wide">
                   R 3
                 </th>
-                <th className="text-[11px] font-bold uppercase tracking-wide">
-                  Load
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -99,9 +96,6 @@ const WorkoutCard = ({ post, handleEdit, handleDelete }) => {
                   </td>
                   <td className="text-sm font-bold md:text-base lg:text-lg">
                     {exer.rep3}
-                  </td>
-                  <td className="text-sm font-bold md:text-base lg:text-lg">
-                    {(exer.rep1 + exer.rep2 + exer.rep3) * exer.weight}
                   </td>
                 </tr>
               ))}
