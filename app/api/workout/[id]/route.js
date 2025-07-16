@@ -30,6 +30,8 @@ export const PATCH = async (request, { params }) => {
     duration,
     distance,
     exerciseObj,
+    status,
+    scheduledTime,
   } = await request.json();
 
   try {
@@ -42,20 +44,23 @@ export const PATCH = async (request, { params }) => {
       return new Response("Workout not found", { status: 404 });
     }
 
-    // update the workout with new data
-    existingWorkout.date = date;
-    existingWorkout.workoutName = workoutName;
-    existingWorkout.workoutFocus = workoutFocus;
-    existingWorkout.tag = tag;
-    existingWorkout.instructor = instructor;
-    existingWorkout.time = time;
-    existingWorkout.intervals = intervals;
-    existingWorkout.speedHigh = speedHigh;
-    existingWorkout.speedLow = speedLow;
-    existingWorkout.incline = incline;
-    existingWorkout.duration = duration;
-    existingWorkout.distance = distance;
-    existingWorkout.exerciseObj = exerciseObj;
+    // update the workout with new data (only if provided)
+    if (date !== undefined) existingWorkout.date = date;
+    if (workoutName !== undefined) existingWorkout.workoutName = workoutName;
+    if (workoutFocus !== undefined) existingWorkout.workoutFocus = workoutFocus;
+    if (tag !== undefined) existingWorkout.tag = tag;
+    if (instructor !== undefined) existingWorkout.instructor = instructor;
+    if (time !== undefined) existingWorkout.time = time;
+    if (intervals !== undefined) existingWorkout.intervals = intervals;
+    if (speedHigh !== undefined) existingWorkout.speedHigh = speedHigh;
+    if (speedLow !== undefined) existingWorkout.speedLow = speedLow;
+    if (incline !== undefined) existingWorkout.incline = incline;
+    if (duration !== undefined) existingWorkout.duration = duration;
+    if (distance !== undefined) existingWorkout.distance = distance;
+    if (exerciseObj !== undefined) existingWorkout.exerciseObj = exerciseObj;
+    if (status !== undefined) existingWorkout.status = status;
+    if (scheduledTime !== undefined)
+      existingWorkout.scheduledTime = scheduledTime;
 
     await existingWorkout.save();
 

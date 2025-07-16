@@ -30,9 +30,14 @@ const CompletedWorkouts = () => {
       const response = await fetch(`/api/users/${session?.user.id}/posts`);
       const data = await response.json();
 
-      setTotalPosts(data);
+      // Filter to only show completed workouts on dashboard
+      const completedWorkouts = data.filter(
+        (workout) => workout.status !== "planned"
+      );
+
+      setTotalPosts(completedWorkouts);
       setExerciseObjData(
-        data.map((post) => {
+        completedWorkouts.map((post) => {
           return post.workoutName;
         })
       );
@@ -68,26 +73,29 @@ const CompletedWorkouts = () => {
   };
 
   return (
-    <div className="container flex flex-col items-center justify-center">
-      <div className="mx-auto mb-10 mt-20">
+    <div
+      className='container flex flex-col items-center justify-center'
+      data-theme='nord'
+    >
+      <div className='mx-auto mb-10 mt-20'>
         <Stats data={totalPosts} />
       </div>
-      <div className="mx-auto mt-10">
-        <h2 className="mb-6 text-center text-3xl">Recent Workouts</h2>
+      <div className='mx-auto mt-10'>
+        <h2 className='mb-6 text-center text-3xl'>Recent Workouts</h2>
 
-        <div className="mx-auto mb-16 flex items-center justify-center">
-          <div className="flex gap-2">
+        <div className='mx-auto mb-16 flex items-center justify-center'>
+          <div className='flex gap-2'>
             <button
-              value="all"
+              value='all'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className="btn btn-success btn-xs lg:btn-sm"
+              className='btn btn-primary btn-xs lg:btn-sm'
             >
               All
             </button>
             <button
-              value="cardio"
+              value='cardio'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className="btn btn-accent btn-xs lg:btn-sm"
+              className='btn btn-secondary btn-xs lg:btn-sm'
             >
               Cardio
             </button>
@@ -106,23 +114,23 @@ const CompletedWorkouts = () => {
               HIIT
             </button> */}
             <button
-              value="strength"
+              value='strength'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className="btn btn-primary btn-xs lg:btn-sm"
+              className='btn btn-accent btn-xs lg:btn-sm'
             >
               Strength
             </button>
-            <button
-              value="app"
+            {/* <button
+              value='app'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className="btn btn-xs border-0 bg-violet-400 outline-0 lg:btn-sm hover:bg-violet-500"
+              className='btn btn-xs border-0 bg-violet-400 outline-0 lg:btn-sm hover:bg-violet-500'
             >
               App
-            </button>
+            </button> */}
           </div>
         </div>
 
-        <div className="w-full">
+        <div className='w-full'>
           {sortedData.map((post) =>
             selectedTag === "app" && post.tag === "app" ? (
               <AppCard

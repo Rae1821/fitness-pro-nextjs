@@ -5,6 +5,8 @@ export const POST = async (req) => {
   const {
     userId,
     date,
+    status = "completed",
+    scheduledTime,
     workoutName,
     workoutFocus,
     tag,
@@ -26,6 +28,8 @@ export const POST = async (req) => {
     const newWorkout = new Workout({
       creator: userId,
       date,
+      status,
+      scheduledTime,
       workoutName,
       workoutFocus,
       tag,

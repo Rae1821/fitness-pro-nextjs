@@ -1,28 +1,27 @@
-import '@styles/globals.css';
+import "@styles/globals.css";
 // import Navbar from '@components/Navbar';
-import Provider from '@components/Provider'
+import Provider from "@components/Provider";
 
 export const metadata = {
-    title: "Fitness Pro",
-    description: "Track your workouts and see your growth"
-}
+  title: "Fitness Pro",
+  description: "Track your workouts and see your growth",
+};
 
 const RootLayout = ({ children }) => {
   return (
     <Provider>
-      <html lang="en" data-theme="mytheme">
-        <body suppressHydrationWarning={true} className="">
-
-              {/* <div className="main">
+      <html lang='en' data-theme='night'>
+        <body suppressHydrationWarning={true} className=''>
+          {/* <div className="main">
                 <main>
                   {/* <Navbar /> */}
-                  {children}
-                {/* </main>
+          {children}
+          {/* </main>
               </div> */}
         </body>
       </html>
     </Provider>
-  )
-}
+  );
+};
 
-export default RootLayout
+export default RootLayout;
