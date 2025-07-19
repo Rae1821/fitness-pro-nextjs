@@ -1,5 +1,5 @@
 
-import NewWorkout from "@components/NewWorkout";
+import NewWorkout from "@/components/NewWorkout";
 
 const createNewWorkout = () => {
 

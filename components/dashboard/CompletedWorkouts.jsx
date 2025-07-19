@@ -1,11 +1,12 @@
 "use client"; // make this the main client component and store state here
 
-import AppCard from "@components/appWorkout/AppCard";
+import AppCard from "@/components/appWorkout/AppCard";
 import CardioCard from "../cardio/CardioCard";
 import ClassCard from "../class/ClassCard";
 import HighIntensityCard from "../hiit/HighIntensityCard";
 import WorkoutCard from "../strength/WorkoutCard";
 import Stats from "./Stats";
+import { Button } from "@/components/ui/button";
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
@@ -73,10 +74,7 @@ const CompletedWorkouts = () => {
   };
 
   return (
-    <div
-      className='container flex flex-col items-center justify-center'
-      data-theme='nord'
-    >
+    <div className='container mx-auto flex max-w-[1000px] flex-col items-center justify-center'>
       <div className='mx-auto mb-10 mt-20'>
         <Stats data={totalPosts} />
       </div>
@@ -85,48 +83,30 @@ const CompletedWorkouts = () => {
 
         <div className='mx-auto mb-16 flex items-center justify-center'>
           <div className='flex gap-2'>
-            <button
+            <Button
               value='all'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className='btn btn-primary btn-xs lg:btn-sm'
+              size='sm'
+              className='text-xs lg:text-sm'
             >
               All
-            </button>
-            <button
+            </Button>
+            <Button
               value='cardio'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className='btn btn-secondary btn-xs lg:btn-sm'
+              size='sm'
+              className='bg-red-400 text-xs hover:bg-red-500 lg:text-sm'
             >
               Cardio
-            </button>
-            {/* <button
-              value="class"
-              onClick={(e) => setSelectedTag(e.target.value)}
-              className="btn btn-success btn-xs lg:btn-sm"
-            >
-              Class
-            </button> */}
-            {/* <button
-              value="hiit"
-              onClick={(e) => setSelectedTag(e.target.value)}
-              className="btn btn-warning btn-xs lg:btn-sm"
-            >
-              HIIT
-            </button> */}
-            <button
+            </Button>
+            <Button
               value='strength'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className='btn btn-accent btn-xs lg:btn-sm'
+              className='bg-cyan-600 text-xs hover:bg-cyan-700 lg:text-sm'
+              size='sm'
             >
               Strength
-            </button>
-            {/* <button
-              value='app'
-              onClick={(e) => setSelectedTag(e.target.value)}
-              className='btn btn-xs border-0 bg-violet-400 outline-0 lg:btn-sm hover:bg-violet-500'
-            >
-              App
-            </button> */}
+            </Button>
           </div>
         </div>
 

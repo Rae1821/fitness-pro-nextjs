@@ -1,4 +1,5 @@
-import PlanWorkout from "@components/PlanWorkout";
+import { Suspense } from "react";
+import PlanWorkout from "@/components/PlanWorkout";
 
 export default function CreatePlanPage() {
   return (
@@ -13,7 +14,9 @@ export default function CreatePlanPage() {
         time to work out
       </p>
 
-      <PlanWorkout />
+      <Suspense fallback={<div>Loading...</div>}>
+        <PlanWorkout />
+      </Suspense>
     </section>
   );
 }

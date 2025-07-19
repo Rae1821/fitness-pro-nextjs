@@ -1,6 +1,9 @@
 import Link from "next/link";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 const WorkoutForm = ({
   type,
@@ -26,27 +29,27 @@ const WorkoutForm = ({
 
       <form onSubmit={handleSubmit} className='mx-auto mt-10 w-full'>
         {/* Top of Form */}
-        <div className='form-control mb-4 grid grid-cols-1 gap-4 border-b border-slate-300 px-10 pb-4 md:grid-cols-2 lg:grid-cols-4'>
+        <div className='mb-4 grid grid-cols-1 gap-4 border-b border-slate-300 px-10 pb-4 md:grid-cols-2 lg:grid-cols-4'>
           {/* Date Input */}
-          <label>
-            <span className='mb-2 flex flex-col items-center font-semibold'>
+          <div className='space-y-2'>
+            <Label className='flex flex-col items-center font-semibold'>
               {type === "Plan" ? "Scheduled Date" : "Date Completed"}
-            </span>
+            </Label>
             <div className='flex w-full justify-center'>
               <DatePicker
                 selected={date}
                 onChange={(date) => setDate(date)}
-                className='input input-bordered text-sm outline-0'
+                className='flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50'
                 minDate={type === "Plan" ? new Date() : undefined}
               />
             </div>
-          </label>
+          </div>
           {/* Workout Focus Input */}
-          <label>
-            <span className='flex flex-col items-center justify-center font-semibold'>
+          <div className='space-y-2'>
+            <Label className='flex flex-col items-center justify-center font-semibold'>
               Workout Focus
-            </span>
-            <input
+            </Label>
+            <Input
               type='text'
               name='workoutName'
               value={post.workoutName}
@@ -54,32 +57,32 @@ const WorkoutForm = ({
               onChange={(e) =>
                 setPost({ ...post, workoutName: e.target.value })
               }
-              className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
+              className='mt-2 text-sm'
             />
-          </label>
+          </div>
           {/* pre-populated tag */}
-          <label>
-            <span className='mb-2 flex flex-col items-center font-semibold'>
+          <div className='space-y-2'>
+            <Label className='flex flex-col items-center font-semibold'>
               #Tag
-            </span>
-            <p className='input input-bordered mt-2 flex w-full p-3 outline-0'>
+            </Label>
+            <div className='mt-2 flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm'>
               {post.tag}
-            </p>
-          </label>
+            </div>
+          </div>
           {/* Duration Input */}
-          <label>
-            <span className='flex flex-col items-center justify-center font-semibold'>
+          <div className='space-y-2'>
+            <Label className='flex flex-col items-center justify-center font-semibold'>
               Duration
-            </span>
-            <input
+            </Label>
+            <Input
               type='text'
               name='duration'
               value={post.duration}
               placeholder='30'
               onChange={(e) => setPost({ ...post, duration: e.target.value })}
-              className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
+              className='mt-2 text-sm'
             />
-          </label>
+          </div>
         </div>
 
         {post.exerciseObj.map((exer, index) => {
@@ -88,9 +91,9 @@ const WorkoutForm = ({
               key={index}
               className='mt-4 grid grid-cols-1 items-center gap-2 border-b border-slate-300 px-10 pb-4 md:grid-cols-3 lg:grid-cols-6'
             >
-              <label className='mb-2 w-full text-center font-semibold md:col-span-4 md:row-start-1 lg:col-span-1 lg:row-start-1'>
-                Exercise:
-                <input
+              <div className='mb-2 w-full space-y-2 text-center font-semibold md:col-span-4 md:row-start-1 lg:col-span-1 lg:row-start-1'>
+                <Label>Exercise:</Label>
+                <Input
                   type='text'
                   value={exer.exercise}
                   placeholder='Deadlift'
@@ -100,13 +103,13 @@ const WorkoutForm = ({
                     updatedExerciseObj[index].exercise = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm font-normal shadow-sm outline-0'
+                  className='text-sm font-normal'
                 />
-              </label>
+              </div>
 
-              <label className='mb-2 text-center font-semibold md:row-start-2 md:auto-cols-auto lg:col-span-1 lg:row-start-1'>
-                Sets:
-                <input
+              <div className='mb-2 space-y-2 text-center font-semibold md:row-start-2 md:auto-cols-auto lg:col-span-1 lg:row-start-1'>
+                <Label>Sets:</Label>
+                <Input
                   type='text'
                   value={exer.sets}
                   name='sets'
@@ -116,12 +119,12 @@ const WorkoutForm = ({
                     updatedExerciseObj[index].sets = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm font-normal outline-0'
+                  className='text-sm font-normal'
                 />
-              </label>
-              <label className='mb-2 text-center font-semibold md:col-span-2 md:row-start-2 lg:col-span-1 lg:row-start-1'>
-                Weight:
-                <input
+              </div>
+              <div className='mb-2 space-y-2 text-center font-semibold md:col-span-2 md:row-start-2 lg:col-span-1 lg:row-start-1'>
+                <Label>Weight:</Label>
+                <Input
                   type='text'
                   value={exer.weight}
                   name='reps'
@@ -131,12 +134,12 @@ const WorkoutForm = ({
                     updatedExerciseObj[index].weight = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className='input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3 text-sm font-normal outline-0'
+                  className='col-span-2 text-sm font-normal'
                 />
-              </label>
-              <label className='mb-2 text-center font-semibold md:col-span-1 md:row-start-3 lg:col-span-1 lg:row-start-1'>
-                Rep 1
-                <input
+              </div>
+              <div className='mb-2 space-y-2 text-center font-semibold md:col-span-1 md:row-start-3 lg:col-span-1 lg:row-start-1'>
+                <Label>Rep 1</Label>
+                <Input
                   type='text'
                   value={exer.rep1}
                   name='rep1'
@@ -146,12 +149,12 @@ const WorkoutForm = ({
                     updatedExerciseObj[index].rep1 = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className='input input-bordered col-span-2 mt-2 flex w-full rounded-lg p-3 text-sm font-normal outline-0'
+                  className='col-span-2 text-sm font-normal'
                 />
-              </label>
-              <label className='mb-2 text-center font-semibold md:col-span-1 md:row-start-3 lg:col-span-1 lg:row-start-1'>
-                Rep 2
-                <input
+              </div>
+              <div className='mb-2 space-y-2 text-center font-semibold md:col-span-1 md:row-start-3 lg:col-span-1 lg:row-start-1'>
+                <Label>Rep 2</Label>
+                <Input
                   type='text'
                   value={exer.rep2}
                   name='rep2'
@@ -161,12 +164,12 @@ const WorkoutForm = ({
                     updatedExerciseObj[index].rep2 = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm font-normal outline-0'
+                  className='text-sm font-normal'
                 />
-              </label>
-              <label className='mb-2 text-center font-semibold md:col-span-1 md:row-start-3 lg:col-span-1 lg:row-start-1'>
-                Rep 3
-                <input
+              </div>
+              <div className='mb-2 space-y-2 text-center font-semibold md:col-span-1 md:row-start-3 lg:col-span-1 lg:row-start-1'>
+                <Label>Rep 3</Label>
+                <Input
                   type='text'
                   value={exer.rep3}
                   name='rep3'
@@ -176,29 +179,31 @@ const WorkoutForm = ({
                     updatedExerciseObj[index].rep3 = e.target.value;
                     setPost({ ...post, exerciseObj: updatedExerciseObj });
                   }}
-                  className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm font-normal outline-0'
+                  className='text-sm font-normal'
                 />
-              </label>
+              </div>
             </div>
           );
         })}
 
         <div className='mt-4 flex items-center justify-center'>
-          <button
-            className='btn btn-info btn-outline mx-auto mt-4 w-full lg:w-1/4'
+          <Button
+            variant='outline'
+            className='mx-auto mt-4 w-full lg:w-1/4'
             onClick={(e) => handleClick(e)}
           >
             Add Exercise
-          </button>
+          </Button>
         </div>
 
         <div className='mt-12 flex w-full items-center justify-center gap-4 md:justify-end'>
-          <button
+          <Button
             disabled={submitting}
-            className='btn btn-success btn-sm font-bold'
+            size='sm'
+            className='bg-teal-500 font-bold hover:bg-teal-600'
           >
             {submitting ? `${type}...` : type}
-          </button>
+          </Button>
 
           <Link href='/dashboard' className='text-sm text-gray-500'>
             Cancel

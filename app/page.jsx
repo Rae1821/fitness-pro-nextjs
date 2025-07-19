@@ -1,14 +1,16 @@
-import Welcome from "@components/Welcome";
+import Welcome from "@/components/Welcome";
 
 const Home = () => {
   return (
     <div
-      className='hero min-h-screen'
-      data-theme='dracula'
+      className='relative flex min-h-screen items-center justify-center bg-cover bg-center bg-no-repeat'
       style={{ backgroundImage: "url(/assets/images/bg-4.jpg)" }}
     >
-      <div className='hero-overlay'></div>
-      <div className='hero-content text-center text-neutral-content'>
+      {/* Overlay */}
+      <div className='absolute inset-0 bg-black/50'></div>
+
+      {/* Content */}
+      <div className='relative z-10 text-center text-white'>
         <div className='max-w-md'>
           <Welcome />
         </div>

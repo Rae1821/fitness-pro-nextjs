@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const TodaysWorkouts = () => {
   const { data: session } = useSession();
@@ -65,8 +66,8 @@ const TodaysWorkouts = () => {
   if (todaysWorkouts.length === 0) return null;
 
   return (
-    <div data-theme='night'>
-      <div className='mx-auto my-6 max-w-[800px] rounded-lg border border-slate-600 p-4'>
+    <div>
+      <div className='mx-auto my-6 max-w-[800px] rounded-lg border p-4'>
         <h3 className='mb-3 font-semibold'>
           🏋️ Today&apos;s Planned Workouts ({todaysWorkouts.length})
         </h3>
@@ -74,7 +75,7 @@ const TodaysWorkouts = () => {
           {todaysWorkouts.map((workout) => (
             <div
               key={workout._id}
-              className='flex items-center justify-between rounded bg-slate-800 p-3 shadow-sm'
+              className='flex items-center justify-between rounded bg-gray-100 p-3 shadow-sm'
             >
               <div>
                 <h4 className='font-medium'>
@@ -86,26 +87,24 @@ const TodaysWorkouts = () => {
                 </p>
               </div>
               <div className='flex gap-2'>
-                <button
+                <Button
                   onClick={() => markAsCompleted(workout._id)}
-                  className='btn btn-success btn-sm'
+                  className='bg-teal-500 hover:bg-teal-600'
+                  size='sm'
                 >
                   Complete
-                </button>
-                <Link
-                  href={`/edit-workout?id=${workout._id}`}
-                  className='btn btn-outline btn-sm'
-                >
-                  Edit
-                </Link>
+                </Button>
+                <Button asChild variant='outline' size='sm'>
+                  <Link href={`/edit-workout?id=${workout._id}`}>Edit</Link>
+                </Button>
               </div>
             </div>
           ))}
         </div>
         <div className='mt-4 text-center'>
-          <Link href='/calendar' className='btn btn-link btn-sm'>
-            View Full Calendar
-          </Link>
+          <Button asChild variant='link' size='sm'>
+            <Link href='/calendar'>View Full Calendar</Link>
+          </Button>
         </div>
       </div>
     </div>

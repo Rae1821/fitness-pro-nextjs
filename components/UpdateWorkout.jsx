@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-import WorkoutForm from "@components/strength/WorkoutForm";
-import ClassForm from "@components/class/ClassForm";
-import CardioForm from "@components/cardio/CardioForm";
-import HighIntensityForm from "@components/hiit/HighIntensityForm";
+import WorkoutForm from "@/components/strength/WorkoutForm";
+import ClassForm from "@/components/class/ClassForm";
+import CardioForm from "@/components/cardio/CardioForm";
+import HighIntensityForm from "@/components/hiit/HighIntensityForm";
 
 const UpdateWorkout = () => {
   const searchParams = useSearchParams();

@@ -5,10 +5,10 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import AppForm from "./appWorkout/AppForm";
-import WorkoutForm from "@components/strength/WorkoutForm";
-import ClassForm from "@components/class/ClassForm";
-import CardioForm from "@components/cardio/CardioForm";
-import HighIntensityForm from "@components/hiit/HighIntensityForm";
+import WorkoutForm from "@/components/strength/WorkoutForm";
+import ClassForm from "@/components/class/ClassForm";
+import CardioForm from "@/components/cardio/CardioForm";
+import HighIntensityForm from "@/components/hiit/HighIntensityForm";
 
 const NewWorkout = () => {
   const router = useRouter();

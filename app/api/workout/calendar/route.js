@@ -1,5 +1,5 @@
-import { connectToDB } from "@utils/database";
-import Workout from "@models/workout";
+import { connectToDB } from "@/utils/database";
+import Workout from "@/models/workout";
 
 export const GET = async (request) => {
   const { searchParams } = new URL(request.url);

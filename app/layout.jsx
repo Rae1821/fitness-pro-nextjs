@@ -1,6 +1,7 @@
-import "@styles/globals.css";
-// import Navbar from '@components/Navbar';
-import Provider from "@components/Provider";
+import "@/styles/globals.css";
+// import Navbar from '@/components/Navbar';
+import Provider from "@/components/Provider";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata = {
   title: "Fitness Pro",
@@ -10,14 +11,16 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <Provider>
-      <html lang='en' data-theme='night'>
-        <body suppressHydrationWarning={true} className=''>
-          {/* <div className="main">
-                <main>
-                  {/* <Navbar /> */}
-          {children}
-          {/* </main>
-              </div> */}
+      <html lang='en' suppressHydrationWarning={true}>
+        <body className='w-full'>
+          <ThemeProvider
+            attribute='class'
+            defaultTheme='system'
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </Provider>

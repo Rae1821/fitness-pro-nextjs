@@ -1,5 +1,5 @@
-import { connectToDB } from "@utils/database";
-import Workout from "@models/workout";
+import { connectToDB } from "@/utils/database";
+import Workout from "@/models/workout";
 
 export const GET = async (request, { params }) => {
   try {
@@ -38,7 +38,8 @@ export const PATCH = async (request, { params }) => {
     await connectToDB();
 
     // find the existing workout by id
-    const existingWorkout = await Workout.findById(params.id);
+    const { id } = params;
+    const existingWorkout = await Workout.findById(id);
 
     if (!existingWorkout) {
       return new Response("Workout not found", { status: 404 });
@@ -75,7 +76,8 @@ export const DELETE = async (request, { params }) => {
     await connectToDB();
 
     // find the workout by id and remove it
-    await Workout.findByIdAndRemove(params.id);
+    const { id } = params;
+    await Workout.findByIdAndRemove(id);
 
     return new Response("Workout deleted", { status: 200 });
   } catch (error) {

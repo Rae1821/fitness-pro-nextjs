@@ -10,6 +10,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const Calendar = () => {
   const { data: session } = useSession();
@@ -207,8 +208,8 @@ const Calendar = () => {
     <div className='mx-auto max-w-6xl p-4'>
       {/* Today's Workouts Notification */}
       {todaysWorkouts.length > 0 && (
-        <div className='mb-6 rounded-lg border border-blue-300 bg-blue-100 p-4'>
-          <h3 className='mb-2 font-semibold text-blue-800'>
+        <div className='mb-6 rounded-lg border border-teal-300 bg-teal-100 p-4'>
+          <h3 className='mb-2 font-semibold text-teal-800'>
             🏋️ Today&apos;s Scheduled Workouts ({todaysWorkouts.length})
           </h3>
           <div className='space-y-2'>
@@ -227,12 +228,13 @@ const Calendar = () => {
                     </span>
                   )}
                 </div>
-                <button
+                <Button
                   onClick={() => markAsCompleted(workout._id)}
-                  className='btn btn-success btn-sm'
+                  size='sm'
+                  className='bg-teal-500 hover:bg-teal-700'
                 >
                   Mark Complete
-                </button>
+                </Button>
               </div>
             ))}
           </div>
@@ -246,24 +248,30 @@ const Calendar = () => {
             {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
           </h1>
           <div className='flex gap-2'>
-            <button
+            <Button
               onClick={() => navigateMonth(-1)}
-              className='btn btn-circle btn-outline btn-sm'
+              variant='outline'
+              size='sm'
+              className='size-8 p-0'
             >
               <ChevronLeft className='size-4' />
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => navigateMonth(1)}
-              className='btn btn-circle btn-outline btn-sm'
+              variant='outline'
+              size='sm'
+              className='size-8 p-0'
             >
               <ChevronRight className='size-4' />
-            </button>
+            </Button>
           </div>
         </div>
-        <Link href='/plan-workout' className='btn btn-primary'>
-          <Plus className='mr-2 size-4' />
-          Plan Workout
-        </Link>
+        <Button asChild>
+          <Link href='/plan-workout'>
+            <Plus className='mr-2 size-4' />
+            Plan Workout
+          </Link>
+        </Button>
       </div>
 
       {/* Calendar Grid */}
@@ -294,12 +302,13 @@ const Calendar = () => {
             <div className='py-4 text-center text-gray-500'>
               No workouts scheduled for this date
               <div className='mt-2'>
-                <Link
-                  href={`/plan-workout?date=${selectedDate.toISOString().split("T")[0]}`}
-                  className='btn btn-primary btn-sm'
-                >
-                  Plan a Workout
-                </Link>
+                <Button asChild size='sm'>
+                  <Link
+                    href={`/plan-workout?date=${selectedDate.toISOString().split("T")[0]}`}
+                  >
+                    Plan a Workout
+                  </Link>
+                </Button>
               </div>
             </div>
           ) : (
@@ -335,18 +344,18 @@ const Calendar = () => {
                     </div>
                     {workout.status === "planned" && (
                       <div className='flex gap-2'>
-                        <button
+                        <Button
                           onClick={() => markAsCompleted(workout._id)}
-                          className='btn btn-success btn-sm'
+                          size='sm'
+                          className='bg-green-600 hover:bg-green-700'
                         >
                           Complete
-                        </button>
-                        <Link
-                          href={`/edit-workout?id=${workout._id}`}
-                          className='btn btn-outline btn-sm'
-                        >
-                          Edit
-                        </Link>
+                        </Button>
+                        <Button asChild variant='outline' size='sm'>
+                          <Link href={`/edit-workout?id=${workout._id}`}>
+                            Edit
+                          </Link>
+                        </Button>
                       </div>
                     )}
                   </div>

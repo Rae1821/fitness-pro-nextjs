@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Menu } from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   //   const router = useRouter();
@@ -22,84 +26,104 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className='navbar bg-base-100 shadow-md'>
-      <div className='navbar-start'>
-        <div className='dropdown'>
-          <label tabIndex={0} className='btn btn-circle btn-ghost'>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='size-5'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                d='M4 6h16M4 12h16M4 18h7'
-              />
-            </svg>
-          </label>
+    <nav className='flex items-center justify-between px-4 py-2'>
+      <div className='flex items-center'>
+        {/* Mobile Menu */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant='ghost' size='sm' className='mr-2 md:hidden'>
+              <Menu className='size-5' />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side='left' className='w-64'>
+            <nav className='mt-6 flex flex-col space-y-4'>
+              <Link href='/dashboard' className='text-lg hover:text-cyan-600'>
+                My Dashboard
+              </Link>
+              <Link
+                href='/create-workout'
+                className='text-lg hover:text-cyan-600'
+              >
+                Create Workout
+              </Link>
+              <Link href='/calendar' className='text-lg hover:text-cyan-600'>
+                Calendar
+              </Link>
+              <Link
+                href='/plan-workout'
+                className='text-lg hover:text-cyan-600'
+              >
+                Plan Workout
+              </Link>
+            </nav>
+          </SheetContent>
+        </Sheet>
 
-          <ul
-            tabIndex={0}
-            className='menu dropdown-content rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow'
-          >
-            <li>
-              <Link href='/dashboard'>My Dashboard</Link>
-            </li>
-            <li>
-              <Link href='/create-workout'>Create Workout</Link>
-            </li>
-            <li>
-              <Link href='/calendar'>Calendar</Link>
-            </li>
-            <li>
-              <Link href='/plan-workout'>Plan Workout</Link>
-            </li>
-          </ul>
-        </div>
-        <Link href='/' className='btn btn-ghost text-xl normal-case'>
+        {/* Logo */}
+        <Link href='/' className='text-xl font-bold hover:text-cyan-600'>
           Fitness Pro
         </Link>
+
+        {/* Desktop Menu */}
+        <div className='ml-8 hidden space-x-6 md:flex md:items-center'>
+          <Link
+            href='/dashboard'
+            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+          >
+            Dashboard
+          </Link>
+          <Link
+            href='/create-workout'
+            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+          >
+            Create Workout
+          </Link>
+          <Link
+            href='/calendar'
+            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+          >
+            Calendar
+          </Link>
+          <Link
+            href='/plan-workout'
+            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+          >
+            Plan Workout
+          </Link>
+        </div>
       </div>
 
       {session?.user ? (
-        <div className='navbar-end'>
-          <button
-            type='button'
-            onClick={signOut}
-            className='btn btn-ghost btn-outline btn-xs'
-          >
+        <div className='flex items-center space-x-4'>
+          <ModeToggle />
+          <Button variant='outline' size='sm' onClick={signOut}>
             Sign Out
-          </button>
-          <Image
-            src={session?.user.image}
-            width={37}
-            height={37}
-            alt='profile'
-            className='ml-4 rounded-full'
-          />
+          </Button>
+          <Avatar>
+            <AvatarImage src={session?.user.image} alt='profile' />
+            <AvatarFallback>
+              {session?.user.name?.charAt(0) || "U"}
+            </AvatarFallback>
+          </Avatar>
         </div>
       ) : !session?.user && pathName === "/dashboard" ? (
-        <div className='navbar-end'>
+        <div className='flex items-center'>
           {providers &&
             Object.values(providers).map((provider) => (
-              <button
-                type='button'
+              <Button
                 key={provider.name}
                 onClick={() => signIn(provider.id)}
-                className='btn btn-accent btn-sm'
+                size='sm'
+                className='bg-cyan-600 hover:bg-cyan-700'
               >
                 Sign In
-              </button>
+              </Button>
             ))}
         </div>
       ) : (
         <div></div>
       )}
-    </div>
+    </nav>
   );
 };
 

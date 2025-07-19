@@ -1,4 +1,4 @@
-import UpdateWorkout from "@components/UpdateWorkout";
+import UpdateWorkout from "@/components/UpdateWorkout";
 import { Suspense } from "react";
 
 const EditWorkout = () => {
