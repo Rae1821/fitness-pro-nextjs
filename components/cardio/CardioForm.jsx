@@ -1,6 +1,9 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Button } from "../ui/button";
 
 const CardioForm = ({
   type,
@@ -24,8 +27,8 @@ const CardioForm = ({
 
       <form onSubmit={handleSubmit} className='mx-auto mt-10 w-full'>
         {/* Top of Form */}
-        <div className='form-control mb-4 grid grid-cols-1 gap-4 border-b border-slate-300 px-8 pb-4 md:grid-cols-2 lg:grid-cols-4'>
-          <label>
+        <div className='mb-4 grid grid-cols-1 gap-4 border-b border-slate-300 px-8 pb-4 md:grid-cols-2 lg:grid-cols-4'>
+          <Label>
             <span className='mb-2 flex flex-col items-center font-semibold'>
               Date Completed
             </span>
@@ -33,15 +36,15 @@ const CardioForm = ({
               <DatePicker
                 selected={date}
                 onChange={(date) => setDate(date)}
-                className='input input-bordered text-sm text-gray-500 outline-0 dark:bg-gray-900 dark:text-white'
+                className='text-sm text-gray-500 outline-0 dark:bg-gray-900 dark:text-white'
               />
             </div>
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Activity Type
             </span>
-            <input
+            <Input
               type='text'
               name='workoutName'
               placeholder='Treadmill Run'
@@ -49,48 +52,46 @@ const CardioForm = ({
               onChange={(e) =>
                 setPost({ ...post, workoutName: e.target.value })
               }
-              className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
+              className='mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='mb-2 flex flex-col items-center font-semibold'>
               #Tag
             </span>
-            <p className='input input-bordered mt-2 flex w-full p-3 outline-0'>
-              {post.tag}
-            </p>
-          </label>
-          <label>
+            <p className='mt-2 flex w-full p-3 outline-0'>{post.tag}</p>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Duration
             </span>
-            <input
+            <Input
               type='text'
               name='duration'
               placeholder='30'
               value={post.duration}
               onChange={(e) => setPost({ ...post, duration: e.target.value })}
-              className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
+              className='mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Intervals
             </span>
-            <input
+            <Input
               type='text'
               name='intervals'
               placeholder='10'
               value={post.intervals}
               onChange={(e) => setPost({ ...post, intervals: e.target.value })}
-              className='input input-bordered mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
+              className='mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Speed High
             </span>
-            <input
+            <Input
               type='text'
               name='speedHigh'
               placeholder='6.0'
@@ -98,12 +99,12 @@ const CardioForm = ({
               onChange={(e) => setPost({ ...post, speedHigh: e.target.value })}
               className='mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Speed Low
             </span>
-            <input
+            <Input
               type='text'
               name='speedLow'
               placeholder='3.0'
@@ -111,12 +112,12 @@ const CardioForm = ({
               onChange={(e) => setPost({ ...post, speedLow: e.target.value })}
               className='mt-2 flex w-full rounded-lg p-3 text-sm  outline-0'
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Distance
             </span>
-            <input
+            <Input
               type='text'
               name='distance'
               placeholder='.25'
@@ -124,12 +125,12 @@ const CardioForm = ({
               onChange={(e) => setPost({ ...post, distance: e.target.value })}
               className=' mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
             />
-          </label>
-          <label>
+          </Label>
+          <Label>
             <span className='flex flex-col items-center justify-center font-semibold'>
               Incline
             </span>
-            <input
+            <Input
               type='text'
               name='incline'
               placeholder='.25'
@@ -137,12 +138,15 @@ const CardioForm = ({
               onChange={(e) => setPost({ ...post, incline: e.target.value })}
               className=' mt-2 flex w-full rounded-lg p-3 text-sm outline-0'
             />
-          </label>
+          </Label>
         </div>
         <div className='my-8 flex w-full items-center justify-center gap-4 md:justify-end'>
-          <button disabled={submitting} className=' px-5 py-1.5 font-bold'>
+          <Button
+            disabled={submitting}
+            className=' bg-rose-500 px-5 py-1.5 font-bold hover:bg-rose-600'
+          >
             {submitting ? `${type}...` : type}
-          </button>
+          </Button>
 
           <Link href='/dashboard' className='text-sm text-gray-500'>
             Cancel

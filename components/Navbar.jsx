@@ -5,7 +5,12 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
@@ -26,8 +31,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className='flex items-center justify-between px-4 py-2'>
-      <div className='flex items-center'>
+    <nav className='flex items-center justify-between px-4 py-2 shadow-md'>
+      <div className='flex'>
         {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild>
@@ -36,6 +41,7 @@ const Navbar = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side='left' className='w-64'>
+            <SheetTitle>Navigation Menu</SheetTitle>
             <nav className='mt-6 flex flex-col space-y-4'>
               <Link href='/dashboard' className='text-lg hover:text-cyan-600'>
                 My Dashboard
@@ -44,7 +50,7 @@ const Navbar = () => {
                 href='/create-workout'
                 className='text-lg hover:text-cyan-600'
               >
-                Create Workout
+                Record Workout
               </Link>
               <Link href='/calendar' className='text-lg hover:text-cyan-600'>
                 Calendar
@@ -60,7 +66,10 @@ const Navbar = () => {
         </Sheet>
 
         {/* Logo */}
-        <Link href='/' className='text-xl font-bold hover:text-cyan-600'>
+        <Link
+          href='/'
+          className='place-self-end text-xl font-bold hover:text-cyan-600'
+        >
           Fitness Pro
         </Link>
 
@@ -68,25 +77,25 @@ const Navbar = () => {
         <div className='ml-8 hidden space-x-6 md:flex md:items-center'>
           <Link
             href='/dashboard'
-            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+            className='text-sm  tracking-tight hover:text-cyan-600 hover:decoration-cyan-600 hover:underline-offset-2'
           >
             Dashboard
           </Link>
           <Link
             href='/create-workout'
-            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+            className='text-sm tracking-tight hover:text-cyan-600 hover:decoration-cyan-600 hover:underline-offset-2'
           >
-            Create Workout
+            Record Workout
           </Link>
           <Link
             href='/calendar'
-            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+            className='text-sm tracking-tight hover:text-cyan-600 hover:decoration-cyan-600 hover:underline-offset-2'
           >
             Calendar
           </Link>
           <Link
             href='/plan-workout'
-            className='text-sm font-semibold tracking-tight hover:text-cyan-600'
+            className='text-sm tracking-tight hover:text-cyan-600 '
           >
             Plan Workout
           </Link>

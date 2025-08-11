@@ -14,9 +14,9 @@ const ClassCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       <Collapsible className='mx-auto mb-4 w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl'>
-        <Card className='border-b border-b-neutral-200 bg-white pt-2 font-display hover:bg-green-50 md:px-2'>
+        <Card className='w-full border-b border-b-neutral-200 bg-white pt-2 font-display hover:bg-green-50 md:px-2'>
           <CollapsibleTrigger className='group w-full'>
-            <CardHeader className='pb-2'>
+            <CardHeader className='w-full pb-2'>
               <div className='grid grid-cols-[50px_auto_auto_auto] items-center lg:grid-cols-[75px_250px_250px_200px]'>
                 <div className='w-9'>
                   <p className='rounded-full bg-slate-200 p-2'>

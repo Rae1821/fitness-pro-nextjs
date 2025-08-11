@@ -177,7 +177,7 @@ const Stats = ({ data }) => {
   return (
     <div className='flex w-full flex-col items-center justify-center gap-4'>
       <div className='grid w-full grid-cols-1 gap-4 px-2 md:grid-cols-3'>
-        <Card className='bg-neutral-100 shadow-md'>
+        <Card className='shadow-md'>
           <CardHeader className='pb-2'>
             <CardTitle className='text-center text-sm font-medium'>
               Workouts
@@ -192,7 +192,7 @@ const Stats = ({ data }) => {
             </p>
           </CardContent>
         </Card>
-        <Card className='bg-neutral-100 shadow-md'>
+        <Card className='shadow-md'>
           <CardHeader className='pb-2'>
             <CardTitle className='text-center text-sm font-medium'>
               Current Month
@@ -254,7 +254,7 @@ const Stats = ({ data }) => {
             </div>
           </CardContent>
         </Card>
-        <Card className='bg-neutral-100 shadow-md'>
+        <Card className='shadow-md'>
           <CardHeader className='pb-2'>
             <CardTitle className='text-center text-sm font-medium'>
               Previous Month

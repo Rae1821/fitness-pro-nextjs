@@ -9,6 +9,13 @@ import WorkoutForm from "@/components/strength/WorkoutForm";
 import ClassForm from "@/components/class/ClassForm";
 import CardioForm from "@/components/cardio/CardioForm";
 import HighIntensityForm from "@/components/hiit/HighIntensityForm";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const NewWorkout = () => {
   const router = useRouter();
@@ -63,20 +70,6 @@ const NewWorkout = () => {
     });
   };
 
-  //   const handleSelected = () => {
-  //     setWorkoutType(workoutType);
-  //   };
-
-  //   const handleOnChange = (e) => {
-  //     const updatedExerciseObj = [...post.exerciseObj];
-  //     updatedExerciseObj[e.target.name] = e.target.value;
-  //     setPost({ ...post, exerciseObj: updatedExerciseObj });
-  //   };
-
-  //   const handleSubmit = () => {
-  //     createWorkout();
-  //   };
-
   const createWorkout = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -115,26 +108,26 @@ const NewWorkout = () => {
   };
 
   return (
-    <div className="min-h-screen w-full">
-      <div>
-        <h2 className="mb-4 mt-10 text-center">Choose your workout type</h2>
-        <div className="form-control mx-auto w-full max-w-xs">
-          <select
-            value={post.tag}
-            onChange={(e) => setPost({ ...post, tag: e.target.value })}
-            className="select select-bordered"
-          >
-            <option>Pick one</option>
-            <option>App</option>
-            <option>Cardio</option>
-            <option>Strength</option>
-          </select>
-        </div>
+    <div className='mt-24 min-h-screen w-full'>
+      <div className='mx-auto w-full max-w-xs'>
+        <Select
+          defaultValue={post.tag}
+          onValueChange={(e) => setPost({ ...post, tag: e })}
+        >
+          <SelectTrigger className='w-[280px]'>
+            <SelectValue placeholder='Select a workout type' />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value='App'>App</SelectItem>
+            <SelectItem value='Cardio'>Cardio</SelectItem>
+            <SelectItem value='Strength'>Strength</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {post.tag === "Strength" ? (
         <WorkoutForm
-          type="Create"
+          type='Create'
           submitting={submitting}
           handleSubmit={createWorkout}
           handleClick={handleClick}
@@ -145,7 +138,7 @@ const NewWorkout = () => {
         />
       ) : post.tag === "App" ? (
         <AppForm
-          type="Create"
+          type='Create'
           submitting={submitting}
           handleSubmit={createWorkout}
           post={post}
@@ -155,7 +148,7 @@ const NewWorkout = () => {
         />
       ) : post.tag === "Class" ? (
         <ClassForm
-          type="Create"
+          type='Create'
           submitting={submitting}
           handleSubmit={createWorkout}
           post={post}
@@ -165,7 +158,7 @@ const NewWorkout = () => {
         />
       ) : post.tag === "Cardio" ? (
         <CardioForm
-          type="Create"
+          type='Create'
           submitting={submitting}
           handleSubmit={createWorkout}
           post={post}
@@ -175,7 +168,7 @@ const NewWorkout = () => {
         />
       ) : post.tag === "HIIT" ? (
         <HighIntensityForm
-          type="Create"
+          type='Create'
           submitting={submitting}
           handleSubmit={createWorkout}
           handleClick={handleClick}

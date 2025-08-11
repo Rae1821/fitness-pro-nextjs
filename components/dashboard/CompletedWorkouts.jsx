@@ -95,14 +95,14 @@ const CompletedWorkouts = () => {
               value='cardio'
               onClick={(e) => setSelectedTag(e.target.value)}
               size='sm'
-              className='bg-red-400 text-xs hover:bg-red-500 lg:text-sm'
+              className='bg-red-400 text-xs text-slate-900 hover:bg-red-500 lg:text-sm'
             >
               Cardio
             </Button>
             <Button
               value='strength'
               onClick={(e) => setSelectedTag(e.target.value)}
-              className='bg-cyan-600 text-xs hover:bg-cyan-700 lg:text-sm'
+              className='bg-cyan-600 text-xs text-slate-900 hover:bg-cyan-700 lg:text-sm'
               size='sm'
             >
               Strength
@@ -153,7 +153,7 @@ const CompletedWorkouts = () => {
                 handleDelete={() => handleDelete && handleDelete(post)}
               />
             ) : selectedTag === "all" ? (
-              <div>
+              <div key={post._id}>
                 {post.tag === "app" ? (
                   <AppCard
                     key={post._id}
@@ -198,9 +198,7 @@ const CompletedWorkouts = () => {
                   <div></div>
                 )}
               </div>
-            ) : (
-              <div></div>
-            )
+            ) : null
           )}
         </div>
       </div>

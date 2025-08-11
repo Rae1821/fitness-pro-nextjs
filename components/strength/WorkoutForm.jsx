@@ -200,7 +200,7 @@ const WorkoutForm = ({
           <Button
             disabled={submitting}
             size='sm'
-            className='bg-teal-500 font-bold hover:bg-teal-600'
+            className='bg-sky-500 font-bold hover:bg-sky-600'
           >
             {submitting ? `${type}...` : type}
           </Button>

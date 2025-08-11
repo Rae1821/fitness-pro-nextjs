@@ -14,9 +14,9 @@ const AppCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       <Collapsible className='mx-auto mb-4 w-full sm:max-w-2xl md:max-w-3xl lg:max-w-4xl'>
-        <Card className='border-b border-b-neutral-200 bg-white pt-2 font-display hover:bg-violet-50 md:px-2'>
+        <Card className='w-full border-b border-b-neutral-200 bg-white pt-2 font-display hover:bg-violet-50 md:px-2'>
           <CollapsibleTrigger className='group w-full'>
-            <CardHeader className='pb-2'>
+            <CardHeader className='w-full pb-2'>
               <div className='grid grid-cols-4 items-center gap-2 lg:grid-cols-[75px_200px_250px_200px]'>
                 <div className='w-9'>
                   <p className='rounded-full bg-slate-200 p-2'>
@@ -26,21 +26,21 @@ const AppCard = ({ post, handleEdit, handleDelete }) => {
                 <div className='flex items-center'>
                   <p className='flex flex-col text-left text-xs font-bold text-slate-900 md:text-base lg:text-xl'>
                     {post.workoutName}
-                    <span className='text-xs font-normal text-slate-500 md:text-sm lg:text-lg'>
+                    <span className='text-xs font-normal text-slate-700 md:text-sm lg:text-lg'>
                       Class
                     </span>
                   </p>
                 </div>
                 <p className='flex flex-col text-left text-xs font-bold text-slate-900 md:text-base lg:text-xl'>
                   {formattedDate}
-                  <span className='text-xs font-normal text-slate-500 md:text-sm lg:text-lg'>
+                  <span className='text-xs font-normal text-slate-700 md:text-sm lg:text-lg'>
                     Date
                   </span>
                 </p>
                 <div className='flex items-center justify-between'>
                   <p className='flex flex-col text-left text-xs font-bold text-slate-900 md:text-base lg:text-xl'>
                     {post.duration} min.
-                    <span className='text-xs font-normal text-slate-500 md:text-sm lg:text-lg'>
+                    <span className='text-xs font-normal text-slate-700 md:text-sm lg:text-lg'>
                       Duration
                     </span>
                   </p>
@@ -52,13 +52,13 @@ const AppCard = ({ post, handleEdit, handleDelete }) => {
 
           <CollapsibleContent>
             <CardContent className='rounded-b-md border-8 border-violet-400 bg-white px-0 md:px-4'>
-              <table className='w-full table-auto border-collapse'>
+              <table className='w-full table-auto border-collapse text-slate-900'>
                 <thead>
-                  <tr className='border-b border-neutral-200 text-sm text-slate-500'>
-                    <th className='text-left text-[11px] font-bold uppercase tracking-wide'>
+                  <tr className='border-b border-neutral-200 text-sm text-slate-700'>
+                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-700'>
                       Class Focus
                     </th>
-                    <th className='text-left text-[11px] font-bold uppercase tracking-wide'>
+                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-700'>
                       Instructor
                     </th>
                   </tr>
