@@ -12,15 +12,15 @@ import {
 
 const MyDashboard = () => {
   return (
-    <div className='mx-auto px-4 lg:max-w-[1300px]'>
+    <div className='mx-auto px-4 pb-16 pt-10 lg:max-w-[1300px]'>
       <TooltipProvider>
-        <div className='absolute right-10 top-20 flex gap-2'>
+        <div className='absolute right-6 top-24 flex gap-2'>
           <Tooltip>
             <TooltipTrigger asChild>
               <Button
                 asChild
                 size='icon'
-                className='mb-4 size-10 rounded-full bg-white text-black shadow hover:bg-neutral-100'
+                className='mb-4 size-10 rounded-full border border-emerald-100 bg-white/80 text-slate-700 shadow-sm backdrop-blur hover:bg-white'
               >
                 <Link href='/calendar'>📅</Link>
               </Button>
@@ -35,7 +35,7 @@ const MyDashboard = () => {
               <Button
                 asChild
                 size='icon'
-                className='mb-4 size-10 rounded-full bg-white text-black shadow hover:bg-neutral-100'
+                className='mb-4 size-10 rounded-full border border-emerald-100 bg-white/80 text-slate-700 shadow-sm backdrop-blur hover:bg-white'
               >
                 <Link href='/create-workout'>
                   <Image
@@ -53,7 +53,7 @@ const MyDashboard = () => {
           </Tooltip>
         </div>
       </TooltipProvider>
-      <div className='mt-24 w-full'>
+      <div className='mt-20 w-full'>
         <TodaysWorkouts />
         <CompletedWorkouts />
       </div>

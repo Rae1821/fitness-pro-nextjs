@@ -75,14 +75,11 @@ const CompletedWorkouts = () => {
 
   return (
     <div className='container mx-auto flex max-w-[1000px] flex-col items-center justify-center'>
-      <div className='mx-auto mb-10 mt-20'>
-        <Stats data={totalPosts} />
-      </div>
       <div className='mx-auto mt-10'>
         <h2 className='mb-6 text-center text-3xl'>Recent Workouts</h2>
 
         <div className='mx-auto mb-16 flex items-center justify-center'>
-          <div className='flex gap-2'>
+          {/* <div className='flex gap-2'>
             <Button
               value='all'
               onClick={(e) => setSelectedTag(e.target.value)}
@@ -107,7 +104,7 @@ const CompletedWorkouts = () => {
             >
               Strength
             </Button>
-          </div>
+          </div> */}
         </div>
 
         <div className='w-full'>
@@ -201,6 +198,9 @@ const CompletedWorkouts = () => {
             ) : null
           )}
         </div>
+      </div>
+      <div className='mx-auto mb-10 mt-20'>
+        <Stats data={totalPosts} />
       </div>
     </div>
   );

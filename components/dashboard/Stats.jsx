@@ -10,6 +10,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useMemo } from "react";
+import { useTheme } from "next-themes";
 
 ChartJS.register(
   CategoryScale,
@@ -21,18 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Workouts",
-    },
-  },
-};
+// removed old options; using theme-aware chartOptions below
 
 const labels = [
   "January",
@@ -50,6 +41,8 @@ const labels = [
 ];
 
 const Stats = ({ data }) => {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const monthlyWorkouts = data.filter((workout) => {
     const workoutDate = new Date(workout.date);
     const currentMonth = new Date().getMonth() + 1;
@@ -122,32 +115,66 @@ const Stats = ({ data }) => {
       {
         label: "2025",
         data: monthlyCountsByYear[2025] || Array(12).fill(0),
-        // borderColor: "rgb(0, 194, 146)",
-        borderColor: "oklch(71.2% 0.194 13.428)",
-        // backgroundColor: "rgba(0, 194, 146, 0.76)",
-        backgroundColor: "oklch(71.2% 0.194 13.428)",
+        borderColor: "rgba(56, 189, 248, 1)", // neon cyan
+        backgroundColor: "rgba(56, 189, 248, 0.18)",
         fill: true,
       },
       {
         label: "2024",
         data: monthlyCountsByYear[2024] || Array(12).fill(0),
-        // borderColor: "rgb(242, 195, 53)",
-        borderColor: "oklch(60.9% 0.126 221.723)",
-        // backgroundColor: "rgba(242, 195, 53, 0.95)",
-        backgroundColor: "oklch(60.9% 0.126 221.723)",
+        borderColor: "rgba(168, 85, 247, 1)", // neon fuchsia
+        backgroundColor: "rgba(168, 85, 247, 0.18)",
         fill: true,
       },
       {
         label: "2023",
         data: monthlyCountsByYear[2023] || Array(12).fill(0),
-        // borderColor: "rgb(47, 201, 215)",
-        borderColor: "oklch(70.4% 0.14 182.503)",
-        // backgroundColor: "rgba(47, 201, 215, 0.84)",
-        backgroundColor: "oklch(70.4% 0.14 182.503)",
+        borderColor: "rgba(34, 197, 94, 1)", // emerald accent
+        backgroundColor: "rgba(34, 197, 94, 0.16)",
         fill: true,
       },
     ],
   };
+
+  const chartOptions = useMemo(
+    () => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "top",
+          align: "end",
+          labels: {
+            color: isDark ? "#cbd5e1" : "#64748b",
+            boxWidth: 12,
+            usePointStyle: true,
+            pointStyle: "circle",
+          },
+        },
+        title: { display: false },
+        tooltip: {
+          backgroundColor: "rgba(2,6,23,.92)",
+          displayColors: false,
+          padding: 10,
+        },
+      },
+      elements: {
+        line: { tension: 0.35, borderWidth: 2 },
+        point: { radius: 0, hoverRadius: 3 },
+      },
+      scales: {
+        x: { grid: { display: false }, ticks: { color: "#94a3b8" } },
+        y: {
+          grid: {
+            color: isDark ? "rgba(148,163,184,.18)" : "rgba(148,163,184,.20)",
+          },
+          ticks: { color: "#94a3b8" },
+          border: { display: false },
+        },
+      },
+    }),
+    [isDark]
+  );
 
   // Count the workouts for the current month or the previous month using reduce
   const workoutCounts = monthlyWorkouts.reduce(
@@ -177,32 +204,34 @@ const Stats = ({ data }) => {
   return (
     <div className='flex w-full flex-col items-center justify-center gap-4'>
       <div className='grid w-full grid-cols-1 gap-4 px-2 md:grid-cols-3'>
-        <Card className='shadow-md'>
+        <Card className='soft-shadow relative overflow-hidden rounded-2xl border-none bg-teal-900/40'>
+          <div className='neon-glow' />
           <CardHeader className='pb-2'>
-            <CardTitle className='text-center text-sm font-medium'>
+            <CardTitle className='text-center text-sm font-medium text-slate-200'>
               Workouts
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className='text-center text-2xl font-bold'>
+            <div className='text-center text-2xl font-bold text-teal-400'>
               {yearlyWorkoutCounts.currentYear}
             </div>
-            <p className='mt-1 text-center text-xs text-muted-foreground'>
+            <p className='mt-1 text-center text-xs text-slate-400'>
               Total {currentYear}
             </p>
           </CardContent>
         </Card>
-        <Card className='shadow-md'>
+        <Card className='soft-shadow relative overflow-hidden rounded-2xl border-none bg-teal-900/40'>
+          <div className='' />
           <CardHeader className='pb-2'>
-            <CardTitle className='text-center text-sm font-medium'>
+            <CardTitle className='text-center text-sm font-medium text-slate-200'>
               Current Month
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className='text-center text-2xl font-bold'>
+            <div className='text-center text-2xl font-bold text-teal-400'>
               {workoutCounts.currentMonth}
             </div>
-            <div className='mt-1 flex items-center justify-center gap-1 text-xs text-muted-foreground'>
+            <div className='mt-1 flex items-center justify-center gap-1 text-xs text-slate-400'>
               <span>
                 {workoutCounts.currentMonth < workoutCounts.previousMonth ? (
                   <svg
@@ -254,17 +283,18 @@ const Stats = ({ data }) => {
             </div>
           </CardContent>
         </Card>
-        <Card className='shadow-md'>
+        <Card className='soft-shadow relative overflow-hidden rounded-2xl border-none bg-teal-900/40'>
+          <div className='neon-glow' />
           <CardHeader className='pb-2'>
-            <CardTitle className='text-center text-sm font-medium'>
+            <CardTitle className='text-center text-sm font-medium text-slate-200'>
               Previous Month
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className='text-center text-2xl font-bold'>
+            <div className='text-center text-2xl font-bold text-teal-400'>
               {workoutCounts.previousMonth}
             </div>
-            <div className='mt-1 flex items-center justify-center gap-1 text-xs text-muted-foreground'>
+            <div className='mt-1 flex items-center justify-center gap-1 text-xs text-slate-400'>
               <span>
                 {workoutCounts.previousMonth > workoutCounts.monthBeforeLast ? (
                   <svg
@@ -317,8 +347,11 @@ const Stats = ({ data }) => {
           </CardContent>
         </Card>
       </div>
-      <div className='mx-auto mt-10 w-full'>
-        <Line options={options} data={chartData} />
+      <div className='soft-shadow relative mx-auto mt-10 w-full rounded-2xl border border-white/10 bg-slate-900/40 p-4 backdrop-blur'>
+        <div className='neon-glow' />
+        <div className='h-64 w-full md:h-72'>
+          <Line options={chartOptions} data={chartData} />
+        </div>
       </div>
     </div>
   );

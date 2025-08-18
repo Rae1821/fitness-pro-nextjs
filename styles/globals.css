@@ -38,6 +38,9 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    /* Neon accent tokens (RGB) for gradients/glows; avoid clashing with HSL --accent */
+    --neon-1: 56 189 248; /* cyan-400 */
+    --neon-2: 168 85 247; /* fuchsia-600 */
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -64,6 +67,9 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    /* Keep the same neon RGB tokens in dark */
+    --neon-1: 56 189 248; /* cyan-400 */
+    --neon-2: 168 85 247; /* fuchsia-600 */
   }
 }
 
@@ -75,3 +81,105 @@
     @apply bg-background text-foreground;
     }
 } */
+
+/* Utility helpers */
+.bg-base {
+  background-color: rgb(var(--bg));
+}
+.text-base {
+  color: rgb(var(--fg));
+}
+.text-muted {
+  color: rgb(var(--muted));
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, rgb(var(--neon-1)), rgb(var(--neon-2)));
+}
+
+.wellness-gradient {
+  background:
+    radial-gradient(
+      40% 60% at 20% 0%,
+      rgba(16, 185, 129, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      30% 50% at 85% 10%,
+      rgba(59, 130, 246, 0.1),
+      transparent 70%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(240, 253, 244, 0.8),
+      #ffffff 40%,
+      rgba(240, 253, 244, 0.7)
+    );
+}
+
+/* Dark mode: switch to inky background with neon glows */
+.dark .wellness-gradient {
+  background:
+    radial-gradient(
+      50% 85% at -10% -10%,
+      rgba(56, 189, 248, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      45% 80% at 110% 10%,
+      rgba(168, 85, 247, 0.2),
+      transparent 65%
+    ),
+    linear-gradient(180deg, #020617 0%, #0b1220 40%, #0b1220 100%);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+}
+
+.green-bg {
+  background-color: oklch(38.6% 0.063 188.416);
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, rgb(var(--neon-1)), rgb(var(--neon-2)));
+}
+
+.soft-shadow {
+  box-shadow: 0 10px 30px -12px rgba(2, 6, 23, 0.1);
+}
+
+/* Neon card helpers for dark surfaces */
+.neon-card {
+  /* background: rgba(2, 6, 23, 0.6); slate-950/60 */
+
+  /* background: oklch(60% 0.118 184.704); */
+  background: oklch(51.1% 0.096 186.391);
+  /* border: 1px solid rgba(148, 163, 184, 0.15); slate-400/15 */
+  backdrop-filter: blur(8px);
+}
+.neon-card:hover .neon-glow {
+  opacity: 0.6;
+}
+.neon-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      100px 60px at 20% 0%,
+      rgba(56, 189, 248, 0.35),
+      transparent 60%
+    ),
+    radial-gradient(
+      120px 80px at 80% 20%,
+      rgba(168, 85, 247, 0.35),
+      transparent 60%
+    );
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}

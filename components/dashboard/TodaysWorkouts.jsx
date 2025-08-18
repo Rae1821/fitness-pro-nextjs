@@ -67,21 +67,21 @@ const TodaysWorkouts = () => {
 
   return (
     <div>
-      <div className='mx-auto my-6 max-w-[800px] rounded-lg border p-4'>
-        <h3 className='mb-3 font-semibold'>
+      <div className='mx-auto my-6 max-w-[800px] rounded-2xl border border-white/10 bg-slate-900/40 p-4 backdrop-blur'>
+        <h3 className='mb-3 font-semibold text-slate-200'>
           🏋️ Today&apos;s Planned Workouts ({todaysWorkouts.length})
         </h3>
         <div className='space-y-3'>
           {todaysWorkouts.map((workout) => (
             <div
               key={workout._id}
-              className='flex items-center justify-between rounded bg-gray-100 p-3 shadow-sm'
+              className='flex items-center justify-between rounded-xl bg-slate-800/60 p-3 shadow-sm transition-colors hover:bg-slate-800'
             >
               <div>
-                <h4 className='font-medium'>
+                <h4 className='font-medium text-slate-100'>
                   {workout.workoutName || workout.tag}
                 </h4>
-                <p className='text-sm text-gray-600'>
+                <p className='text-sm text-slate-300'>
                   {workout.duration} minutes
                   {workout.scheduledTime && ` • ${workout.scheduledTime}`}
                 </p>
@@ -89,12 +89,17 @@ const TodaysWorkouts = () => {
               <div className='flex gap-2'>
                 <Button
                   onClick={() => markAsCompleted(workout._id)}
-                  className='bg-teal-500 hover:bg-teal-600'
+                  className='bg-cyan-500 text-slate-950 hover:bg-cyan-600'
                   size='sm'
                 >
                   Complete
                 </Button>
-                <Button asChild variant='outline' size='sm'>
+                <Button
+                  asChild
+                  variant='outline'
+                  size='sm'
+                  className='border-slate-600 text-slate-200'
+                >
                   <Link href={`/edit-workout?id=${workout._id}`}>Edit</Link>
                 </Button>
               </div>
@@ -102,7 +107,7 @@ const TodaysWorkouts = () => {
           ))}
         </div>
         <div className='mt-4 text-center'>
-          <Button asChild variant='link' size='sm'>
+          <Button asChild variant='link' size='sm' className='text-cyan-300'>
             <Link href='/calendar'>View Full Calendar</Link>
           </Button>
         </div>

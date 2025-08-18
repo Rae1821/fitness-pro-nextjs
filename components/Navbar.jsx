@@ -31,7 +31,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className='flex items-center justify-between px-4 py-2 shadow-md'>
+    <nav className='flex items-center justify-between border-b border-b-slate-900 bg-slate-950 px-4 py-2 shadow-md backdrop-blur'>
       <div className='flex'>
         {/* Mobile Menu */}
         <Sheet>
@@ -43,21 +43,21 @@ const Navbar = () => {
           <SheetContent side='left' className='w-64'>
             <SheetTitle>Navigation Menu</SheetTitle>
             <nav className='mt-6 flex flex-col space-y-4'>
-              <Link href='/dashboard' className='text-lg hover:text-cyan-600'>
+              <Link href='/dashboard' className='text-lg hover:text-teal-400'>
                 My Dashboard
               </Link>
               <Link
                 href='/create-workout'
-                className='text-lg hover:text-cyan-600'
+                className='text-lg hover:text-teal-400'
               >
                 Record Workout
               </Link>
-              <Link href='/calendar' className='text-lg hover:text-cyan-600'>
+              <Link href='/calendar' className='text-lg hover:text-teal-400'>
                 Calendar
               </Link>
               <Link
                 href='/plan-workout'
-                className='text-lg hover:text-cyan-600'
+                className='text-lg hover:text-teal-400'
               >
                 Plan Workout
               </Link>
@@ -68,7 +68,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href='/'
-          className='place-self-end text-xl font-bold hover:text-cyan-600'
+          className='place-self-end text-xl font-bold hover:text-teal-400'
         >
           Fitness Pro
         </Link>
@@ -77,25 +77,25 @@ const Navbar = () => {
         <div className='ml-8 hidden space-x-6 md:flex md:items-center'>
           <Link
             href='/dashboard'
-            className='text-sm  tracking-tight hover:text-cyan-600 hover:decoration-cyan-600 hover:underline-offset-2'
+            className='text-sm tracking-tight hover:text-teal-400'
           >
             Dashboard
           </Link>
           <Link
             href='/create-workout'
-            className='text-sm tracking-tight hover:text-cyan-600 hover:decoration-cyan-600 hover:underline-offset-2'
+            className='text-sm tracking-tight hover:text-teal-400 '
           >
             Record Workout
           </Link>
           <Link
             href='/calendar'
-            className='text-sm tracking-tight hover:text-cyan-600 hover:decoration-cyan-600 hover:underline-offset-2'
+            className='text-sm tracking-tight hover:text-teal-400'
           >
             Calendar
           </Link>
           <Link
             href='/plan-workout'
-            className='text-sm tracking-tight hover:text-cyan-600 '
+            className='text-sm tracking-tight hover:text-teal-400 '
           >
             Plan Workout
           </Link>
@@ -105,7 +105,12 @@ const Navbar = () => {
       {session?.user ? (
         <div className='flex items-center space-x-4'>
           <ModeToggle />
-          <Button variant='outline' size='sm' onClick={signOut}>
+          <Button
+            variant='outline'
+            size='sm'
+            onClick={signOut}
+            className='border-white/10 bg-slate-900/40 hover:bg-slate-900/60'
+          >
             Sign Out
           </Button>
           <Avatar>

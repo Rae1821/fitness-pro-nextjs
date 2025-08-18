@@ -14,35 +14,35 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
   return (
     <div>
       <Collapsible className='mx-auto mb-4 w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl'>
-        <Card className='w-full items-center border-none bg-red-400 pt-2 font-display md:px-2'>
+        <Card className='w-full items-center border-none bg-teal-900/30 pt-2 md:px-2'>
           <CollapsibleTrigger className='group w-full'>
             <CardHeader className='w-full'>
               <div className='grid grid-cols-[50px_auto_auto_auto] items-center lg:grid-cols-[100px_250px_250px_200px]'>
                 <div className='w-8'>
-                  <p className='flex items-center justify-center rounded-2xl bg-white'>
-                    <FaHeartbeat className='m-2 text-red-400' />
+                  <p className='flex items-center justify-center rounded bg-teal-600 '>
+                    <FaHeartbeat className='m-2 ' />
                   </p>
                 </div>
                 <div className='flex items-center justify-start'>
-                  <p className='flex flex-col text-left text-xs font-semibold tracking-wide text-slate-900 md:text-base lg:text-xl'>
+                  <p className='flex flex-col text-left text-xs font-semibold tracking-wide text-slate-200 md:text-base lg:text-xl'>
                     {post.workoutName}
-                    <span className='text-xs font-normal text-slate-700 md:text-sm lg:text-lg'>
+                    <span className='text-xs font-normal text-teal-400 md:text-sm lg:text-lg'>
                       Activity
                     </span>
                   </p>
                 </div>
                 <div>
-                  <p className='flex flex-col text-left text-xs font-bold text-slate-900 md:text-base lg:text-xl'>
+                  <p className='flex flex-col text-left text-xs font-bold text-slate-200 md:text-base lg:text-xl'>
                     {formattedDate}
-                    <span className='text-xs font-normal text-slate-700 md:text-sm lg:text-lg'>
+                    <span className='text-xs font-normal text-teal-400 md:text-sm lg:text-lg'>
                       Date
                     </span>
                   </p>
                 </div>
                 <div className='flex items-center justify-between'>
-                  <p className='flex flex-col text-left text-xs font-bold text-slate-900 md:text-base lg:text-xl'>
+                  <p className='flex flex-col text-left text-xs font-bold text-slate-200 md:text-base lg:text-xl'>
                     {post.duration} min.
-                    <span className='text-xs font-normal text-slate-700 md:text-sm lg:text-lg'>
+                    <span className='text-xs font-normal text-teal-400 md:text-sm lg:text-lg'>
                       Duration
                     </span>
                   </p>
@@ -54,29 +54,29 @@ const CardioCard = ({ post, handleEdit, handleDelete }) => {
 
           <CollapsibleContent>
             <CardContent className='rounded-b-md md:px-4'>
-              <table className='w-full table-auto border-collapse text-xs text-slate-900 md:text-sm lg:text-base'>
+              <table className='w-full table-auto border-collapse text-xs text-teal-400 md:text-sm lg:text-base'>
                 <thead>
-                  <tr className='border-b text-center'>
-                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-700'>
+                  <tr className='border-b border-teal-700 text-center'>
+                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-200'>
                       Distance
                     </th>
-                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-700'>
+                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-200'>
                       Speed High
                     </th>
-                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-700'>
+                    <th className='text-left text-[11px] font-bold uppercase tracking-wide text-slate-200'>
                       Incline
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className='border-b text-center'>
-                    <td className='py-2 text-left text-sm font-bold md:text-base lg:text-lg'>
+                  <tr className='border-b border-teal-700 text-center'>
+                    <td className='py-2 text-left text-sm md:text-base lg:text-lg'>
                       {post.distance} mile(s)
                     </td>
-                    <td className='py-2 text-left text-sm font-bold md:text-base lg:text-lg'>
+                    <td className='py-2 text-left text-sm md:text-base lg:text-lg'>
                       {post.speedHigh}
                     </td>
-                    <td className='py-2 text-left text-sm font-bold md:text-base lg:text-lg'>
+                    <td className='py-2 text-left text-sm md:text-base lg:text-lg'>
                       {post.incline}
                     </td>
                   </tr>
