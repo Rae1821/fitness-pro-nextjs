@@ -68,7 +68,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link
           href='/'
-          className='place-self-end text-xl font-bold hover:text-teal-400'
+          className='place-self-end text-xl font-bold text-teal-400'
         >
           Fitness Pro
         </Link>
