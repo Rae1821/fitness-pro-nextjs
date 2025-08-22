@@ -59,7 +59,7 @@ const Welcome = () => {
       ) : (
         <>
           <div className='mb-8'>
-            <h1 className='mb-4 font-display text-5xl font-bold text-gray-100 lg:text-6xl'>
+            <h1 className='mb-4 text-5xl font-bold text-gray-100 lg:text-6xl'>
               Let&apos;s work out
             </h1>
             <p className=' max-w-xs text-sm text-gray-200 lg:max-w-lg lg:text-base'>
@@ -70,16 +70,16 @@ const Welcome = () => {
           </div>
 
           <div className='mx-auto flex max-w-xs justify-between gap-2'>
-            <Button asChild size='sm' className='bg-cyan-600 hover:bg-cyan-700'>
-              <Link href='/create-workout'>Record Workout</Link>
-            </Button>
             <Button
               asChild
               variant='outline'
               size='sm'
-              className='text-primary'
+              className='bg-teal-400 text-slate-900 hover:bg-teal-600'
             >
               <Link href='/dashboard'>My Dashboard</Link>
+            </Button>
+            <Button asChild size='sm' className=''>
+              <Link href='/create-workout'>Record Workout</Link>
             </Button>
           </div>
         </>

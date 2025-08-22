@@ -77,9 +77,9 @@ const CompletedWorkouts = () => {
         <div className='mx-auto mb-10'>
           <Stats data={totalPosts} />
         </div>
-        <h2 className='mb-6 text-center text-3xl'>Recent Workouts</h2>
+        <h2 className='mb-8 text-center text-3xl'>Recent Workouts</h2>
 
-        <div className='mx-auto mb-16 flex items-center justify-center'></div>
+        {/* <div className='mx-auto mb-16 flex items-center justify-center'></div> */}
 
         <div className='w-full'>
           {sortedData.map((post) =>

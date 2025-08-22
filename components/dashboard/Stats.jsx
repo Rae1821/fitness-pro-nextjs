@@ -202,7 +202,7 @@ const Stats = ({ data }) => {
   console.log("Workout Counts:", workoutCounts.previousMonth);
 
   return (
-    <div className='flex w-full flex-col items-center justify-center gap-4'>
+    <div className='mb-4 flex w-full flex-col items-center justify-center gap-4'>
       <div className='grid w-full grid-cols-1 gap-4 px-2 md:grid-cols-3'>
         <Card className='soft-shadow relative overflow-hidden rounded-2xl border-none bg-teal-900/40'>
           <div className='neon-glow' />
