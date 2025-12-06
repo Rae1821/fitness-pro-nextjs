@@ -43,15 +43,25 @@ const labels = [
 const Stats = ({ data }) => {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const now = new Date();
+  // const currentMonth = now.getMonth() + 1; // 1-12
+  const currentYear = now.getFullYear();
+  // Build months to include (current month, previous month, month before last)
+  // This version supports wrapping into the previous year (e.g., Jan includes Dec last year)
+  const monthsToInclude = [];
+  for (let i = 0; i < 3; i++) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    monthsToInclude.push({ month: d.getMonth() + 1, year: d.getFullYear() });
+  }
+
   const monthlyWorkouts = data.filter((workout) => {
     const workoutDate = new Date(workout.date);
-    const currentMonth = new Date().getMonth() + 1;
-    const workoutMonth = workoutDate.getMonth() + 1;
-    // check if the workout is from the current month or the previous month
-    return (
-      workoutMonth === currentMonth ||
-      workoutMonth === currentMonth - 1 ||
-      workoutMonth === currentMonth - 2
+    const workoutMonth = workoutDate.getMonth() + 1; // 1-12
+    const workoutYear = workoutDate.getFullYear();
+
+    // include workouts that match any month+year in the 3-month window
+    return monthsToInclude.some(
+      (m) => m.month === workoutMonth && m.year === workoutYear
     );
   });
 
@@ -89,9 +99,9 @@ const Stats = ({ data }) => {
   );
 
   const monthlyCountsByYear = data.reduce((counts, workout) => {
-    const workoutDtae = new Date(workout.date);
-    const workoutYear = new Date(workout.date).getFullYear();
-    const workoutMonth = workoutDtae.getMonth();
+    const workoutDate = new Date(workout.date);
+    const workoutYear = workoutDate.getFullYear();
+    const workoutMonth = workoutDate.getMonth(); // 0-11 index for array
 
     // Initialize the year in the counts object if it doesn't exist
     if (!counts[workoutYear]) {
@@ -179,25 +189,22 @@ const Stats = ({ data }) => {
   // Count the workouts for the current month or the previous month using reduce
   const workoutCounts = monthlyWorkouts.reduce(
     (counts, workout) => {
-      const workoutMonth = new Date(workout.date).getMonth() + 1;
-      const currentMonth = new Date().getMonth() + 1;
-
-      // console.log("Workout Month:", workoutMonth);
-      // Increment the count for the corresponding month
-      counts[
-        workoutMonth === currentMonth
-          ? "currentMonth"
-          : workoutMonth === currentMonth - 2
-            ? "monthBeforeLast"
-            : "previousMonth"
-      ] += 1;
+      const workoutDate = new Date(workout.date);
+      const workoutMonth = workoutDate.getMonth() + 1; // 1-12
+      const workoutYear = workoutDate.getFullYear();
+      const idx = monthsToInclude.findIndex(
+        (m) => m.month === workoutMonth && m.year === workoutYear
+      );
+      if (idx === 0) counts.currentMonth++;
+      else if (idx === 1) counts.previousMonth++;
+      else if (idx === 2) counts.monthBeforeLast++;
 
       return counts;
     },
     { currentMonth: 0, previousMonth: 0, monthBeforeLast: 0 }
   );
 
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
   console.log("Workout Counts:", workoutCounts.currentMonth);
   console.log("Workout Counts:", workoutCounts.previousMonth);
 
@@ -264,20 +271,27 @@ const Stats = ({ data }) => {
               </span>
 
               {workoutCounts.currentMonth - workoutCounts.previousMonth}
-              {/* Percentage Calculation */}
+              {/* Percentage Calculation (guard division by zero) */}
               <span>
                 (
-                {workoutCounts.currentMonth < workoutCounts.previousMonth
-                  ? (
-                      (workoutCounts.currentMonth /
-                        workoutCounts.previousMonth) *
-                      100
-                    ).toFixed(0)
-                  : (
-                      (workoutCounts.previousMonth /
-                        workoutCounts.currentMonth) *
-                      100
-                    ).toFixed(0)}
+                {workoutCounts.previousMonth === 0 &&
+                workoutCounts.currentMonth === 0
+                  ? "0"
+                  : workoutCounts.previousMonth === 0
+                    ? "100"
+                    : workoutCounts.currentMonth === 0
+                      ? "0"
+                      : workoutCounts.currentMonth < workoutCounts.previousMonth
+                        ? (
+                            (workoutCounts.currentMonth /
+                              workoutCounts.previousMonth) *
+                            100
+                          ).toFixed(0)
+                        : (
+                            (workoutCounts.previousMonth /
+                              workoutCounts.currentMonth) *
+                            100
+                          ).toFixed(0)}
                 )%
               </span>
             </div>
@@ -330,17 +344,25 @@ const Stats = ({ data }) => {
               </span>
               <span>
                 (
-                {workoutCounts.previousMonth < workoutCounts.monthBeforeLast
-                  ? (
-                      (workoutCounts.previousMonth /
-                        workoutCounts.monthBeforeLast) *
-                      100
-                    ).toFixed(0)
-                  : (
-                      (workoutCounts.monthBeforeLast /
-                        workoutCounts.previousMonth) *
-                      100
-                    ).toFixed(0)}
+                {workoutCounts.monthBeforeLast === 0 &&
+                workoutCounts.previousMonth === 0
+                  ? "0"
+                  : workoutCounts.monthBeforeLast === 0
+                    ? "100"
+                    : workoutCounts.previousMonth === 0
+                      ? "0"
+                      : workoutCounts.previousMonth <
+                          workoutCounts.monthBeforeLast
+                        ? (
+                            (workoutCounts.previousMonth /
+                              workoutCounts.monthBeforeLast) *
+                            100
+                          ).toFixed(0)
+                        : (
+                            (workoutCounts.monthBeforeLast /
+                              workoutCounts.previousMonth) *
+                            100
+                          ).toFixed(0)}
                 )%
               </span>
             </div>
